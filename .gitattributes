@@ -1,12 +1,11 @@
-# Set the default behavior to automatically normalize line endings.
+# Normalize line endings
 * text=auto
 
-# Explicitly declare text files you want to always normalize and convert
-# to native line endings on checkout.
-*.html text
-*.css text
-*.js text
-*.md text
-*.yml text
-Gemfile text
-.gitignore text
+# Explicitly set text files to LF
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+Gemfile text eol=lf
+.gitignore text eol=lf
