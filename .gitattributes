@@ -1,0 +1,11 @@
+# Normalize line endings
+* text=auto
+
+# Explicitly set text files to LF
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+Gemfile text eol=lf
+.gitignore text eol=lf
