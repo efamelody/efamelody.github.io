@@ -60,9 +60,9 @@ DomsMatch: code to play a dominoes match between two players.
   6. Utility Functions:
       swapDomino: Swaps the elements of a tuple, flipping a domino to be played.
 
-##Installation
+## Installation
 
-You would need ghci downloaded into you machine which can be downloaded here, https://www.haskell.org/downloads/
+You would need ghci downloaded into you machine which can be downloaded here, [Haskell Platform](https://www.haskell.org/downloads/)
 
 ## Usage
 
@@ -79,9 +79,9 @@ The domsMatch function requires:
 - A seed for the random number generator.
 
 You can experiment with different seeds, hand sizes, and target scores to test various scenarios and strategies.
-![Game Example](example.png)
+![Game Example](_posts/example.png)
 
 ## Source Code
 
-Link to the GitHub repository: https://github.com/efamelody/DomsMatch 
+Link to the GitHub repository: [DomsMatch](https://github.com/efamelody/DomsMatch)
 
