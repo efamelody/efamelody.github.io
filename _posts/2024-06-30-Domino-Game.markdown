@@ -32,8 +32,6 @@ DomsMatch: code to play a dominoes match between two players.
    The function returns a tuple containing the Domino to play and End to play it on.
 
    Author: Nur Izfarwiza Binti Mohd Talib
-   Date: 20 November 2023
-   Description:
    Brief Summary of The File Contents:
    1. Scoring Functions:
       scoreBoard: Computes the score for a given board and a boolean indicating if it's the last domino.
