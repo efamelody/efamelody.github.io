@@ -6,7 +6,7 @@ categories: [projects]
 tags: [Haskell, Functional Programming]
 ---
 
-# Project Name
+# Domino Game
 
 
 ## Technologies Used
