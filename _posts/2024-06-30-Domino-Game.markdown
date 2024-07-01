@@ -79,7 +79,8 @@ The domsMatch function requires:
 - A seed for the random number generator.
 
 You can experiment with different seeds, hand sizes, and target scores to test various scenarios and strategies.
-![Game Example](_posts/example.png)
+![Game Example](https://raw.githubusercontent.com/efamelody/efamelody.github.io/main/_posts/example.png)
+
 
 ## Source Code
 
