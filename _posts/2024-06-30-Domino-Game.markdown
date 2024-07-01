@@ -2,7 +2,7 @@
 layout: default
 modal-id: 6
 date: 2023-11-20
-img: submarine.png
+img: example.png
 alt: image-alt
 project-date: November 2023
 client: Start Bootstrap
