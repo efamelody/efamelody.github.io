@@ -1,9 +1,13 @@
 ---
-layout: project
-title: Domino Game 
-date: 2023-11-20 08:00:00 -0400
-categories: [projects]
-tags: [Haskell, Functional Programming]
+layout: default
+modal-id: 6
+date: 2023-11-20
+img: submarine.png
+alt: image-alt
+project-date: November 2023
+client: Start Bootstrap
+category: Haskell Functional Programming
+description: A domino game coded using Haskell
 ---
 
 # Domino Game
