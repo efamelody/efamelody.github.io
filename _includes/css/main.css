@@ -95,7 +95,7 @@ header .container {
 header img {
     display: block;
     margin: 0 auto 20px;
-    width: 150px; /* Adjust the width as needed */
+    width: 250px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -486,7 +486,7 @@ footer .footer-below {
 
 .portfolio-description h2 {
   font-size: 24px;
-  color: #007bff; /* Blue color for headings */
+  color: #a8c9ea; /* Blue color for headings */
 }
 
 .portfolio-description p {
@@ -500,7 +500,7 @@ footer .footer-below {
 }
 
 .portfolio-description a {
-  color: #9b8cbf;
+  color: #b19cd9;
   text-decoration: none;
 }
 
