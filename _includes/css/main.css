@@ -480,13 +480,13 @@ footer .footer-below {
 .portfolio-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #96e9fa;
+  color: #{{ site.color.primary }};
   margin-top: 20px;
 }
 
 .portfolio-description h2 {
   font-size: 24px;
-  color: #a8c9ea; /* Blue color for headings */
+  color: #{{ site.color.primary-dark }}; /* Blue color for headings */
 }
 
 .portfolio-description p {
