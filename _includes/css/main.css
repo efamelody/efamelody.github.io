@@ -80,6 +80,7 @@ hr.star-primary:after {
     margin: 0 auto;
 }
 
+
 header {
     text-align: center;
     color: #fff;
@@ -94,6 +95,8 @@ header .container {
 header img {
     display: block;
     margin: 0 auto 20px;
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 header .intro-text .name {
