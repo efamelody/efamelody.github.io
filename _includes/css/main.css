@@ -526,6 +526,43 @@ footer .footer-below {
   border-color: #d095f5; /* Darker color for the horizontal line */
 }
 
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-item {
+  background-color: #fff; /* White background for each experience item */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Padding inside each item */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.experience-header {
+  cursor: pointer; /* Cursor changes to pointer on hover */
+}
+
+.experience-details {
+  display: none; /* Hide details initially */
+  margin-top: 10px;
+}
+
+.experience-details li {
+  color: #777; /* Description color */
+  margin-bottom: 5px;
+}
+
+.experience-item:hover {
+  background-color: #f0f0f0; /* Slightly darker background on hover */
+  border-color: #ccc; /* Darker border on hover */
+}
+
+.experience-item:hover .experience-details {
+  display: block; /* Show details on hover */
+}
+
 #experience h4 {
   color: #555; /* Slightly darker than the description */
 }
