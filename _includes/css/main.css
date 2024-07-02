@@ -519,11 +519,11 @@ footer .footer-below {
 }
 
 #experience h2 {
-  color:  #{{ site.color.primary }}; /* Darker color for the header */
+  color:  #{{ site.color.secondary }}; /* Darker color for the header */
 }
 
 #experience hr.star-primary {
-  border-color: #d095f5; /* Darker color for the horizontal line */
+  border-color: #{{ site.color.secondary }}; /* Darker color for the horizontal line */
 }
 
 .experience-container {
@@ -550,7 +550,7 @@ footer .footer-below {
 }
 
 .experience-details li {
-  color: #777; /* Description color */
+  color: #{{ site.color.primary }}; /* Description color */
   margin-bottom: 5px;
 }
 
@@ -564,15 +564,15 @@ footer .footer-below {
 }
 
 #experience h4 {
-  color: #555; /* Slightly darker than the description */
+  color: #{{ site.color.primary }}; /* Slightly darker than the description */
 }
 
 #experience p {
-  color: #f5b0ee; /* Standard color for the description */
+  color: #{{ site.color.secondary }}; /* Standard color for the description */
 }
 
 #experience p strong {
-  color: #f073e3; /* Darker color for the strong text */
+  color: #{{ site.color.secondary-dark }}; /* Darker color for the strong text */
 }
 
 #experience ul {
@@ -594,7 +594,7 @@ footer .footer-below {
 }
 
 #experience li p.date {
-  color: #a0d6d6; /* Light pastel turquoise for the date */
+  color: #{{ site.color.secondary }}; /* Light pastel turquoise for the date */
   font-style: italic; /* Italic style for the date */
 }
 
