@@ -480,7 +480,7 @@ footer .footer-below {
 .portfolio-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #333;
+  color: #96e9fa;
   margin-top: 20px;
 }
 
@@ -512,6 +512,64 @@ footer .footer-below {
 .navbar-nav>.active>a {
     background-color: #{{ site.color.secondary-dark }} !important;
 }
+
+#experience {
+  background-color: #f9f9f9; /* Light background for the section */
+  padding: 50px 0; /* Padding around the section */
+}
+
+#experience h2 {
+  color: #d095f5; /* Darker color for the header */
+}
+
+#experience hr.star-primary {
+  border-color: #d095f5; /* Darker color for the horizontal line */
+}
+
+#experience h4 {
+  color: #555; /* Slightly darker than the description */
+}
+
+#experience p {
+  color: #f5b0ee; /* Standard color for the description */
+}
+
+#experience p strong {
+  color: #f073e3; /* Darker color for the strong text */
+}
+
+#experience ul {
+  list-style-type: none; /* Remove default list style */
+  padding: 0;
+}
+
+#experience li {
+  margin-bottom: 30px; /* Space between list items */
+}
+
+#experience li h4 {
+  font-size: 1.25em;
+  margin-bottom: 5px;
+}
+
+#experience li p {
+  margin: 5px 0;
+}
+
+#experience li p.date {
+  color: #a0d6d6; /* Light pastel turquoise for the date */
+  font-style: italic; /* Italic style for the date */
+}
+
+#experience li ul {
+  margin-top: 10px;
+}
+
+#experience li ul li {
+  color: #777; /* Description color */
+  margin-bottom: 5px;
+}
+
 
 /* Fix modal mouse wheel issues */
 /* https://github.com/twbs/bootstrap/issues/16297 */
