@@ -514,12 +514,12 @@ footer .footer-below {
 }
 
 #experience {
-  background-color: #f9f9f9; /* Light background for the section */
+  background-color: white; /* Light background for the section */
   padding: 50px 0; /* Padding around the section */
 }
 
 #experience h2 {
-  color: #d095f5; /* Darker color for the header */
+  color:  #{{ site.color.primary }}; /* Darker color for the header */
 }
 
 #experience hr.star-primary {
