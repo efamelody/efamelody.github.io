@@ -66,18 +66,13 @@ footer:
 social:
   - title: linkedin
     url: https://www.linkedin.com/in/nur-izfarwiza-mohd-talib-383604237/
-  - title: facebook
-    url:
-  - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
   - title: github
     url: https://github.com/efamelody
 
 # Postal address (add as many lines as necessary)
 address:
   - line: Sheffield, UK
+email: nurizfarwiza@gmail.com
 
 # Credits content
 credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
