@@ -17,7 +17,11 @@
             <hr class="star-primary">
             <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
             <div class="portfolio-description">
-              {{ post.content }}
+              {% assign post_id = forloop.index %}
+              <p>
+                {{ post.excerpt }}<span id="dots-{{ post_id }}">...</span><span id="more-{{ post_id }}" style="display:none">{{ post.content | remove: post.excerpt }}</span>
+              </p>
+              <button onclick="toggleContent({{ post_id }})" id="btn-{{ post_id }}" class="btn btn-primary">Read more</button>
             </div>
             <ul class="list-inline item-details">
               {% if post.client %}
@@ -39,3 +43,6 @@
   </div>
 </div>
 {% endfor %}
+
+<!-- Include your JS file before the closing </body> tag -->
+<script src="js/toggleContent.js"></script>
