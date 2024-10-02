@@ -2,7 +2,7 @@
 layout: default
 modal-id: 7
 date: 2023-11-20
-img: chessboard_classifier.png
+img: 015.jpg
 alt: Chessboard Diagram Classifier
 project-date: November 2023
 client: Start Bootstrap
