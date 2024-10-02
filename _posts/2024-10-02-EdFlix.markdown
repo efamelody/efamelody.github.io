@@ -1,0 +1,56 @@
+---
+layout: default
+modal-id: 10
+date: 2023-11-20
+img: edflix_platform.png
+alt: EdFlix Online Learning Platform
+project-date: November 2023
+client: Start Bootstrap
+category: Web Development
+description: An Online Learning Platform Developed with Agile Methodologies
+---
+
+# Technologies Used
+
+- **Ruby**
+- **HTML**
+- **CSS**
+- **SQL**
+- **GitHub**
+
+# Features
+
+## EdFlix Online Learning Platform
+Collaborated with a team of seven Computer Science students using Agile Development methodologies to create a tailored online learning platform.
+
+### Key Contributions
+- **Customizable Recommendation System**: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement.
+- **Problem Solving and Teamwork**: Actively contributed to resolving database issues and optimizing editing functions, ensuring a seamless user experience.
+- **Technical Proficiency**: Demonstrated strong skills in Ruby, HTML, CSS, SQL, and version control through GitHub throughout the project lifecycle.
+
+### Achievements
+- Successfully produced a working system that passed unit testing.
+- Conducted a demonstration of the platform to University staff, showcasing its features and functionalities.
+
+**Author**: [Your Name]
+
+# Installation
+
+To run the EdFlix platform locally, follow these steps:
+
+1. Clone the repository or download the source code.
+2. Ensure you have Ruby and the necessary dependencies installed.
+3. Set up your database and run the required migrations.
+4. Start the local server to access the application.
+
+# Usage
+
+1. Launch the application by starting the server.
+2. Register a new account to explore the learning resources and features.
+3. Utilize the customizable recommendation system to find relevant courses.
+
+![EdFlix Platform Example](https://raw.githubusercontent.com/efamelody/efamelody.github.io/main/_posts/edflix_platform.png)
+
+# Source Code
+
+You can view the complete source code on GitHub: [EdFlix](https://github.com/yourusername/edflix)
