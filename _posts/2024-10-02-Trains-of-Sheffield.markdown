@@ -33,7 +33,6 @@ Collaborated with three other Computer Science students to develop a Java Swing 
 
 **Outcome**: Successfully completed the project and was awarded a distinction for our efforts.
 
-**Author**: [Your Name]
 
 # Installation
 
@@ -54,4 +53,4 @@ To run the application locally, follow these steps:
 
 # Source Code
 
-You can view the complete source code on GitHub: [Trains of Sheffield](https://github.com/yourusername/trains_of_sheffield)
+You can view the complete source code on GitHub: [Trains of Sheffield]([https://github.com/yourusername/trains_of_sheffield](https://github.com/efamelody/TrainsOfSheffield))
