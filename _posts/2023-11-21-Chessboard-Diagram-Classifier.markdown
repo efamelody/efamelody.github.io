@@ -1,7 +1,7 @@
 ---
 layout: default
 modal-id: 7
-date: 2023-11-20
+date: 2023-11-21
 img: 015.jpg
 alt: Chessboard Diagram Classifier
 project-date: November 2023
