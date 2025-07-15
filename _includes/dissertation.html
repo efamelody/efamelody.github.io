@@ -4,7 +4,31 @@
     <hr class="star-primary">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 text-center">
-        <p>Here’s a brief description of my dissertation topic. You can <a href="/assets/files/my-dissertation.pdf" target="_blank">download the full PDF here</a>.</p>
+        <p><strong>Title:</strong> Air Pollution Modelling and Source Inference using the Advection Gaussian Process Framework</p>
+        <p>This project applied a cutting-edge probabilistic model — the Advection Gaussian Process (Advection GP) — to infer pollution sources from real-world satellite and meteorological data. 
+        While the model had previously only been tested on synthetic data, my dissertation explored its effectiveness in a real case study: the 2019–2020 Australian bushfires.</p>
+        <p>The project involved substantial data wrangling, geospatial processing, and adapting the modelling pipeline to real-world uncertainties. It was awarded a <strong>Distinction (75)</strong>.</p>
+        
+        <p><strong>Key Contributions:</strong></p>
+        <ul class="text-left">
+          <li>Adapted a research-level Gaussian Process model to work with real satellite and wind data.</li>
+          <li>Converted satellite-derived Aerosol Optical Depth (AOD) data to approximate ground-level PM2.5 concentrations.</li>
+          <li>Explored the impact of vertical transport by comparing 2D vs 3D wind field integration.</li>
+          <li>Preprocessed NASA MERRA-2 reanalysis data and managed its limitations in resolution and accuracy.</li>
+          <li>Handled spatial referencing using geospatial projection systems (cartography).</li>
+          <li>Built custom workflows to interpolate wind data for particle-based source inference simulations.</li>
+          <li>Validated results against satellite fire anomaly data from the 2019–2020 bushfires.</li>
+          <li>Documented challenges with model uncertainty, altitude effects, and computational performance on limited hardware.</li>
+        </ul>
+
+        <p>
+          📄 Read the research paper my project builds on: 
+          <a href="https://eprints.whiterose.ac.uk/id/eprint/202658/1/2202.04589v4.pdf" target="_blank">
+            Adjoint-aided inference of Gaussian process driven differential equations
+          </a>
+        </p>
+
+        <p>You can <a href="/assets/files/my-dissertation.pdf" target="_blank">download the full PDF here</a>, or check out the <a href="https://github.com/efamelody/advectionGP" target="_blank">GitHub repository</a>.</p>
       </div>
     </div>
   </div>
