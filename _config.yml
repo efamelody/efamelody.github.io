@@ -52,8 +52,8 @@ disqus_shortname: myshortname
 color:
   primary: b0b2ff         # soft lavender (darker)
   primary-rgb: "176,178,255"
-  secondary: ffd4e5 #FD6E8A
-  secondary-dark: d4ffea #A2122F
+  secondary: EEA9C4 #FD6E8A
+  secondary-dark: 9FEFE2 #A2122F
 
 # Footer settings
 footer:
