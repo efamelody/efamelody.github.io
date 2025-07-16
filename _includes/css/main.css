@@ -626,6 +626,15 @@ footer .footer-below {
 }
 
 /* Make the key contributions panel collapsed by default and expand on hover */
+
+#accordion .panel,
+#accordion .panel-body,
+#accordion .panel-heading {
+  background-color: transparent;
+  border: none;
+  color: inherit; /* keep using section text color */
+}
+
 #accordion .panel-body {
   max-height: 0;
   overflow: hidden;
@@ -635,5 +644,6 @@ footer .footer-below {
 #accordion .panel:hover .panel-body {
   max-height: 800px; /* large enough to reveal all content */
 }
+
 
 
