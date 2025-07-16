@@ -615,30 +615,10 @@ footer .footer-below {
     -webkit-transform: translateZ(0);
 }
 
-#dissertation {
-  background-color: #{{ site.color.primary }}; /* use primary color as background */
-  color: #fff; /* white text */
-  padding: 100px 0; /* same padding as other sections */
-}
-
-#dissertation h2 {
-  color: #fff; /* make heading white */
-}
-
-#dissertation hr.star-light {
-  border-color: #fff;
-}
-
 #dissertation a {
-  color: #fff; /* make links white by default */
   text-decoration: underline;
 }
-
 #dissertation a:hover {
-  color: #{{ site.color.secondary }}; /* or choose a contrasting color for hover */
-}
-
-#dissertation ul li {
-  color: #fff; /* ensure list items are white */
+  color: #{{ site.color.secondary }};
 }
 
