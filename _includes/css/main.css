@@ -615,6 +615,10 @@ footer .footer-below {
     -webkit-transform: translateZ(0);
 }
 
+#dissertation p {
+  text-align: center;
+}
+
 #dissertation a {
   color: #{{ site.color.secondary-dark }};
   text-decoration: none;
@@ -643,6 +647,9 @@ footer .footer-below {
 
 #accordion .panel:hover .panel-body {
   max-height: 800px; /* large enough to reveal all content */
+  background-color: rgba(255, 255, 255, 0.05); /* subtle light overlay */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* soft shadow */
 }
 
 #accordion .panel-title {
