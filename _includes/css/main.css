@@ -645,5 +645,20 @@ footer .footer-below {
   max-height: 800px; /* large enough to reveal all content */
 }
 
+#accordion .panel-title {
+  color: #{{ site.color.secondary-dark }};
+}
+
+#accordion a {
+  color: #{{ site.color.secondary-dark }};
+  text-decoration: none;
+}
+
+#accordion a:hover {
+  color: #{{ site.color.secondary }};
+  text-decoration: underline;
+}
+
+
 
 
