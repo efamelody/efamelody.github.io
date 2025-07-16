@@ -625,3 +625,9 @@ footer .footer-below {
   text-decoration: underline;
 }
 
+#accordion .panel:hover .panel-collapse {
+  display: block !important;
+  height: auto !important;
+}
+
+
