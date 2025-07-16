@@ -625,9 +625,14 @@ footer .footer-below {
   text-decoration: underline;
 }
 
-#accordion .panel:hover .panel-collapse {
-  display: block !important;
-  height: auto !important;
+.panel-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.panel:hover .panel-body {
+  max-height: 500px; /* big enough to show the content */
 }
 
 
