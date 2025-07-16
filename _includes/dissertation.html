@@ -1,7 +1,7 @@
 <section id="dissertation">
   <div class="container">
     <h2 class="text-center">Dissertation</h2>
-    <hr class="star-primary">
+    <hr class="star-light">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <p><strong>Title:</strong> Air Pollution Modelling and Source Inference using the Advection Gaussian Process Framework</p>
@@ -10,16 +10,32 @@
         <p>The project involved substantial data wrangling, geospatial processing, and adapting the modelling pipeline to real-world uncertainties. It was awarded a <strong>Distinction (75)</strong>.</p>
         
         <p><strong>Key Contributions:</strong></p>
-        <ul class="text-left">
-          <li>Adapted a research-level Gaussian Process model to work with real satellite and wind data.</li>
-          <li>Converted satellite-derived Aerosol Optical Depth (AOD) data to approximate ground-level PM2.5 concentrations.</li>
-          <li>Explored the impact of vertical transport by comparing 2D vs 3D wind field integration.</li>
-          <li>Preprocessed NASA MERRA-2 reanalysis data and managed its limitations in resolution and accuracy.</li>
-          <li>Handled spatial referencing using geospatial projection systems (cartography).</li>
-          <li>Built custom workflows to interpolate wind data for particle-based source inference simulations.</li>
-          <li>Validated results against satellite fire anomaly data from the 2019–2020 bushfires.</li>
-          <li>Documented challenges with model uncertainty, altitude effects, and computational performance on limited hardware.</li>
-        </ul>
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseContributions">
+                  View key contributions
+                </a>
+              </h4>
+            </div>
+            <div id="collapseContributions" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ul class="text-left">
+                  <li>Adapted a research-level Gaussian Process model...</li>
+                  <li>Converted satellite-derived AOD data...</li>
+                  <li>Explored the impact of vertical transport by comparing 2D vs 3D wind field integration.</li>
+                  <li>Preprocessed NASA MERRA-2 reanalysis data and managed its limitations in resolution and accuracy.</li>
+                  <li>Handled spatial referencing using geospatial projection systems (cartography).</li>
+                  <li>Built custom workflows to interpolate wind data for particle-based source inference simulations.</li>
+                  <li>Validated results against satellite fire anomaly data from the 2019–2020 bushfires.</li>
+                  <li>Documented challenges with model uncertainty, altitude effects, and computational performance on limited hardware.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         <p>
           📄 Read the research paper my project builds on: 
