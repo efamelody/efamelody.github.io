@@ -9,7 +9,21 @@
     </div>
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
+        <p>
+          You can email me directly at <a href="mailto:nurizfarwiza@gmail.com">nurizfarwiza@gmail.com</a>,
+          or simply use the form below and I’ll get back to you!
+        </p>
         <form action="https://formspree.io/f/mblkjkoy" method="POST" name="sentMessage" id="contactForm" novalidate>
+          <!-- Name field -->
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label for="name">Your name</label>
+              <input type="text" name="name" class="form-control" placeholder="Your name" id="name" required
+                data-validation-required-message="Please enter your name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          
           <div class="row control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls">
               <label for="email">Your email</label>
