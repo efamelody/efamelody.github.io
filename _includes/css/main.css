@@ -616,9 +616,12 @@ footer .footer-below {
 }
 
 #dissertation a {
-  text-decoration: underline;
+  color: #{{ site.color.secondary-dark }};
+  text-decoration: none;
 }
+
 #dissertation a:hover {
   color: #{{ site.color.secondary }};
+  text-decoration: underline;
 }
 
