@@ -2,7 +2,7 @@
 layout: default
 modal-id: 9
 date: 2023-11-20
-img: img/trainsheffield.jpg
+img: trainsheffield.jpg
 alt: Trains of Sheffield Software Business
 project-date: November 2023
 client: Start Bootstrap
