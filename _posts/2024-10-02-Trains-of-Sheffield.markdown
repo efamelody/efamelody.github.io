@@ -2,7 +2,7 @@
 layout: default
 modal-id: 9
 date: 2023-11-20
-img: trains_of_sheffield.png
+img: trainsheffield.jpg
 alt: Trains of Sheffield Software Business
 project-date: November 2023
 client: Start Bootstrap
@@ -17,7 +17,6 @@ description: A Java Swing Application for Train Business Management
 - **MySQL**
 - **UML Diagrams**
 
-# Features
 
 ## Trains of Sheffield
 Collaborated with three other Computer Science students to develop a Java Swing application tailored for a train business.
@@ -49,8 +48,7 @@ To run the application locally, follow these steps:
 2. Create a new user account to access features like order management and stock monitoring.
 3. Navigate through the user-friendly interface to explore different functionalities.
 
-![Trains of Sheffield Application Example](https://raw.githubusercontent.com/efamelody/efamelody.github.io/main/_posts/trains_of_sheffield.png)
 
 # Source Code
 
-You can view the complete source code on GitHub: [Trains of Sheffield]([https://github.com/yourusername/trains_of_sheffield](https://github.com/efamelody/TrainsOfSheffield))
+You can view the complete source code on GitHub: [Trains of Sheffield](https://github.com/efamelody/TrainsOfSheffield)
