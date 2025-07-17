@@ -55,5 +55,5 @@ You can view the complete source code on GitHub: [EdFlix](https://github.com/efa
 #Report
 # Final Report
 
-📄 [Download the full report (PDF)](/assets/file/edflix_report.pdf){:target="_blank"}
+📄 [Download the full report (PDF)](/assets/files/edflix_report.pdf){:target="_blank"}
 
