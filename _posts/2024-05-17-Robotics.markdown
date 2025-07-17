@@ -1,0 +1,86 @@
+---
+layout: default
+modal-id: 11
+date: 2024-05-17
+img: robot_maze.jpg
+alt: ROS Robot Maze and Exploration
+project-date: March–May 2024
+client: University of Sheffield
+category: Robotics & ROS Development
+description: Autonomous Robot Control and Navigation using ROS in C++
+---
+
+# Technologies Used
+
+- **ROS (Robot Operating System)**
+- **Gazebo Simulator**
+- **Python**
+- **Linux (Ubuntu WSL)**
+- **Git**
+- **TurtleBot3 Waffle Pi**
+
+# Assignment #2 – Autonomous Robot Control & Navigation  
+**Team 52 – University Robotics Project**
+
+This project involved designing, developing, and deploying robot behaviours for a TurtleBot3 Waffle Pi using the Robot Operating System (ROS). We worked in a small team and completed both simulated and real-world tasks across two parts of the assignment.
+
+---
+
+## 📦 Part A: Basic Robot Behaviours  
+**Submission Deadline**: 15 March 2024  
+Assessed using a real robot in the robotics lab.
+
+### ✅ Tasks:
+- **Task 1: Velocity Control** (10%)
+  - Programmed the robot to follow a target velocity with smooth acceleration.
+- **Task 2: Obstacle Avoidance** (20%)
+  - Used LIDAR sensor data to navigate around dynamic obstacles in real time.
+- **"Out-of-the-Box" Submission** (10%)
+  - Delivered a plug-and-play ROS package with tested launch files and documentation.
+
+---
+
+## 🧠 Part B: Autonomy & Exploration  
+**Submission Deadline**: 17 May 2024  
+Task 3 tested in simulation, Task 4 on real robot hardware.
+
+### ✅ Tasks:
+- **Task 3: Maze Navigation** (20%)
+  - Developed a state machine in C++ to guide the robot through a complex maze.
+- **Task 4: Exploration & Beacon Search** (40%)
+  - Implemented autonomous frontier-based exploration.
+  - Added a colour-based target detection system to capture images of specific beacons using ROS parameters (`target_colour:={red|blue|green|yellow}`).
+  - Integrated camera feeds and image capture logic for beacon detection.
+
+---
+
+## 🚀 Key Features & Implementation
+
+- **Robust Launch File Structure**:  
+  Each task included a dedicated `roslaunch` configuration:
+  - `roslaunch com2009_team52 task1.launch`
+  - `roslaunch com2009_team52 task2.launch`
+  - `roslaunch com2009_team52 task3.launch`
+  - `roslaunch com2009_team52 task4.launch target_colour:=red`
+
+- **Peer Collaboration**:  
+  Participated in structured peer evaluations at multiple stages using Buddycheck. Emphasis on teamwork, version control, and review cycles.
+
+- **Real Robot Safety Compliance**:  
+  Completed health and safety training for real robot operation, ensuring safe hardware handling in lab environments.
+
+---
+
+# Installation
+
+To test locally:
+1. Extract the `.tar` ROS package.
+2. Build using `catkin_make` in a ROS workspace.
+3. Run tasks via `roslaunch`, ensuring appropriate simulation or robot hardware is connected.
+
+---
+
+# Source Code
+
+You can view the complete source code on GitHub: [Interactive Cartoon Face Generator](https://github.com/efamelody/com2009_team52)
+
