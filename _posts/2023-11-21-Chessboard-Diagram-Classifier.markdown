@@ -8,6 +8,13 @@ project-date: November 2023
 client: Start Bootstrap
 category: Python Machine Learning
 description: A Chessboard Diagram Classifier using Nearest Neighbour and PCA
+technologies:
+  - python
+  - pandas
+  - numpy
+  - scikit-learn
+  - matplotlib
+
 ---
 
 # Technologies Used
@@ -39,3 +46,4 @@ To run this project, ensure you have Python installed on your machine along with
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib
+
