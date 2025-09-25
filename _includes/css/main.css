@@ -441,7 +441,7 @@ footer .footer-below {
 
 .portfolio-modal .modal-content h2 {
     margin: 0;
-    font-size: 3em;
+    font-size: 1em;
 }
 
 .portfolio-modal .modal-content img {
@@ -632,6 +632,9 @@ footer .footer-below {
 .markdown-body a:hover {
   text-decoration: underline;
 }
+.markdown-body h1 { font-size: 1.75rem !important; }
+.markdown-body h2 { font-size: 1.5rem !important; }
+.markdown-body h3 { font-size: 1.25rem !important; }
 
 
 
