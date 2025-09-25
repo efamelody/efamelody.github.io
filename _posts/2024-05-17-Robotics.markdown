@@ -8,6 +8,12 @@ project-date: March–May 2024
 client: University of Sheffield
 category: Robotics & ROS Development
 description: Autonomous Robot Control and Navigation using ROS in C++
+technologies:
+  - git
+  - python
+  - turtlebot3
+  - ros
+  - linux
 ---
 
 # Technologies Used
