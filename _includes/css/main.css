@@ -442,19 +442,26 @@ footer .footer-below {
 .portfolio-modal .modal-content h2 {
     margin: 0;
     font-size: 1.75em;
-    color: black; 
+    color: #444444; 
 }
 
 .portfolio-modal .modal-content h1 {
     margin: 0;
     font-size: 1.5em;
-    color: {{ site.color.primary }}; 
+    color: #222222; 
 }
 
 .portfolio-modal .modal-content h3 {
     margin: 0;
     font-size: 1em;
-    color: {{ site.color.secondary }};
+    color: #333333;
+}
+
+.portfolio-modal .modal-content .markdown-body code {
+  background: #f6f8fa;
+  color: #d63384;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
