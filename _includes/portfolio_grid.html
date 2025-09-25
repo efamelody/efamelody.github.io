@@ -19,22 +19,24 @@
           <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
         </a>
         <h4 class="portfolio-title text-center">{{ post.title }}</h4>
-        <!-- Short description -->
-        {% if post.description %}
-          <p class="portfolio-description text-center">{{ post.description | truncate: 60 }}</p>
-        {% endif %}
-      
+        <!-- <p class="portfolio-category">{{ post.category }}</p> -->
         <!-- Technologies icons -->
         {% if post.technologies %}
           <div class="portfolio-tech text-center">
             {% for tech in post.technologies %}
-              <img src="img/icons/{{ tech }}.png" alt="{{ tech }}" class="tech-icon" title="{{ tech }}">
+              <img 
+                src="img/icons/{{ tech }}.png" 
+                alt="{{ tech }}" 
+                class="tech-icon" 
+                title="{{ tech }}" 
+                onerror="this.src='img/icons/default.png'">
             {% endfor %}
           </div>
         {% endif %}
-      </div>
+
+      <!-- </div>
         <p class="portfolio-category">{{ post.category }}</p>
-      </div>
+      </div> -->
       {% endfor %}
     </div>
   </div>
