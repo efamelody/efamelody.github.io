@@ -539,6 +539,24 @@ footer .footer-below {
   text-decoration: underline;
 }
 
+.portfolio-tech {
+  margin-top: 0.5rem;
+}
+
+.portfolio-tech .tech-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 4px;
+  vertical-align: middle;
+  filter: grayscale(0.2); /* subtle style */
+  transition: transform 0.2s ease;
+}
+
+.portfolio-tech .tech-icon:hover {
+  transform: scale(1.2);
+}
+
+
 .modal-body {
   font-family: 'Segoe UI', sans-serif;
   color: #333;
