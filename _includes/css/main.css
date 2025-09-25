@@ -544,8 +544,8 @@ footer .footer-below {
 }
 
 .portfolio-tech .tech-icon {
-  width: 1px;       /* small icons */
-  height: 1px;
+  width: 15px;       /* small icons */
+  height: 15px;
   margin: 0 3px;     /* smaller spacing */
   vertical-align: middle;
   filter: grayscale(0.2); /* subtle style */
