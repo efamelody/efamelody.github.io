@@ -1,46 +1,38 @@
 <!-- Portfolio Modals -->
 {% for post in site.posts %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content portfolio-modal-custom">
-      <div class="modal-header">
-        <h2 class="modal-title">{{ post.title }}</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        {% if post.description %}
-          <p class="modal-description">{{ post.description }}</p>
-        {% endif %}
-
-        {% if post.img %}
-          <img src="img/portfolio/{{ post.img }}" class="modal-image" alt="{{ post.alt }}">
-        {% endif %}
-
-        <div class="modal-content-body">
-          {{ post.content }}
+<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
+  aria-hidden="true">
+  <div class="modal-content">
+    <div class="close-modal" data-dismiss="modal">
+      <div class="lr">
+        <div class="rl">
         </div>
-
-        <hr>
-
-        <ul class="list-inline modal-details">
-          {% if post.client %}
-          <li><strong>Client:</strong> {{ post.client }}</li>
-          {% endif %}
-          {% if post.project-date %}
-          <li><strong>Date:</strong> {{ post.project-date }}</li>
-          {% endif %}
-          {% if post.category %}
-          <li><strong>Category:</strong> {{ post.category }}</li>
-          {% endif %}
-        </ul>
-
-        <div class="text-right">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="fa fa-times"></i> Close
-          </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="modal-body">
+            <h2>{{ post.title }}</h2>
+            <hr class="star-primary">
+            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+            <div class="portfolio-description">
+              {{ post.content }}
+            </div>
+            <ul class="list-inline item-details">
+              {% if post.client %}
+              <li>Client: <strong>{{ post.client }}</strong></li>
+              {% endif %}
+              {% if post.project-date %}
+              <li>Date: <strong>{{ post.project-date }}</strong></li>
+              {% endif %}
+              {% if post.category %}
+              <li>Service: <strong>{{ post.category }}</strong></li>
+              {% endif %}
+            </ul>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
+              Close</button>
+          </div>
         </div>
       </div>
     </div>
