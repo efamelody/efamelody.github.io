@@ -18,13 +18,11 @@ description: An Online Learning Platform Developed with Agile Methodologies
 - **SQL**
 - **GitHub**
 
-# Features
-
 ## EdFlix Online Learning Platform
 Collaborated with a team of seven Computer Science students using Agile Development methodologies to create a tailored online learning platform.
 
 ### Key Contributions
-- **Customizable Recommendation System**: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement.
+- **Customisable Recommendation System**: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement.
 - **Problem Solving and Teamwork**: Actively contributed to resolving database issues and optimizing editing functions, ensuring a seamless user experience.
 - **Technical Proficiency**: Demonstrated strong skills in Ruby, HTML, CSS, SQL, and version control through GitHub throughout the project lifecycle.
 
@@ -32,7 +30,7 @@ Collaborated with a team of seven Computer Science students using Agile Developm
 - Successfully produced a working system that passed unit testing.
 - Conducted a demonstration of the platform to University staff, showcasing its features and functionalities.
 
-**Author**: [Your Name]
+**Author**: Aamir, Aybike, Maryam, Gabes, Saif
 
 # Installation
 
@@ -47,10 +45,15 @@ To run the EdFlix platform locally, follow these steps:
 
 1. Launch the application by starting the server.
 2. Register a new account to explore the learning resources and features.
-3. Utilize the customizable recommendation system to find relevant courses.
+3. Utilise the customizable recommendation system to find relevant courses.
 
-![EdFlix Platform Example](https://raw.githubusercontent.com/efamelody/efamelody.github.io/main/_posts/edflix_platform.png)
 
 # Source Code
 
-You can view the complete source code on GitHub: [EdFlix](https://github.com/yourusername/edflix)
+You can view the complete source code on GitHub: [EdFlix](https://github.com/efamelody/edFlix)
+
+#Report
+# Final Report
+
+📄 [Download the full report (PDF)](/assets/files/edflix_report.pdf){:target="_blank"}
+

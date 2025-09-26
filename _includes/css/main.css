@@ -236,6 +236,18 @@ section.success {
     color: #fff;
 }
 
+.portfolio-item {
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
 #portfolio .portfolio-item .portfolio-link .caption .caption-content i {
     margin-top: -12px;
 }
@@ -429,9 +441,28 @@ footer .footer-below {
 
 .portfolio-modal .modal-content h2 {
     margin: 0;
-    font-size: 3em;
+    font-size: 1.75em;
+    color: #444444; 
 }
 
+.portfolio-modal .modal-content h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #222222; 
+}
+
+.portfolio-modal .modal-content h3 {
+    margin: 0;
+    font-size: 1em;
+    color: #333333;
+}
+
+.portfolio-modal .modal-content .markdown-body code {
+  background: #f6f8fa;
+  color: #d63384;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
 }
@@ -507,6 +538,62 @@ footer .footer-below {
 .portfolio-description a:hover {
   text-decoration: underline;
 }
+
+.portfolio-tech {
+  margin-top: 0.5rem;
+}
+
+.portfolio-tech .tech-icon {
+  width: 40px !important  ;    /* small icons */
+  height: 40px !important  ; 
+  margin: 0 3px;     /* smaller spacing */
+  vertical-align: middle;
+  filter: grayscale(0.2); /* subtle style */
+  transition: transform 0.2s ease;
+}
+
+.portfolio-tech .tech-icon:hover {
+  transform: scale(1.2);
+}
+
+
+.modal-body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-body h2, .modal-body h3, .modal-body h4 {
+  color: #222;
+  font-weight: 600;
+  margin-top: 1.2em;
+}
+
+.modal-body ul {
+  padding-left: 1.5em;
+  list-style-type: disc;
+  margin-bottom: 1em;
+}
+
+.modal-body p {
+  margin-bottom: 1em;
+  color: #444;
+}
+
+/* Markdown content styling for portfolio content section */
+
+.markdown-body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: left;
+}
+
+
+
+
 
 
 .navbar-nav>.active>a {
@@ -614,3 +701,58 @@ footer .footer-below {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
+
+#dissertation p {
+  text-align: center;
+}
+
+#dissertation a {
+  color: #{{ site.color.secondary-dark }};
+  text-decoration: none;
+}
+
+#dissertation a:hover {
+  color: #{{ site.color.secondary }};
+  text-decoration: underline;
+}
+
+/* Make the key contributions panel collapsed by default and expand on hover */
+
+#accordion .panel,
+#accordion .panel-body,
+#accordion .panel-heading {
+  background-color: transparent;
+  border: none;
+  color: inherit; /* keep using section text color */
+}
+
+#accordion .panel-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+#accordion .panel:hover .panel-body {
+  max-height: 800px; /* large enough to reveal all content */
+  background-color: rgba(255, 255, 255, 0.05); /* subtle light overlay */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* soft shadow */
+}
+
+#accordion .panel-title {
+  color: #{{ site.color.secondary-dark }};
+}
+
+#accordion a {
+  color: #{{ site.color.secondary-dark }};
+  text-decoration: none;
+}
+
+#accordion a:hover {
+  color: #{{ site.color.secondary }};
+  text-decoration: underline;
+}
+
+
+
+

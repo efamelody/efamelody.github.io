@@ -10,6 +10,7 @@
     <div class="portfolio-flex-row">
       {% for post in site.posts %}
       <div class="portfolio-flex-item portfolio-item">
+        <!-- Portfolio Image -->
         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
           <div class="caption">
             <div class="caption-content">
@@ -18,6 +19,28 @@
           </div>
           <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
         </a>
+
+        <!-- Project Title -->
+        <h4 class="portfolio-title text-center">{{ post.title }}</h4>
+
+        <!-- Short Description -->
+        <!-- {% if post.description %}
+          <p class="portfolio-description text-center">{{ post.description | truncate: 60 }}</p>
+        {% endif %} -->
+
+        <!-- Technologies Icons -->
+        {% if post.technologies %}
+          <div class="portfolio-tech text-center">
+            {% for tech in post.technologies %}
+              <img 
+                src="img/icons/{{ tech }}.png" 
+                alt="{{ tech }}" 
+                class="tech-icon" 
+                title="{{ tech }}" 
+                onerror="this.src='img/icons/default.png'">
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

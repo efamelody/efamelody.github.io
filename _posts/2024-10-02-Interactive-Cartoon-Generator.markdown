@@ -49,4 +49,4 @@ To run this application locally, simply clone the repository or download the sou
 
 # Source Code
 
-You can view the complete source code on GitHub: [Interactive Cartoon Face Generator](https://github.com/yourusername/cartoon_face_generator)
+You can view the complete source code on GitHub: [Interactive Cartoon Face Generator](https://github.com/efamelody/interactiveCartoon)
