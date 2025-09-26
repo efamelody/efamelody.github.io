@@ -17,6 +17,7 @@ technologies:
   - ccxt
   - dayjs
   - tailwindcss
+  - nodejs
 ---
 # Technologies Used
 
@@ -44,7 +45,7 @@ This project involved designing and developing an **interactive financial dashbo
 
 - **Key Performance Indicators (KPIs)**  
   - Latest price, percentage return, volatility.  
-  - Moving averages (MA7, MA20, MA50) for trend analysis.
+  - Moving averages (MA7, MA50) for trend analysis.
 
 - **Stock & Crypto Support**  
   - Fetch live stock data via Yahoo Finance (`yfinance`).  
@@ -64,6 +65,9 @@ This project involved designing and developing an **interactive financial dashbo
 ---
 
 ## Key Implementation Details
+
+![Diagram](img/portfolio/diagram_finance.jpg)
+
 
 - **React & Recharts**  
   - Multi-line `LineChart` components with conditional rendering based on selected metrics.  
