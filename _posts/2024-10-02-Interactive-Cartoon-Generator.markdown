@@ -8,6 +8,10 @@ project-date: November 2023
 client: Start Bootstrap
 category: JavaScript Web Development
 description: An Interactive Cartoon Face Generator Web App using HTML5 Canvas
+technologies:
+  - javascript
+  - html
+  - css
 ---
 
 # Technologies Used
@@ -30,8 +34,6 @@ This JavaScript application allows users to create and customize cartoon faces o
 ### Implementation Details
 - **Canvas Drawing**: Utilizes basic drawing commands within the Canvas API to render facial features dynamically.
 - **Event Listeners**: Employs event listeners to enable real-time user interaction, allowing for a seamless experience.
-
-**Author**: [Your Name]
 
 # Installation
 

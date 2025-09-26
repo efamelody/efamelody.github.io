@@ -44,6 +44,8 @@ A Python-based classifier for chessboard diagrams that employs Nearest Neighbour
 
 To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip:
 
-```bash
 pip install pandas numpy scikit-learn matplotlib
+
+
+The full code for this project can be found [here](https://github.com/efamelody/Chessboard).
 

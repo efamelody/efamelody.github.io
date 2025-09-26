@@ -32,35 +32,33 @@ This project involved designing, developing, and deploying robot behaviours for 
 
 ---
 
-## 📦 Part A: Basic Robot Behaviours  
-**Submission Deadline**: 15 March 2024  
+## Part A: Basic Robot Behaviours  
 Assessed using a real robot in the robotics lab.
 
-### ✅ Tasks:
-- **Task 1: Velocity Control** (10%)
+### Tasks:
+- **Task 1: Velocity Control** 
   - Programmed the robot to follow a target velocity with smooth acceleration.
-- **Task 2: Obstacle Avoidance** (20%)
+- **Task 2: Obstacle Avoidance** 
   - Used LIDAR sensor data to navigate around dynamic obstacles in real time.
-- **"Out-of-the-Box" Submission** (10%)
+- **"Out-of-the-Box" Submission** 
   - Delivered a plug-and-play ROS package with tested launch files and documentation.
 
 ---
 
-## 🧠 Part B: Autonomy & Exploration  
-**Submission Deadline**: 17 May 2024  
+## Part B: Autonomy & Exploration  
 Task 3 tested in simulation, Task 4 on real robot hardware.
 
-### ✅ Tasks:
-- **Task 3: Maze Navigation** (20%)
+### Tasks:
+- **Task 3: Maze Navigation** 
   - Developed a state machine in C++ to guide the robot through a complex maze.
-- **Task 4: Exploration & Beacon Search** (40%)
+- **Task 4: Exploration & Beacon Search** 
   - Implemented autonomous frontier-based exploration.
   - Added a colour-based target detection system to capture images of specific beacons using ROS parameters (`target_colour:={red|blue|green|yellow}`).
   - Integrated camera feeds and image capture logic for beacon detection.
 
 ---
 
-## 🚀 Key Features & Implementation
+## Key Features & Implementation
 
 - **Robust Launch File Structure**:  
   Each task included a dedicated `roslaunch` configuration:
@@ -88,5 +86,5 @@ To test locally:
 
 # Source Code
 
-You can view the complete source code on GitHub: [Interactive Cartoon Face Generator](https://github.com/efamelody/com2009_team52)
+You can view the complete source code on GitHub: [COM2009](https://github.com/efamelody/com2009_team52)
 

@@ -8,6 +8,11 @@ project-date: November 2023
 client: Start Bootstrap
 category: Web Development
 description: An Online Learning Platform Developed with Agile Methodologies
+technologies:
+  - html
+  - ruby
+  - git
+  - mysql
 ---
 
 # Technologies Used

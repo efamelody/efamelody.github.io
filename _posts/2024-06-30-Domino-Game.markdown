@@ -8,6 +8,8 @@ project-date: November 2023
 client: Start Bootstrap
 category: Haskell Functional Programming
 description: A Domino Game using Haskell
+technologies:
+  - haskell
 ---
 
 # Technologies Used

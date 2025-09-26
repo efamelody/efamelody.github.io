@@ -8,6 +8,10 @@ project-date: November 2023
 client: Start Bootstrap
 category: Java Software Development
 description: A Java Swing Application for Train Business Management
+technologies:
+  - git
+  - Java
+  - mysql
 ---
 
 # Technologies Used
