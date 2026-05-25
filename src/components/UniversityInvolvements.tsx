@@ -128,6 +128,7 @@ export default function UniversityInvolvements() {
                       University of Sheffield
                     </h3>
                     <p className="text-pink-500/70 text-sm mt-1">2022 — 2025</p>
+                    <p className="text-pink-500/70 text-sm mt-1">Focus areas: full-stack systems, data-driven computing, and machine learning</p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-xs text-purple-600 font-semibold bg-purple-50 border border-purple-100 px-3.5 py-2 rounded-full self-start">
                     YTP MARA Scholar
