@@ -2,6 +2,129 @@ import { Project, Experience, SocialLink } from "@/types";
 
 export const projects: Project[] = [
   {
+    modalId: 15,
+    title: "MRTQuest",
+    date: "2026-05-25",
+    img: "mrtquest.png",
+    alt: "MRTQuest Gamified Exploration App",
+    projectDate: "May 2026",
+    client: "Personal Project",
+    category: "Mobile-First Web App",
+    description:
+      "A mobile-first gamified exploration application for Kuala Lumpur's MRT infrastructure. Users discover attractions, check in at physical locations, complete verification challenges, and earn achievement badges across the Kajang and Putrajaya lines.",
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Better Auth",
+      "Gemini AI",
+    ],
+    githubUrl: "https://github.com/efamelody/MRTQuest",
+    liveUrl: "https://mrt-quest.vercel.app/",
+    filterTag: "ongoing",
+    content: `# MRTQuest
+
+A mobile-first gamified exploration application for **Kuala Lumpur's MRT infrastructure**. Users discover attractions, check in at physical locations, complete verification challenges, and earn achievement badges across the Kajang and Putrajaya lines.
+
+**Coverage:** Kajang Line, Putrajaya Line, 16 operational stations, 24 mapped attractions.
+
+---
+
+## Features
+
+| Feature | Description |
+|---|---|
+| **Authentication** | OAuth via Google and email-password credentials with persistent session management |
+| **Station Explorer** | Browseable catalog of MRT stations organized by line with full attraction inventory per station |
+| **Check-in System** | Progressive verification through geofence proximity detection, AI-powered landmark photo verification, and location-based trivia challenges |
+| **Gamification** | Comprehensive badge system with eight criteria types including visit counts, station coverage, line mastery, and time-based achievements |
+| **User Profile** | Passport dashboard displaying cumulative quest points, earned badges, recent visits, and user progression rankings |
+| **Suggestions** | User-submitted attraction proposals for operator review and catalog expansion |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15+ (App Router) |
+| UI Library | React 19 |
+| Language | TypeScript (strict mode) |
+| Styling | Tailwind CSS v4 (CSS-configured) |
+| Icons | Lucide React |
+| ORM | Prisma 6.19+ |
+| Database | PostgreSQL (Supabase) |
+| Authentication | Better Auth 1.6.9 (OAuth + email-password) |
+| Image Verification | Google Gemini AI |
+| Geolocation | geolib v3 |
+| Package Manager | pnpm |
+
+---
+
+## Check-in Verification System
+
+Three-phase progressive verification workflow:
+
+**Phase 1: Geofence Detection**
+- User location calculated via browser Geolocation API
+- Distance computed using haversine formula (geolib library)
+- Check-in enabled when user is within 300m radius
+
+**Phase 2: Landmark Photo Verification (Optional)**
+- User captures photo via webcam
+- Image sent to Google Gemini AI for landmark recognition
+- Confidence threshold (default 70%) determines success
+- Awards bonus points on successful verification
+
+**Phase 3: Trivia Quiz Challenge (Optional)**
+- Multi-choice questions presented after check-in
+- Points awarded based on answer accuracy
+
+---
+
+## Badge System
+
+Flexible criteria-based achievement framework supporting multiple unlock patterns:
+
+| Criteria Type | Unlock Condition |
+|---|---|
+| visit_count | User accumulates N total visits (optionally scoped by category or line) |
+| station_stamp | User visits specific designated station |
+| line_master | User visits all active stations on a given MRT line |
+| quiz_master | User achieves N correct quiz submissions |
+| first_review | User submits initial review |
+| photo_review | User submits N reviews including photos |
+| time_check | User check-in occurs before/after specific hour |
+| multi_line | User accumulates visits across multiple MRT lines |
+
+---
+
+## Architecture
+
+**Data Fetching Pattern:**
+- Server Components retrieve data at the page level using Prisma client
+- Parallel independent queries utilize \`Promise.all([...])\`
+- Client Components use fetch-on-mount for state updates only
+
+**Security Model:**
+- Session-based user isolation (all queries filtered by authenticated userId)
+- Application layer enforces access control
+- Service role keys used only for administrative aggregations
+
+---
+
+## Deployment
+
+- **Production:** [mrt-quest.vercel.app](https://mrt-quest.vercel.app/)
+- **Source:** GitHub repository
+
+Complete source code and documentation available on GitHub: [MRTQuest](https://github.com/efamelody/MRTQuest)
+`,
+  },
+  {
     modalId: 14,
     title: "Lecturer Portfolio — Academic Website",
     date: "2026-05-01",
@@ -671,7 +794,7 @@ export const siteConfig = {
   email: "nurizfarwiza@gmail.com",
   description: "Welcome to Efa's Project Page",
   githubUsername: "efamelody",
-  location: "Sheffield, UK",
+  location: "Bangi, Selangor",
   copyright: "Efa",
   credits:
     'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.',
