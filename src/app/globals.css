@@ -2,12 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #fff0f6;
+  --foreground: #3b1f3d;
+  --card: #ffffff;
+  --card-foreground: #3b1f3d;
+  --muted: #fce7f3;
+  --muted-foreground: #b07aad;
+  --border: rgba(224, 90, 154, 0.18);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
+    @apply bg-background text-foreground;
     overflow-x: hidden;
+  }
+  * {
+    @apply border-border;
   }
 }
 

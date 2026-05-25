@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
-import Dissertation from "@/components/Dissertation";
+import UniversityInvolvements from "@/components/UniversityInvolvements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -15,7 +15,7 @@ export default function Home() {
       <PortfolioGrid />
       <About />
       <Experience />
-      <Dissertation />
+      <UniversityInvolvements />
       <Contact />
       <Footer />
     </>

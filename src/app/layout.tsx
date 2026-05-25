@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
 
 export const metadata: Metadata = {
-  title: "Efa's Personal Projects",
-  description: "Welcome to Efa's Project Page",
-  keywords: "portfolio, computer science, university of sheffield",
+  title: "Efa's Portfolio",
+  description:
+    "Computer Science graduate from the University of Sheffield. Building projects with code & curiosity.",
+  keywords: "portfolio, computer science, university of sheffield, full-stack, AI",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
