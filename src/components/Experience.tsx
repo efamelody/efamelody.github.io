@@ -1,6 +1,6 @@
 "use client";
 import GlowOrb from "./GlowOrb";
-import { Clock, Brain, Zap, GitBranch } from "lucide-react";
+import { Clock, Brain, Zap, GitBranch, Bot } from "lucide-react";
 
 export default function Experience() {
   return (
@@ -44,24 +44,24 @@ export default function Experience() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   {
-                    Icon: Brain,
-                    title: "RAG Infrastructure",
-                    desc: "Architected corporate RAG pipeline from scratch — LLMs, vector embeddings, and semantic retrieval serving internal knowledge queries across departments.",
+                    Icon: Zap,
+                    title: "Performance Engineering",
+                    desc: "Optimized data-fetching using Prisma ORM and Server-Side Pagination to handle datasets exceeding 10k+ rows.",
                   },
                   {
-                    Icon: Zap,
-                    title: "Pipeline Optimization",
-                    desc: "Optimized Prisma ORM data pipelines handling 10,000+ rows with type-safe schema validation, cutting query latency by 60%.",
+                    Icon: Brain,
+                    title: "AI-Driven Data Processing",
+                    desc: "Engineered a bulk SKU management system using Pinecone (Vector Search) to identify duplicate records and match product aliases, ensuring data consistency across large datasets.",
                   },
                   {
                     Icon: GitBranch,
-                    title: "Full-Stack Delivery",
-                    desc: "Shipped end-to-end features across Next.js 15 frontend and Node.js APIs — from design handoff to production deployment on Vercel.",
+                    title: "Dynamic Auth & Routing",
+                    desc: "Developed a context-aware authentication gateway using JWT tokens and dynamic routing; implemented logic to resolve access based on URL query parameters, enforcing strict conditional access for Customer Service modules.",
                   },
                   {
-                    Icon: Zap,
-                    title: "AI Automation",
-                    desc: "Built WhatsApp LLM chatbot via n8n orchestration, handling 300+ daily queries at 89% automated deflection rate.",
+                    Icon: Bot,
+                    title: "RAG System & Automation",
+                    desc: "Architected a RAG-driven AI agent via n8n, integrating a centralised proprietary Drive API to automate end-user support on WhatsApp; deployed n8n logic to automate retailer verification, reducing manual tracking effort and optimizing Jira sprint workflows.",
                   },
                 ].map((item) => (
                   <div

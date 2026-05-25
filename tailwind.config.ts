@@ -49,9 +49,25 @@ const config: Config = {
       maxWidth: {
         grid: "1200px",
       },
+      typography: {
+        primary: {
+          css: {
+            "--tw-prose-body": "#3b1f3d",
+            "--tw-prose-headings": "#3b1f3d",
+            "--tw-prose-links": "#db2777",
+            "--tw-prose-bold": "#500724",
+            "--tw-prose-code": "#be185d",
+            "--tw-prose-quotes": "#831843",
+            "--tw-prose-quote-borders": "#f9a8d4",
+            "--tw-prose-hr": "#f9a8d4",
+            "--tw-prose-th-borders": "#f9a8d4",
+            "--tw-prose-td-borders": "#fce7f3",
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 
 export default config;

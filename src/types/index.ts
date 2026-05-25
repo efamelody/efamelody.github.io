@@ -11,6 +11,8 @@ export interface Project {
   technologies: string[]
   content: string
   githubUrl?: string
+  liveUrl?: string
+  filterTag?: "uni" | "ongoing" | "deployed"
 }
 
 export interface Experience {

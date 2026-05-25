@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { Menu, X, ChevronRight } from "lucide-react";
 
-const NAV_LINKS = ["Projects", "Experience", "About", "University Involvements", "Contact"];
+const NAV_LINKS: { label: string; target: string }[] = [
+  { label: "About", target: "about" },
+  { label: "Projects", target: "projects" },
+  { label: "Experience", target: "experience" },
+  { label: "University Involvements", target: "university" },
+  { label: "Contact", target: "contact" },
+];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,11 +41,11 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <button
-              key={link}
-              onClick={() => scrollTo(link.toLowerCase())}
+              key={link.target}
+              onClick={() => scrollTo(link.target)}
               className="text-sm text-pink-800/55 hover:text-pink-700 transition-colors duration-200 relative group font-medium"
             >
-              {link}
+              {link.label}
               <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300" />
             </button>
           ))}
@@ -65,14 +71,14 @@ export default function Navbar() {
         <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-pink-100 px-6 py-5 flex flex-col gap-5">
           {NAV_LINKS.map((link) => (
             <button
-              key={link}
+              key={link.target}
               onClick={() => {
-                scrollTo(link.toLowerCase());
+                scrollTo(link.target);
                 setMenuOpen(false);
               }}
               className="text-sm text-pink-700 hover:text-pink-900 font-medium transition-colors text-left"
             >
-              {link}
+              {link.label}
             </button>
           ))}
         </div>

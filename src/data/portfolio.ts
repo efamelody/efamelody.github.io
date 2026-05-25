@@ -2,6 +2,78 @@ import { Project, Experience, SocialLink } from "@/types";
 
 export const projects: Project[] = [
   {
+    modalId: 14,
+    title: "Lecturer Portfolio — Academic Website",
+    date: "2026-05-01",
+    img: "lecturer-website.png",
+    alt: "Lecturer Biography Academic Website",
+    projectDate: "May 2026",
+    client: "Personal/Portfolio Project",
+    category: "Web Development",
+    description:
+      "A clean, fast academic personal website for Prof. Dr. Mohd Talib Latif featuring dynamic publication data via OpenAlex API, Sanity CMS photo gallery, and an admin dashboard for content management.",
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Sanity CMS",
+      "MongoDB",
+      "OpenAlex API",
+    ],
+    githubUrl: "https://github.com/efamelody/lecturer-biography",
+    liveUrl: "https://talib-latif.com/",
+    filterTag: "deployed",
+    content: `# Lecturer Biography — Academic Personal Website
+
+A clean, fast, and minimal academic personal website for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM).
+
+**Live site**: [talib-latif.com](https://talib-latif.com/)
+
+---
+
+## Tech Stack
+
+| Category       | Technology                              |
+| -------------- | --------------------------------------- |
+| Framework      | Next.js 14 (App Router)                 |
+| Language       | TypeScript                              |
+| Styling        | Tailwind CSS v4                         |
+| CMS            | Sanity CMS v5 (photo gallery)           |
+| Icons          | lucide-react                            |
+| Database       | MongoDB Atlas (with static JSON fallback) |
+| APIs           | OpenAlex API, MongoDB driver, Sanity GROQ |
+| Deployment     | Vercel + Cloudflare Pages               |
+
+---
+
+## Features
+
+- **Dynamic Publication Data** — Real-time citation metrics via OpenAlex API with ISR caching
+- **Sanity CMS Photo Gallery** — Lightbox-enabled media gallery managed through Sanity Studio
+- **Admin Dashboard** — Password-protected inline JSON editor at /admin
+- **MongoDB + JSON Fallback** — Content fetched from MongoDB, falling back to local JSON
+- **Dark Mode** — Built-in dark mode support via CSS custom properties
+- **Edge Runtime** — Root layout runs on Vercel Edge / Cloudflare Workers
+
+---
+
+## Key Pages
+
+- Homepage with hero, profile, citation stats
+- Full biography with education, awards, affiliations
+- Publications list (featured + recent from OpenAlex)
+- Research group members and alumni
+- Media room with lightbox photo gallery
+- Admin dashboard for content management
+
+---
+
+## Source Code
+
+Complete source code on GitHub: [lecturer-biography](https://github.com/efamelody/lecturer-biography)
+`,
+  },
+  {
     modalId: 13,
     title: "Smart Habit Coach",
     date: "2025-11-10",
@@ -13,6 +85,7 @@ export const projects: Project[] = [
     description: "A wearable Smart Habit Coach that tracks steps, inactivity, and hydration with a virtual plant UI using LilyGO T-Watch 2020.",
     technologies: ["ESP32", "LilyGO T-Watch 2020", "LVGL", "PlatformIO", "ArduinoOTA", "BMA423 Accelerometer"],
     githubUrl: "https://github.com/efamelody/IoT/",
+    filterTag: "uni",
     content: `# Overview
 
 The **Smart Habit Coach** is a wearable project built on the **LilyGO T-Watch 2020** (V1 & V3), designed to encourage healthy habits. The watch monitors user activity, sends gentle vibration reminders during inactivity, tracks step goals, logs water intake, and motivates users with a **virtual plant** that grows as hydration goals are met. OTA firmware updates allow wireless development.
@@ -101,6 +174,7 @@ The watch UI is implemented using **LVGL**, supporting swipe navigation between 
     description: "Interactive Stock & Crypto Dashboard with React and Flask",
     technologies: ["react", "recharts", "axios", "flask", "yfinance", "ccxt", "dayjs", "tailwindcss", "nodejs", "python"],
     githubUrl: "https://github.com/efamelody/financial_dashboard",
+    filterTag: "uni",
     content: `# Technologies Used
 
 - **React** (Frontend interface & interactivity)
@@ -182,6 +256,7 @@ Complete source code is available on GitHub: [Financial Dashboard](https://githu
     description: "Autonomous Robot Control and Navigation using ROS in C++",
     technologies: ["git", "python", "turtlebot3", "ros", "linux", "gazebo", "c++"],
     githubUrl: "https://github.com/efamelody/com2009_team52",
+    filterTag: "uni",
     content: `# Technologies Used
 
 - **ROS (Robot Operating System)**
@@ -240,6 +315,52 @@ You can view the complete source code on GitHub: [COM2009](https://github.com/ef
 `,
   },
   {
+    modalId: 7,
+    title: "Chessboard Diagram Classifier",
+    date: "2023-11-21",
+    img: "015.jpg",
+    alt: "Chessboard Diagram Classifier",
+    projectDate: "November 2023",
+    client: "Start Bootstrap",
+    category: "Python Machine Learning",
+    description: "A Chessboard Diagram Classifier using Nearest Neighbour and PCA",
+    technologies: ["python", "pandas", "numpy", "scikit-learn", "matplotlib"],
+    githubUrl: "https://github.com/efamelody/Chessboard",
+    filterTag: "uni",
+    content: `# Technologies Used
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Scikit-learn**
+- **Matplotlib**
+
+# Features
+
+## Chessboard Diagram Classifier
+A Python-based classifier for chessboard diagrams that employs Nearest Neighbour and Principal Component Analysis (PCA) for dimensionality reduction.
+
+### Key Highlights
+- **Feature Extraction**: Implemented advanced feature extraction techniques, providing clear justifications for the chosen methods in the accompanying report.
+- **Classification Methods**: Enhanced classification methods through rigorous experimentation and analysis, resulting in improved accuracy and robustness.
+- **Independent Square and Full-Board Classification**: Successfully created two versions of the classifier, achieving 98% accuracy on both clean and noisy datasets.
+
+### Implementation Details
+- **Nearest Neighbour**: Utilized the Nearest Neighbour algorithm to classify chessboard diagrams based on extracted features.
+- **PCA**: Employed PCA to reduce dimensionality and improve computational efficiency, facilitating better performance in classification tasks.
+
+# Installation
+
+To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip:
+
+\`\`\`
+pip install pandas numpy scikit-learn matplotlib
+\`\`\`
+
+The full code for this project can be found [here](https://github.com/efamelody/Chessboard).
+`,
+  },
+  {
     modalId: 10,
     title: "EdFlix",
     date: "2023-11-20",
@@ -251,6 +372,7 @@ You can view the complete source code on GitHub: [COM2009](https://github.com/ef
     description: "An Online Learning Platform Developed with Agile Methodologies",
     technologies: ["html", "ruby", "git", "mysql"],
     githubUrl: "https://github.com/efamelody/edFlix",
+    filterTag: "uni",
     content: `# Technologies Used
 
 - **Ruby**
@@ -309,6 +431,7 @@ You can view the complete source code on GitHub: [EdFlix](https://github.com/efa
     description: "A Java Swing Application for Train Business Management",
     technologies: ["git", "Java", "mysql"],
     githubUrl: "https://github.com/efamelody/TrainsOfSheffield",
+    filterTag: "uni",
     content: `# Technologies Used
 
 - **Java**
@@ -362,6 +485,7 @@ You can view the complete source code on GitHub: [Trains of Sheffield](https://g
     description: "An Interactive Cartoon Face Generator Web App using HTML5 Canvas",
     technologies: ["javascript", "html", "css"],
     githubUrl: "https://github.com/efamelody/interactiveCartoon",
+    filterTag: "uni",
     content: `# Technologies Used
 
 - **JavaScript**
@@ -401,51 +525,6 @@ You can view the complete source code on GitHub: [Interactive Cartoon Face Gener
 `,
   },
   {
-    modalId: 7,
-    title: "Chessboard Diagram Classifier",
-    date: "2023-11-21",
-    img: "015.jpg",
-    alt: "Chessboard Diagram Classifier",
-    projectDate: "November 2023",
-    client: "Start Bootstrap",
-    category: "Python Machine Learning",
-    description: "A Chessboard Diagram Classifier using Nearest Neighbour and PCA",
-    technologies: ["python", "pandas", "numpy", "scikit-learn", "matplotlib"],
-    githubUrl: "https://github.com/efamelody/Chessboard",
-    content: `# Technologies Used
-
-- **Python**
-- **Pandas**
-- **NumPy**
-- **Scikit-learn**
-- **Matplotlib**
-
-# Features
-
-## Chessboard Diagram Classifier
-A Python-based classifier for chessboard diagrams that employs Nearest Neighbour and Principal Component Analysis (PCA) for dimensionality reduction.
-
-### Key Highlights
-- **Feature Extraction**: Implemented advanced feature extraction techniques, providing clear justifications for the chosen methods in the accompanying report.
-- **Classification Methods**: Enhanced classification methods through rigorous experimentation and analysis, resulting in improved accuracy and robustness.
-- **Independent Square and Full-Board Classification**: Successfully created two versions of the classifier, achieving 98% accuracy on both clean and noisy datasets.
-
-### Implementation Details
-- **Nearest Neighbour**: Utilized the Nearest Neighbour algorithm to classify chessboard diagrams based on extracted features.
-- **PCA**: Employed PCA to reduce dimensionality and improve computational efficiency, facilitating better performance in classification tasks.
-
-# Installation
-
-To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip:
-
-\`\`\`
-pip install pandas numpy scikit-learn matplotlib
-\`\`\`
-
-The full code for this project can be found [here](https://github.com/efamelody/Chessboard).
-`,
-  },
-  {
     modalId: 6,
     title: "Domino Game",
     date: "2023-11-20",
@@ -457,6 +536,7 @@ The full code for this project can be found [here](https://github.com/efamelody/
     description: "A Domino Game using Haskell",
     technologies: ["haskell"],
     githubUrl: "https://github.com/efamelody/DomsMatch",
+    filterTag: "uni",
     content: `# Technologies Used
 
 Haskell

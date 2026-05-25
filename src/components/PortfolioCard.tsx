@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import { Project } from "@/types";
 import { Github } from "@/components/icons";
 import { ExternalLink } from "lucide-react";
@@ -10,7 +11,12 @@ interface Props {
 
 export default function PortfolioCard({ project, onSelect }: Props) {
   return (
-    <div
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
       className="group relative flex flex-col rounded-3xl border border-pink-200/70 bg-white/80 p-7 hover:border-pink-300 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(224,90,154,0.12)] cursor-pointer"
       onClick={() => onSelect(project)}
     >
@@ -65,6 +71,6 @@ export default function PortfolioCard({ project, onSelect }: Props) {
           Details <ExternalLink size={12} />
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }

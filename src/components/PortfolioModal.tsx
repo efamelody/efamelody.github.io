@@ -1,13 +1,21 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { Project } from "@/types";
-import { X } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, Lock } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 interface Props {
   project: Project | null;
   onClose: () => void;
+}
+
+function getUrl(project: Project): string | null {
+  return project.liveUrl || project.githubUrl || null;
+}
+
+function formatUrlForBar(url: string): string {
+  return url.replace(/^https?:\/\//, "");
 }
 
 export default function PortfolioModal({ project, onClose }: Props) {
@@ -30,26 +38,89 @@ export default function PortfolioModal({ project, onClose }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  const openUrl = useCallback(() => {
+    if (!project) return;
+    const url = getUrl(project);
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  }, [project]);
+
   if (!project) return null;
+
+  const url = getUrl(project);
+  const isLive = !!project.liveUrl;
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto bg-black/60 py-10"
+      className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto bg-black/50 py-10 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-3xl mx-4 rounded-3xl shadow-2xl relative my-10 border border-pink-200/70"
+        className="w-full max-w-3xl mx-4 rounded-2xl shadow-2xl relative my-10 overflow-hidden border border-pink-200/70"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-pink-400 hover:text-pink-700 transition-colors z-10 rounded-full bg-pink-50 border border-pink-200"
-          aria-label="Close"
-        >
-          <X size={18} />
-        </button>
+        {/* ── Tab bar ── */}
+        <div className="bg-gradient-to-r from-pink-100 to-purple-100/80 px-4 py-2.5 flex items-center gap-3 border-b border-pink-200/70">
+          {/* Traffic lights */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={onClose}
+              title="Close"
+              className="w-3.5 h-3.5 rounded-full bg-red-400 hover:bg-red-500 transition-colors shadow-sm"
+              aria-label="Close"
+            />
+            <span
+              title="Minimise (not available)"
+              className="w-3.5 h-3.5 rounded-full bg-yellow-400 shadow-sm cursor-default"
+            />
+            <button
+              onClick={openUrl}
+              title={isLive ? "Open live site" : "Open GitHub"}
+              className="w-3.5 h-3.5 rounded-full bg-green-400 hover:bg-green-500 transition-colors shadow-sm"
+              aria-label={isLive ? "Open live site" : "Open GitHub"}
+            />
+          </div>
 
-        <div className="p-6 md:p-10">
+          {/* Active tab */}
+          <div className="flex-1 flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-white/80 shadow-sm border border-pink-200/60 max-w-md truncate">
+              <span className="text-[10px] font-mono text-pink-400 shrink-0">
+                &#128196;
+              </span>
+              <span className="text-sm font-semibold text-pink-900 truncate">
+                {project.title}
+              </span>
+            </div>
+          </div>
+
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            title="Close"
+            className="w-7 h-7 flex items-center justify-center rounded-md text-pink-400 hover:text-pink-700 hover:bg-pink-200/50 transition-colors"
+            aria-label="Close"
+          >
+            <X size={15} />
+          </button>
+        </div>
+
+        {/* ── URL bar ── */}
+        <div className="bg-pink-50/80 px-4 py-2 flex items-center gap-2.5 border-b border-pink-200/50">
+          <ArrowLeft size={13} className="text-pink-300" />
+          <ArrowRight size={13} className="text-pink-300" />
+          <span className="w-5 h-5 flex items-center justify-center rounded-full bg-pink-100 text-pink-400">
+            <span className="text-[9px] font-bold">&#8635;</span>
+          </span>
+          <div className="flex-1 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-pink-200/60 shadow-inner">
+            <Lock size={11} className="text-green-500 shrink-0" />
+            <span className="text-xs font-mono text-pink-700 truncate">
+              {url ? formatUrlForBar(url) : "about:blank"}
+            </span>
+          </div>
+        </div>
+
+        {/* ── Content area ── */}
+        <div className="bg-white p-6 md:p-10">
+          {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-5">
             {project.technologies.map((tag) => (
               <span
@@ -61,6 +132,7 @@ export default function PortfolioModal({ project, onClose }: Props) {
             ))}
           </div>
 
+          {/* Title */}
           <h2 className="text-3xl font-extrabold text-pink-950 tracking-tight mb-2">
             {project.title}
           </h2>
@@ -69,6 +141,7 @@ export default function PortfolioModal({ project, onClose }: Props) {
             {project.client && ` · ${project.client}`}
           </p>
 
+          {/* Image */}
           {project.img && (
             <img
               src={`/img/portfolio/${project.img}`}
@@ -77,7 +150,8 @@ export default function PortfolioModal({ project, onClose }: Props) {
             />
           )}
 
-          <div className="text-left max-w-xl mx-auto prose prose-sm md:prose prose-pink">
+          {/* Markdown content */}
+          <div className="text-left max-w-xl mx-auto prose prose-sm md:prose prose-primary">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -104,6 +178,7 @@ export default function PortfolioModal({ project, onClose }: Props) {
             </ReactMarkdown>
           </div>
 
+          {/* Buttons */}
           <div className="flex justify-center mt-8 gap-4">
             {project.githubUrl && (
               <a

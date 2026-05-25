@@ -127,10 +127,10 @@ export default function UniversityInvolvements() {
                     <h3 className="text-2xl font-bold text-pink-950 tracking-tight">
                       University of Sheffield
                     </h3>
-                    <p className="text-pink-500/70 text-sm mt-1">2021 — 2024</p>
+                    <p className="text-pink-500/70 text-sm mt-1">2022 — 2025</p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-xs text-purple-600 font-semibold bg-purple-50 border border-purple-100 px-3.5 py-2 rounded-full self-start">
-                    ML Dissertation — Distinction
+                    YTP MARA Scholar
                   </span>
                 </div>
               </div>
