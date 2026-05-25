@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator>
+  <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2026-03-31T01:44:45+08:00</updated>
+  <id>http://localhost:4000/</id>
+
+  
+    <title type="html">Efa’s Personal Projects</title>
+  
+
+  
+    <subtitle>Welcome to Efa&apos;s Project Page</subtitle>
+  
+
+  
+
+  
+  
+    <entry>
+      <title type="html">Smart Habit Coach – LilyGO T-Watch 2020 V1 &amp;amp; V3</title>
+      <link href="http://localhost:4000/iot%20&%20embedded%20systems/Iot/" rel="alternate" type="text/html" title="Smart Habit Coach – LilyGO T-Watch 2020 V1 &amp; V3" />
+      <published>2025-11-10T00:00:00+08:00</published>
+      <updated>2025-11-10T00:00:00+08:00</updated>
+      <id>http://localhost:4000/iot%20&amp;%20embedded%20systems/Iot</id>
+      <content type="html" xml:base="http://localhost:4000/iot%20&amp;%20embedded%20systems/Iot/">&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;The &lt;strong&gt;Smart Habit Coach&lt;/strong&gt; is a wearable project built on the &lt;strong&gt;LilyGO T-Watch 2020&lt;/strong&gt; (V1 &amp;amp; V3), designed to encourage healthy habits. The watch monitors user activity, sends gentle vibration reminders during inactivity, tracks step goals, logs water intake, and motivates users with a &lt;strong&gt;virtual plant&lt;/strong&gt; that grows as hydration goals are met. OTA firmware updates allow wireless development.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;img/portfolio/system-architecture.png&quot; alt=&quot;System Architecture&quot; /&gt;
+&lt;em&gt;Figure 1: System Architecture of the Smart Habit Coach&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Feature&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Step Counting&lt;/td&gt;
+      &lt;td&gt;Detect and display steps&lt;/td&gt;
+      &lt;td&gt;✅ Completed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Inactivity Reminder&lt;/td&gt;
+      &lt;td&gt;Vibrate after 1 min of inactivity&lt;/td&gt;
+      &lt;td&gt;✅ Completed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Visual Step Tracker&lt;/td&gt;
+      &lt;td&gt;Show daily goal progress&lt;/td&gt;
+      &lt;td&gt;✅ Completed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Drink Tracker&lt;/td&gt;
+      &lt;td&gt;Log hydration with virtual plant growth&lt;/td&gt;
+      &lt;td&gt;✅ Completed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;OTA Upload&lt;/td&gt;
+      &lt;td&gt;Wireless firmware updates&lt;/td&gt;
+      &lt;td&gt;✅ Completed&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;how-it-works&quot;&gt;How It Works&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Step &amp;amp; Inactivity Monitoring&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Uses the &lt;strong&gt;BMA423 accelerometer&lt;/strong&gt; to track steps.&lt;/li&gt;
+  &lt;li&gt;Inactivity triggers &lt;strong&gt;vibration alerts&lt;/strong&gt; and messages after 60 seconds.&lt;/li&gt;
+  &lt;li&gt;Automatically resets when movement is detected.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Drink Tracker &amp;amp; Virtual Plant&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Users log cups of water with a &lt;strong&gt;+ Cup&lt;/strong&gt; button.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Progress bar and plant image update dynamically:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;0–2 cups → Dry seedling&lt;/li&gt;
+      &lt;li&gt;3–4 cups → Small sprout&lt;/li&gt;
+      &lt;li&gt;5–6 cups → Mid-size plant&lt;/li&gt;
+      &lt;li&gt;7–8+ cups → Fully grown plant&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;img/portfolio/cupflow.png&quot; alt=&quot;Drink Tracker Flow&quot; /&gt;
+&lt;em&gt;Figure 2: Drink Tracker &amp;amp; Plant Growth Flow&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;user-interface&quot;&gt;User Interface&lt;/h1&gt;
+
+&lt;p&gt;The watch UI is implemented using &lt;strong&gt;LVGL&lt;/strong&gt;, supporting swipe navigation between four screens:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main Page&lt;/strong&gt; – shows time, date, and activity status&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Step Tracker&lt;/strong&gt; – displays step count and progress arc&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Virtual Plant&lt;/strong&gt; – logs water intake and grows the plant&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Settings&lt;/strong&gt; – configure step target&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;img/portfolio/mainPageReal.png&quot; alt=&quot;UI Screens&quot; /&gt;
+&lt;img src=&quot;img/portfolio/stepTrackerReal.png&quot; alt=&quot;Step Tracker&quot; /&gt;
+&lt;img src=&quot;img/portfolio/plantPageReal.png&quot; alt=&quot;Virtual Plant&quot; /&gt;
+&lt;img src=&quot;img/portfolio/settingsReal.png&quot; alt=&quot;Settings&quot; /&gt;
+&lt;em&gt;Figure 3: Final UI Screens&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;setup--ota&quot;&gt;Setup &amp;amp; OTA&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Clone Project&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/efamelody/IoT/
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;com3505-student-2025/LA2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Upload via USB (initial)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio run &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; upload &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; twatch2020
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;OTA Upload (wireless)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platformio run &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; upload &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; twatch-ota
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ensure &lt;strong&gt;static IP&lt;/strong&gt; is reserved in the router for OTA stability.&lt;/li&gt;
+  &lt;li&gt;Serial monitor prints &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OTA Ready!&lt;/code&gt; when connected.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;challenges--lessons-learned&quot;&gt;Challenges &amp;amp; Lessons Learned&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Library Issues&lt;/strong&gt;: Custom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TTGO_TWatch_Library&lt;/code&gt; resolved &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GxEPD&lt;/code&gt; and font errors.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;OTA Limitations&lt;/strong&gt;: Firmware grew too large (~1.3MB) for ESP32 OTA partition.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hardware Differences&lt;/strong&gt;: V1 vs V3 required conditional compilation for vibration motor.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Wi-Fi Setup&lt;/strong&gt;: iPhone hotspots unreliable; static IP reservation on home Wi-Fi solved OTA issues.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Team Workflow&lt;/strong&gt;: Separate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;platformio.ini&lt;/code&gt; and libraries maintained cross-device compatibility.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Completing this project taught valuable lessons in &lt;strong&gt;embedded systems, OTA deployment, LVGL UI design, and collaborative development&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;future-improvements&quot;&gt;Future Improvements&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sleep mode to disable reminders at night&lt;/li&gt;
+  &lt;li&gt;Sync hydration data to Google Sheets&lt;/li&gt;
+  &lt;li&gt;Animated UI using LVGL&lt;/li&gt;
+  &lt;li&gt;Custom water intake units (ml/oz)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;demo-video&quot;&gt;Demo Video&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtube.com/shorts/KFeomGP4ZeQ?feature=share&quot;&gt;📺 YouTube Demo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://drive.google.com/file/d/1R8_yEW-W4zpKuIIIXO90MCJyIdgPjSmB/view?usp=sharing&quot;&gt;📁 Google Drive&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;github-repository&quot;&gt;Github Repository&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/efamelody/IoT/&quot;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library&quot;&gt;TTGO T-Watch Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.lvgl.io/&quot;&gt;LVGL Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://randomnerdtutorials.com/esp32-ota-over-the-air-arduino/&quot;&gt;Random Nerd Tutorials - OTA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;credits&quot;&gt;Credits&lt;/h1&gt;
+
+&lt;p&gt;Icons from &lt;strong&gt;Flaticon&lt;/strong&gt; by &lt;a href=&quot;https://www.freepik.com&quot;&gt;Freepik&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Flower, Sprout, Grow, Seeds icons&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="IoT &amp; Embedded Systems" />
+      
+
+      
+
+      
+        <summary type="html">Overview The Smart Habit Coach is a wearable project built on the LilyGO T-Watch 2020 (V1 &amp;amp; V3), designed to encourage healthy habits. The watch monitors user activity, sends gentle vibration reminders during inactivity, tracks step goals, logs water intake, and motivates users with a virtual plant that grows as hydration goals are met. OTA firmware updates allow wireless development. Figure 1: System Architecture of the Smart Habit Coach Features Feature Description Status Step Counting Detect and display steps ✅ Completed Inactivity Reminder Vibrate after 1 min of inactivity ✅ Completed Visual Step Tracker Show daily goal progress ✅ Completed Drink Tracker Log hydration with virtual plant growth ✅ Completed OTA Upload Wireless firmware updates ✅ Completed How It Works Step &amp;amp; Inactivity Monitoring Uses the BMA423 accelerometer to track steps. Inactivity triggers vibration alerts and messages after 60 seconds. Automatically resets when movement is detected. Drink Tracker &amp;amp; Virtual Plant Users log cups of water with a + Cup button. Progress bar and plant image update dynamically: 0–2 cups → Dry seedling 3–4 cups → Small sprout 5–6 cups → Mid-size plant 7–8+ cups → Fully grown plant Figure 2: Drink Tracker &amp;amp; Plant Growth Flow User Interface The watch UI is implemented using LVGL, supporting swipe navigation between four screens: Main Page – shows time, date, and activity status Step Tracker – displays step count and progress arc Virtual Plant – logs water intake and grows the plant Settings – configure step target Figure 3: Final UI Screens Setup &amp;amp; OTA Clone Project git clone https://github.com/efamelody/IoT/ cd com3505-student-2025/LA2 Upload via USB (initial) platformio run -t upload -e twatch2020 OTA Upload (wireless) platformio run -t upload -e twatch-ota Ensure static IP is reserved in the router for OTA stability. Serial monitor prints OTA Ready! when connected. Challenges &amp;amp; Lessons Learned Library Issues: Custom TTGO_TWatch_Library resolved GxEPD and font errors. OTA Limitations: Firmware grew too large (~1.3MB) for ESP32 OTA partition. Hardware Differences: V1 vs V3 required conditional compilation for vibration motor. Wi-Fi Setup: iPhone hotspots unreliable; static IP reservation on home Wi-Fi solved OTA issues. Team Workflow: Separate platformio.ini and libraries maintained cross-device compatibility. Completing this project taught valuable lessons in embedded systems, OTA deployment, LVGL UI design, and collaborative development. Future Improvements Sleep mode to disable reminders at night Sync hydration data to Google Sheets Animated UI using LVGL Custom water intake units (ml/oz) Demo Video 📺 YouTube Demo 📁 Google Drive Github Repository Github References TTGO T-Watch Library LVGL Documentation Random Nerd Tutorials - OTA Credits Icons from Flaticon by Freepik: Flower, Sprout, Grow, Seeds icons</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Financial Dashboard</title>
+      <link href="http://localhost:4000/web%20development%20&%20data%20visualization/Financial-Dashboard/" rel="alternate" type="text/html" title="Financial Dashboard" />
+      <published>2025-09-26T00:00:00+08:00</published>
+      <updated>2025-09-26T00:00:00+08:00</updated>
+      <id>http://localhost:4000/web%20development%20&amp;%20data%20visualization/Financial-Dashboard</id>
+      <content type="html" xml:base="http://localhost:4000/web%20development%20&amp;%20data%20visualization/Financial-Dashboard/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;React&lt;/strong&gt; (Frontend interface &amp;amp; interactivity)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Recharts&lt;/strong&gt; (Charts &amp;amp; graphs)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Axios&lt;/strong&gt; (API requests to backend)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flask&lt;/strong&gt; (Backend API server)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;yfinance&lt;/strong&gt; (Stock data fetching)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ccxt&lt;/strong&gt; (Crypto exchange data fetching)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Day.js&lt;/strong&gt; (Date manipulation &amp;amp; filtering)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TailwindCSS&lt;/strong&gt; (Styling &amp;amp; UI components)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;financial-dashboard--stock--crypto-visualizer&quot;&gt;Financial Dashboard – Stock &amp;amp; Crypto Visualizer&lt;/h1&gt;
+
+&lt;p&gt;This project involved designing and developing an &lt;strong&gt;interactive financial dashboard&lt;/strong&gt; to visualize both &lt;strong&gt;stock and cryptocurrency data&lt;/strong&gt; in real time. Users can explore historical prices, toggle data series, filter by date ranges, and view key performance indicators.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Dynamic Charts &amp;amp; Metrics&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Multi-line charts for Open, High, Low, Close, and Volume.&lt;/li&gt;
+      &lt;li&gt;Interactive legends and toggle buttons for user-selected metrics.&lt;/li&gt;
+      &lt;li&gt;Date range filters (7D, 1M, 6M, 1Y, ALL).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Key Performance Indicators (KPIs)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Latest price, percentage return, volatility.&lt;/li&gt;
+      &lt;li&gt;Moving averages (MA7, MA50) for trend analysis.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stock &amp;amp; Crypto Support&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Fetch live stock data via Yahoo Finance (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yfinance&lt;/code&gt;).&lt;/li&gt;
+      &lt;li&gt;Fetch live crypto prices via exchange APIs (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ccxt&lt;/code&gt;).&lt;/li&gt;
+      &lt;li&gt;Dropdown to switch between multiple stocks (AAPL, TSLA, MSFT, etc.).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Frontend Interactivity&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Responsive design for desktop and mobile.&lt;/li&gt;
+      &lt;li&gt;Toggle metrics and visualize selected data instantly.&lt;/li&gt;
+      &lt;li&gt;Tooltips and legends for easy data interpretation.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Backend API&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Flask server fetches data, computes KPIs and moving averages.&lt;/li&gt;
+      &lt;li&gt;Returns JSON data formatted for frontend visualization.&lt;/li&gt;
+      &lt;li&gt;Lightweight caching to reduce API requests.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;key-implementation-details&quot;&gt;Key Implementation Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;img/portfolio/diagram_finance.jpg&quot; alt=&quot;Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;React &amp;amp; Recharts&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Multi-line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LineChart&lt;/code&gt; components with conditional rendering based on selected metrics.&lt;/li&gt;
+      &lt;li&gt;Date filtering logic handled by Day.js to update charts dynamically.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Flask Backend&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Endpoints: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/api/stock/&amp;lt;ticker&amp;gt;&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/api/crypto/&amp;lt;symbol&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Data cleaning: flatten multi-index column names, compute moving averages.&lt;/li&gt;
+      &lt;li&gt;API returns KPIs and full historical data for frontend consumption.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Responsive UI &amp;amp; Styling&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;TailwindCSS for clean buttons, dropdowns, and chart container layouts.&lt;/li&gt;
+      &lt;li&gt;Color-coded metrics for intuitive visual distinction.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;To run locally:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Backend&lt;/strong&gt;:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;financial_dashboard
+python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv venv
+&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;venv/bin/activate   &lt;span class=&quot;c&quot;&gt;# Mac/Linux&lt;/span&gt;
+venv&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;cripts&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;ctivate      &lt;span class=&quot;c&quot;&gt;# Windows&lt;/span&gt;
+pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; requirements.txt
+python app.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Frontend&lt;/strong&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;financial-dashboard-frontend
+npm &lt;span class=&quot;nb&quot;&gt;install
+&lt;/span&gt;npm start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open your browser at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; to access the dashboard.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;source-code&quot;&gt;Source Code&lt;/h2&gt;
+
+&lt;p&gt;Complete source code is available on GitHub: &lt;a href=&quot;https://github.com/efamelody/financial_dashboard&quot;&gt;Financial Dashboard&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Web Development &amp; Data Visualization" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used React (Frontend interface &amp;amp; interactivity) Recharts (Charts &amp;amp; graphs) Axios (API requests to backend) Flask (Backend API server) yfinance (Stock data fetching) ccxt (Crypto exchange data fetching) Day.js (Date manipulation &amp;amp; filtering) TailwindCSS (Styling &amp;amp; UI components) Financial Dashboard – Stock &amp;amp; Crypto Visualizer This project involved designing and developing an interactive financial dashboard to visualize both stock and cryptocurrency data in real time. Users can explore historical prices, toggle data series, filter by date ranges, and view key performance indicators. Features Dynamic Charts &amp;amp; Metrics Multi-line charts for Open, High, Low, Close, and Volume. Interactive legends and toggle buttons for user-selected metrics. Date range filters (7D, 1M, 6M, 1Y, ALL). Key Performance Indicators (KPIs) Latest price, percentage return, volatility. Moving averages (MA7, MA50) for trend analysis. Stock &amp;amp; Crypto Support Fetch live stock data via Yahoo Finance (yfinance). Fetch live crypto prices via exchange APIs (ccxt). Dropdown to switch between multiple stocks (AAPL, TSLA, MSFT, etc.). Frontend Interactivity Responsive design for desktop and mobile. Toggle metrics and visualize selected data instantly. Tooltips and legends for easy data interpretation. Backend API Flask server fetches data, computes KPIs and moving averages. Returns JSON data formatted for frontend visualization. Lightweight caching to reduce API requests. Key Implementation Details React &amp;amp; Recharts Multi-line LineChart components with conditional rendering based on selected metrics. Date filtering logic handled by Day.js to update charts dynamically. Flask Backend Endpoints: /api/stock/&amp;lt;ticker&amp;gt; and /api/crypto/&amp;lt;symbol&amp;gt;. Data cleaning: flatten multi-index column names, compute moving averages. API returns KPIs and full historical data for frontend consumption. Responsive UI &amp;amp; Styling TailwindCSS for clean buttons, dropdowns, and chart container layouts. Color-coded metrics for intuitive visual distinction. Installation To run locally: Backend: cd financial_dashboard python -m venv venv source venv/bin/activate # Mac/Linux venv\Scripts\activate # Windows pip install -r requirements.txt python app.py Frontend: cd financial-dashboard-frontend npm install npm start Open your browser at http://localhost:3000 to access the dashboard. Source Code Complete source code is available on GitHub: Financial Dashboard</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Robotics</title>
+      <link href="http://localhost:4000/robotics%20&%20ros%20development/Robotics/" rel="alternate" type="text/html" title="Robotics" />
+      <published>2024-05-17T00:00:00+08:00</published>
+      <updated>2024-05-17T00:00:00+08:00</updated>
+      <id>http://localhost:4000/robotics%20&amp;%20ros%20development/Robotics</id>
+      <content type="html" xml:base="http://localhost:4000/robotics%20&amp;%20ros%20development/Robotics/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;ROS (Robot Operating System)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gazebo Simulator&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Python&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Linux (Ubuntu WSL)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TurtleBot3 Waffle Pi&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;assignment-2--autonomous-robot-control--navigation&quot;&gt;Assignment #2 – Autonomous Robot Control &amp;amp; Navigation&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Team 52 – University Robotics Project&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This project involved designing, developing, and deploying robot behaviours for a TurtleBot3 Waffle Pi using the Robot Operating System (ROS). We worked in a small team and completed both simulated and real-world tasks across two parts of the assignment.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;part-a-basic-robot-behaviours&quot;&gt;Part A: Basic Robot Behaviours&lt;/h2&gt;
+&lt;p&gt;Assessed using a real robot in the robotics lab.&lt;/p&gt;
+
+&lt;h3 id=&quot;tasks&quot;&gt;Tasks:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Task 1: Velocity Control&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Programmed the robot to follow a target velocity with smooth acceleration.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Task 2: Obstacle Avoidance&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Used LIDAR sensor data to navigate around dynamic obstacles in real time.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“Out-of-the-Box” Submission&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Delivered a plug-and-play ROS package with tested launch files and documentation.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;part-b-autonomy--exploration&quot;&gt;Part B: Autonomy &amp;amp; Exploration&lt;/h2&gt;
+&lt;p&gt;Task 3 tested in simulation, Task 4 on real robot hardware.&lt;/p&gt;
+
+&lt;h3 id=&quot;tasks-1&quot;&gt;Tasks:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Task 3: Maze Navigation&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Developed a state machine in C++ to guide the robot through a complex maze.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Task 4: Exploration &amp;amp; Beacon Search&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Implemented autonomous frontier-based exploration.&lt;/li&gt;
+      &lt;li&gt;Added a colour-based target detection system to capture images of specific beacons using ROS parameters (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;target_colour:={red|blue|green|yellow}&lt;/code&gt;).&lt;/li&gt;
+      &lt;li&gt;Integrated camera feeds and image capture logic for beacon detection.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;key-features--implementation&quot;&gt;Key Features &amp;amp; Implementation&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Robust Launch File Structure&lt;/strong&gt;:&lt;br /&gt;
+Each task included a dedicated &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch&lt;/code&gt; configuration:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch com2009_team52 task1.launch&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch com2009_team52 task2.launch&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch com2009_team52 task3.launch&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch com2009_team52 task4.launch target_colour:=red&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Peer Collaboration&lt;/strong&gt;:&lt;br /&gt;
+Participated in structured peer evaluations at multiple stages using Buddycheck. Emphasis on teamwork, version control, and review cycles.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Real Robot Safety Compliance&lt;/strong&gt;:&lt;br /&gt;
+Completed health and safety training for real robot operation, ensuring safe hardware handling in lab environments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To test locally:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Extract the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tar&lt;/code&gt; ROS package.&lt;/li&gt;
+  &lt;li&gt;Build using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;catkin_make&lt;/code&gt; in a ROS workspace.&lt;/li&gt;
+  &lt;li&gt;Run tasks via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;roslaunch&lt;/code&gt;, ensuring appropriate simulation or robot hardware is connected.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;p&gt;You can view the complete source code on GitHub: &lt;a href=&quot;https://github.com/efamelody/com2009_team52&quot;&gt;COM2009&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Robotics &amp; ROS Development" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used ROS (Robot Operating System) Gazebo Simulator Python Linux (Ubuntu WSL) Git TurtleBot3 Waffle Pi Assignment #2 – Autonomous Robot Control &amp;amp; Navigation Team 52 – University Robotics Project This project involved designing, developing, and deploying robot behaviours for a TurtleBot3 Waffle Pi using the Robot Operating System (ROS). We worked in a small team and completed both simulated and real-world tasks across two parts of the assignment. Part A: Basic Robot Behaviours Assessed using a real robot in the robotics lab. Tasks: Task 1: Velocity Control Programmed the robot to follow a target velocity with smooth acceleration. Task 2: Obstacle Avoidance Used LIDAR sensor data to navigate around dynamic obstacles in real time. “Out-of-the-Box” Submission Delivered a plug-and-play ROS package with tested launch files and documentation. Part B: Autonomy &amp;amp; Exploration Task 3 tested in simulation, Task 4 on real robot hardware. Tasks: Task 3: Maze Navigation Developed a state machine in C++ to guide the robot through a complex maze. Task 4: Exploration &amp;amp; Beacon Search Implemented autonomous frontier-based exploration. Added a colour-based target detection system to capture images of specific beacons using ROS parameters (target_colour:={red|blue|green|yellow}). Integrated camera feeds and image capture logic for beacon detection. Key Features &amp;amp; Implementation Robust Launch File Structure: Each task included a dedicated roslaunch configuration: roslaunch com2009_team52 task1.launch roslaunch com2009_team52 task2.launch roslaunch com2009_team52 task3.launch roslaunch com2009_team52 task4.launch target_colour:=red Peer Collaboration: Participated in structured peer evaluations at multiple stages using Buddycheck. Emphasis on teamwork, version control, and review cycles. Real Robot Safety Compliance: Completed health and safety training for real robot operation, ensuring safe hardware handling in lab environments. Installation To test locally: Extract the .tar ROS package. Build using catkin_make in a ROS workspace. Run tasks via roslaunch, ensuring appropriate simulation or robot hardware is connected. Source Code You can view the complete source code on GitHub: COM2009</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Chessboard Diagram Classifier</title>
+      <link href="http://localhost:4000/python%20machine%20learning/Chessboard-Diagram-Classifier/" rel="alternate" type="text/html" title="Chessboard Diagram Classifier" />
+      <published>2023-11-21T00:00:00+08:00</published>
+      <updated>2023-11-21T00:00:00+08:00</updated>
+      <id>http://localhost:4000/python%20machine%20learning/Chessboard-Diagram-Classifier</id>
+      <content type="html" xml:base="http://localhost:4000/python%20machine%20learning/Chessboard-Diagram-Classifier/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Python&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pandas&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;NumPy&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scikit-learn&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Matplotlib&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
+
+&lt;h2 id=&quot;chessboard-diagram-classifier&quot;&gt;Chessboard Diagram Classifier&lt;/h2&gt;
+&lt;p&gt;A Python-based classifier for chessboard diagrams that employs Nearest Neighbour and Principal Component Analysis (PCA) for dimensionality reduction.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-highlights&quot;&gt;Key Highlights&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Feature Extraction&lt;/strong&gt;: Implemented advanced feature extraction techniques, providing clear justifications for the chosen methods in the accompanying report.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Classification Methods&lt;/strong&gt;: Enhanced classification methods through rigorous experimentation and analysis, resulting in improved accuracy and robustness.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Independent Square and Full-Board Classification&lt;/strong&gt;: Successfully created two versions of the classifier, achieving 98% accuracy on both clean and noisy datasets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;implementation-details&quot;&gt;Implementation Details&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Nearest Neighbour&lt;/strong&gt;: Utilized the Nearest Neighbour algorithm to classify chessboard diagrams based on extracted features.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PCA&lt;/strong&gt;: Employed PCA to reduce dimensionality and improve computational efficiency, facilitating better performance in classification tasks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip:&lt;/p&gt;
+
+&lt;p&gt;pip install pandas numpy scikit-learn matplotlib&lt;/p&gt;
+
+&lt;p&gt;The full code for this project can be found &lt;a href=&quot;https://github.com/efamelody/Chessboard&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Python Machine Learning" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used Python Pandas NumPy Scikit-learn Matplotlib Features Chessboard Diagram Classifier A Python-based classifier for chessboard diagrams that employs Nearest Neighbour and Principal Component Analysis (PCA) for dimensionality reduction. Key Highlights Feature Extraction: Implemented advanced feature extraction techniques, providing clear justifications for the chosen methods in the accompanying report. Classification Methods: Enhanced classification methods through rigorous experimentation and analysis, resulting in improved accuracy and robustness. Independent Square and Full-Board Classification: Successfully created two versions of the classifier, achieving 98% accuracy on both clean and noisy datasets. Implementation Details Nearest Neighbour: Utilized the Nearest Neighbour algorithm to classify chessboard diagrams based on extracted features. PCA: Employed PCA to reduce dimensionality and improve computational efficiency, facilitating better performance in classification tasks. Installation To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip: pip install pandas numpy scikit-learn matplotlib The full code for this project can be found here.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Trains Of Sheffield</title>
+      <link href="http://localhost:4000/java%20software%20development/Trains-of-Sheffield/" rel="alternate" type="text/html" title="Trains Of Sheffield" />
+      <published>2023-11-20T00:00:00+08:00</published>
+      <updated>2023-11-20T00:00:00+08:00</updated>
+      <id>http://localhost:4000/java%20software%20development/Trains-of-Sheffield</id>
+      <content type="html" xml:base="http://localhost:4000/java%20software%20development/Trains-of-Sheffield/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Java&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Java Swing&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MySQL&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;UML Diagrams&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;trains-of-sheffield&quot;&gt;Trains of Sheffield&lt;/h2&gt;
+&lt;p&gt;Collaborated with three other Computer Science students to develop a Java Swing application tailored for a train business.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-contributions&quot;&gt;Key Contributions&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Business Requirements Interpretation&lt;/strong&gt;: Worked on translating business requirements into UML diagrams, including Class diagrams, Normalized Database designs, and State Machine diagrams.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Database Integration&lt;/strong&gt;: Integrated a MySQL database with a focus on preventing SQL injection attacks, ensuring secure data handling.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data Security&lt;/strong&gt;: Implemented robust security measures to protect sensitive customer data, including bank details.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Core Features Implementation&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;User Registration&lt;/strong&gt;: Developed functionality for new user registration.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Order Management&lt;/strong&gt;: Enabled users to manage orders efficiently.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Stock Monitoring&lt;/strong&gt;: Implemented features to monitor stock levels accurately.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Outcome&lt;/strong&gt;: Successfully completed the project and was awarded a distinction for our efforts.&lt;/p&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To run the application locally, follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Clone the repository or download the source code.&lt;/li&gt;
+  &lt;li&gt;Ensure you have Java Development Kit (JDK) installed on your machine.&lt;/li&gt;
+  &lt;li&gt;Set up a MySQL database and import the provided schema.&lt;/li&gt;
+  &lt;li&gt;Compile and run the Java Swing application.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;usage&quot;&gt;Usage&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Launch the application by running the main Java class.&lt;/li&gt;
+  &lt;li&gt;Create a new user account to access features like order management and stock monitoring.&lt;/li&gt;
+  &lt;li&gt;Navigate through the user-friendly interface to explore different functionalities.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;p&gt;You can view the complete source code on GitHub: &lt;a href=&quot;https://github.com/efamelody/TrainsOfSheffield&quot;&gt;Trains of Sheffield&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Java Software Development" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used Java Java Swing MySQL UML Diagrams Trains of Sheffield Collaborated with three other Computer Science students to develop a Java Swing application tailored for a train business. Key Contributions Business Requirements Interpretation: Worked on translating business requirements into UML diagrams, including Class diagrams, Normalized Database designs, and State Machine diagrams. Database Integration: Integrated a MySQL database with a focus on preventing SQL injection attacks, ensuring secure data handling. Data Security: Implemented robust security measures to protect sensitive customer data, including bank details. Core Features Implementation: User Registration: Developed functionality for new user registration. Order Management: Enabled users to manage orders efficiently. Stock Monitoring: Implemented features to monitor stock levels accurately. Outcome: Successfully completed the project and was awarded a distinction for our efforts. Installation To run the application locally, follow these steps: Clone the repository or download the source code. Ensure you have Java Development Kit (JDK) installed on your machine. Set up a MySQL database and import the provided schema. Compile and run the Java Swing application. Usage Launch the application by running the main Java class. Create a new user account to access features like order management and stock monitoring. Navigate through the user-friendly interface to explore different functionalities. Source Code You can view the complete source code on GitHub: Trains of Sheffield</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Interactive Cartoon Generator</title>
+      <link href="http://localhost:4000/javascript%20web%20development/Interactive-Cartoon-Generator/" rel="alternate" type="text/html" title="Interactive Cartoon Generator" />
+      <published>2023-11-20T00:00:00+08:00</published>
+      <updated>2023-11-20T00:00:00+08:00</updated>
+      <id>http://localhost:4000/javascript%20web%20development/Interactive-Cartoon-Generator</id>
+      <content type="html" xml:base="http://localhost:4000/javascript%20web%20development/Interactive-Cartoon-Generator/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HTML5&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
+
+&lt;h2 id=&quot;interactive-cartoon-face-generator&quot;&gt;Interactive Cartoon Face Generator&lt;/h2&gt;
+&lt;p&gt;This JavaScript application allows users to create and customize cartoon faces on an HTML5 canvas.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features&quot;&gt;Key Features&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Facial Feature Generation&lt;/strong&gt;: Users can generate various facial features such as eyes, noses, and mouths.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Expression Selection&lt;/strong&gt;: Choose from different expressions, including neutral, happy, and angry.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Interactive Effects&lt;/strong&gt;: Trigger effects like closing eyes or changing lip color for a more engaging experience.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;implementation-details&quot;&gt;Implementation Details&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Canvas Drawing&lt;/strong&gt;: Utilizes basic drawing commands within the Canvas API to render facial features dynamically.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Event Listeners&lt;/strong&gt;: Employs event listeners to enable real-time user interaction, allowing for a seamless experience.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To run this application locally, simply clone the repository or download the source code.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ensure you have a web browser installed.&lt;/li&gt;
+  &lt;li&gt;Open the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file in your browser to access the app.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;usage&quot;&gt;Usage&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Launch the application by opening &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Use the controls to customize your cartoon face by selecting different features and expressions.&lt;/li&gt;
+  &lt;li&gt;Experiment with interactive effects to see the changes in real-time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;p&gt;You can view the complete source code on GitHub: &lt;a href=&quot;https://github.com/efamelody/interactiveCartoon&quot;&gt;Interactive Cartoon Face Generator&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="JavaScript Web Development" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used JavaScript HTML5 CSS Features Interactive Cartoon Face Generator This JavaScript application allows users to create and customize cartoon faces on an HTML5 canvas. Key Features Facial Feature Generation: Users can generate various facial features such as eyes, noses, and mouths. Expression Selection: Choose from different expressions, including neutral, happy, and angry. Interactive Effects: Trigger effects like closing eyes or changing lip color for a more engaging experience. Implementation Details Canvas Drawing: Utilizes basic drawing commands within the Canvas API to render facial features dynamically. Event Listeners: Employs event listeners to enable real-time user interaction, allowing for a seamless experience. Installation To run this application locally, simply clone the repository or download the source code. Ensure you have a web browser installed. Open the index.html file in your browser to access the app. Usage Launch the application by opening index.html. Use the controls to customize your cartoon face by selecting different features and expressions. Experiment with interactive effects to see the changes in real-time. Source Code You can view the complete source code on GitHub: Interactive Cartoon Face Generator</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Edflix</title>
+      <link href="http://localhost:4000/web%20development/EdFlix/" rel="alternate" type="text/html" title="Edflix" />
+      <published>2023-11-20T00:00:00+08:00</published>
+      <updated>2023-11-20T00:00:00+08:00</updated>
+      <id>http://localhost:4000/web%20development/EdFlix</id>
+      <content type="html" xml:base="http://localhost:4000/web%20development/EdFlix/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ruby&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SQL&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;edflix-online-learning-platform&quot;&gt;EdFlix Online Learning Platform&lt;/h2&gt;
+&lt;p&gt;Collaborated with a team of seven Computer Science students using Agile Development methodologies to create a tailored online learning platform.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-contributions&quot;&gt;Key Contributions&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Customisable Recommendation System&lt;/strong&gt;: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Problem Solving and Teamwork&lt;/strong&gt;: Actively contributed to resolving database issues and optimizing editing functions, ensuring a seamless user experience.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Technical Proficiency&lt;/strong&gt;: Demonstrated strong skills in Ruby, HTML, CSS, SQL, and version control through GitHub throughout the project lifecycle.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;achievements&quot;&gt;Achievements&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Successfully produced a working system that passed unit testing.&lt;/li&gt;
+  &lt;li&gt;Conducted a demonstration of the platform to University staff, showcasing its features and functionalities.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Author&lt;/strong&gt;: Aamir, Aybike, Maryam, Gabes, Saif&lt;/p&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To run the EdFlix platform locally, follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Clone the repository or download the source code.&lt;/li&gt;
+  &lt;li&gt;Ensure you have Ruby and the necessary dependencies installed.&lt;/li&gt;
+  &lt;li&gt;Set up your database and run the required migrations.&lt;/li&gt;
+  &lt;li&gt;Start the local server to access the application.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;usage&quot;&gt;Usage&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Launch the application by starting the server.&lt;/li&gt;
+  &lt;li&gt;Register a new account to explore the learning resources and features.&lt;/li&gt;
+  &lt;li&gt;Utilise the customizable recommendation system to find relevant courses.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;p&gt;You can view the complete source code on GitHub: &lt;a href=&quot;https://github.com/efamelody/edFlix&quot;&gt;EdFlix&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;#Report&lt;/p&gt;
+&lt;h1 id=&quot;final-report&quot;&gt;Final Report&lt;/h1&gt;
+
+&lt;p&gt;📄 &lt;a href=&quot;/assets/files/edflix_report.pdf&quot; target=&quot;_blank&quot;&gt;Download the full report (PDF)&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Web Development" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used Ruby HTML CSS SQL GitHub EdFlix Online Learning Platform Collaborated with a team of seven Computer Science students using Agile Development methodologies to create a tailored online learning platform. Key Contributions Customisable Recommendation System: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement. Problem Solving and Teamwork: Actively contributed to resolving database issues and optimizing editing functions, ensuring a seamless user experience. Technical Proficiency: Demonstrated strong skills in Ruby, HTML, CSS, SQL, and version control through GitHub throughout the project lifecycle. Achievements Successfully produced a working system that passed unit testing. Conducted a demonstration of the platform to University staff, showcasing its features and functionalities. Author: Aamir, Aybike, Maryam, Gabes, Saif Installation To run the EdFlix platform locally, follow these steps: Clone the repository or download the source code. Ensure you have Ruby and the necessary dependencies installed. Set up your database and run the required migrations. Start the local server to access the application. Usage Launch the application by starting the server. Register a new account to explore the learning resources and features. Utilise the customizable recommendation system to find relevant courses. Source Code You can view the complete source code on GitHub: EdFlix #Report Final Report 📄 Download the full report (PDF)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Domino Game</title>
+      <link href="http://localhost:4000/haskell%20functional%20programming/Domino-Game/" rel="alternate" type="text/html" title="Domino Game" />
+      <published>2023-11-20T00:00:00+08:00</published>
+      <updated>2023-11-20T00:00:00+08:00</updated>
+      <id>http://localhost:4000/haskell%20functional%20programming/Domino-Game</id>
+      <content type="html" xml:base="http://localhost:4000/haskell%20functional%20programming/Domino-Game/">&lt;h1 id=&quot;technologies-used&quot;&gt;Technologies Used&lt;/h1&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;DomsMatch:&lt;/strong&gt; A Haskell implementation to play a dominoes match between two players.&lt;/p&gt;
+
+&lt;p&gt;The top-level function is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;domsMatch&lt;/code&gt;, which takes five arguments:
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;games&lt;/code&gt;: Number of games to play
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;target&lt;/code&gt;: Target score to reach
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;player1&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;player2&lt;/code&gt;: Functions representing the two players (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DomsPlayer&lt;/code&gt;)
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;seed&lt;/code&gt;: Integer to seed the random number generator&lt;/p&gt;
+
+&lt;p&gt;The function returns a pair showing how many games were won by each player.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DomsPlayer Functions:&lt;/strong&gt; Functions must take four arguments:
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hand&lt;/code&gt;: Current set of dominos in hand
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Board&lt;/code&gt;: Current state of the game board
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Player&lt;/code&gt;: Either P1 or P2
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scores&lt;/code&gt;: Current scores of both players&lt;/p&gt;
+
+&lt;p&gt;The function returns a tuple containing the domino to play and the end to play it on.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Author:&lt;/strong&gt; Nur Izfarwiza Binti Mohd Talib&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;File Contents Summary:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Scoring Functions:&lt;/strong&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scoreBoard&lt;/code&gt;: Computes the score for a given board
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isDouble&lt;/code&gt;: Checks if a domino is a double
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calculateScore&lt;/code&gt;: Assigns scores based on specific conditions&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Game Logic Functions:&lt;/strong&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blocked&lt;/code&gt;: Checks if there’s nothing to play in the hand
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canPlay&lt;/code&gt;: Checks if a domino can be played on the board
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;playDom&lt;/code&gt;: Plays a domino at a specified end if possible&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Player Strategies:&lt;/strong&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simplePlayer&lt;/code&gt;: Chooses the first valid move from the hand
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smartPlayer&lt;/code&gt;: Determines the next move based on game state
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;regularMoveStrategy&lt;/code&gt;: Chooses the best move based on scoring strategy&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Scoring Strategy Functions:&lt;/strong&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findBestMove&lt;/code&gt;: Searches for the highest-scoring move
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;listDomino&lt;/code&gt;: Generates a list of possible moves
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;playDominoAtBestEnd&lt;/code&gt;: Determines the best end of the board to play a domino
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findHighestScoreDomino&lt;/code&gt;: Finds the highest-scoring domino&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Helper Functions:&lt;/strong&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatePipCountLeft&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatePipCountRight&lt;/code&gt;: Updates pip count for board ends
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isMultThreeFive&lt;/code&gt;: Checks if a move is a multiple of 3 or 5
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calculateTotalPip&lt;/code&gt;: Calculates score after playing a move&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Utility Functions:&lt;/strong&gt;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;swapDomino&lt;/code&gt;: Swaps elements of a tuple, flipping a domino to be played&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;You would need GHCi installed on your machine, which can be downloaded from &lt;a href=&quot;https://www.haskell.org/downloads/&quot;&gt;Haskell Platform&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;usage&quot;&gt;Usage&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Open GHCi by typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ghci&lt;/code&gt; in your terminal.&lt;/li&gt;
+  &lt;li&gt;Load your Haskell file using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:load DomsMatch.hs&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Run the match using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;domsMatch&lt;/code&gt; function with specified parameters.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;domsMatch&lt;/code&gt; function requires:
+ Number of games to play
+ Initial number of dominos in hand
+ Target score
+ Two player functions (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simplePlayer&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smartPlayer&lt;/code&gt;)
+ A seed for the random number generator&lt;/p&gt;
+
+&lt;p&gt;Experiment with different seeds, hand sizes, and target scores to test various strategies.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/efamelody/efamelody.github.io/main/_posts/example.png&quot; alt=&quot;Game Example&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;p&gt;Link to the GitHub repository: &lt;a href=&quot;https://github.com/efamelody/DomsMatch&quot;&gt;DomsMatch&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+        <category term="Haskell Functional Programming" />
+      
+
+      
+
+      
+        <summary type="html">Technologies Used Haskell Features DomsMatch: A Haskell implementation to play a dominoes match between two players. The top-level function is domsMatch, which takes five arguments: games: Number of games to play target: Target score to reach player1, player2: Functions representing the two players (DomsPlayer) seed: Integer to seed the random number generator The function returns a pair showing how many games were won by each player. DomsPlayer Functions: Functions must take four arguments: Hand: Current set of dominos in hand Board: Current state of the game board Player: Either P1 or P2 Scores: Current scores of both players The function returns a tuple containing the domino to play and the end to play it on. Author: Nur Izfarwiza Binti Mohd Talib File Contents Summary: Scoring Functions: scoreBoard: Computes the score for a given board isDouble: Checks if a domino is a double calculateScore: Assigns scores based on specific conditions Game Logic Functions: blocked: Checks if there’s nothing to play in the hand canPlay: Checks if a domino can be played on the board playDom: Plays a domino at a specified end if possible Player Strategies: simplePlayer: Chooses the first valid move from the hand smartPlayer: Determines the next move based on game state regularMoveStrategy: Chooses the best move based on scoring strategy Scoring Strategy Functions: findBestMove: Searches for the highest-scoring move listDomino: Generates a list of possible moves playDominoAtBestEnd: Determines the best end of the board to play a domino findHighestScoreDomino: Finds the highest-scoring domino Helper Functions: updatePipCountLeft, updatePipCountRight: Updates pip count for board ends isMultThreeFive: Checks if a move is a multiple of 3 or 5 calculateTotalPip: Calculates score after playing a move Utility Functions: swapDomino: Swaps elements of a tuple, flipping a domino to be played Installation You would need GHCi installed on your machine, which can be downloaded from Haskell Platform. Usage Open GHCi by typing ghci in your terminal. Load your Haskell file using :load DomsMatch.hs. Run the match using the domsMatch function with specified parameters. The domsMatch function requires: Number of games to play Initial number of dominos in hand Target score Two player functions (simplePlayer or smartPlayer) A seed for the random number generator Experiment with different seeds, hand sizes, and target scores to test various strategies. Source Code Link to the GitHub repository: DomsMatch</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
