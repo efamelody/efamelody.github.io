@@ -37,7 +37,7 @@ export default function Experience() {
                 </div>
                 <div className="inline-flex items-center gap-1.5 text-xs text-pink-500/70 font-mono bg-pink-50 px-3 py-2 rounded-full self-start border border-pink-100">
                   <Clock size={11} />
-                  Oct 2024 — May 2025 · 7 months
+                  Oct 2025 — May 2026 · 7 months
                 </div>
               </div>
 
