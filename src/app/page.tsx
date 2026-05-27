@@ -3,6 +3,7 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import UniversityInvolvements from "@/components/UniversityInvolvements";
+import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <PortfolioGrid />
       <Experience />
       <UniversityInvolvements />
+      <Gallery />
       <Contact />
       <Footer />
     </>
