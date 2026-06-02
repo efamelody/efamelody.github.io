@@ -2,6 +2,42 @@ import { BlogPost } from "@/types";
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "when-do-we-fully-know-everything",
+    title: "When do we fully know everything?",
+    date: "June 2026",
+    excerpt:
+      "Life often feels like a series of consecutive hurdles. But there is one invisible hurdle that has followed me through every single stage of life: the feeling of not knowing enough.",
+    tags: ["reflection", "career", "growth", "software-engineering"],
+    content: `Life often feels like a series of consecutive hurdles. Get the grades. Secure the scholarship. Earn the degree. Land the first job. We are trained to always look for the next big thing.
+
+But there is one invisible hurdle that has followed me through every single stage of life: **the feeling of not knowing enough.**
+
+Studying Computer Science wasn't easy. In university, you touch the surface of almost everything. It felt satisfying to learn, but it was equally humbling. I constantly questioned my worth when seeing peers who seemed miles ahead of me. Yet, every time I managed to finally figure a complex problem out, the satisfaction was unmatched.
+
+Then came the real world.
+
+Starting my first job as a full-stack developer was when I truly found myself nose-deep in production software engineering. To be completely honest, when I walked in on Day One, I felt like I knew nothing. Everyday brought a different challenge. I was used to coding scripts in Python, and suddenly my environment demanded TypeScript. I didn't even fully grasp what a production API looked like at the start. It is slightly embarrassing to think back on now, but the learning curve was a vertical cliff.
+
+Work was demanding. In the beginning, I made a guilty confession to myself: I relied heavily on AI just to stay afloat. Everyday was a chaotic loop of discovering new tools—Postman, Remix, DBeaver. I didn't even know *what* I didn't know, which was incredibly overwhelming.
+
+But midway through, reality hits you. Production code is vastly different from a university project. What happens when a system goes down in production? Why is a specific regression bug happening? AI can generate a code patch, but it can't understand the systemic "why."
+
+I was incredibly fortunate to sit beside a colleague who took the time to show me how to use the browser inspector properly and explained the core lifecycle of web frameworks. More than just teaching me tools, he taught me *how to learn* instead of fully relying on a prompt. For that, I am deeply grateful. At the end of the day, AI can only do so much. You are the engineer. You have to investigate. You have to solve the puzzle.
+
+Taking a step back to re-learn the absolute fundamentals was a deeply humbling experience. It's easy to feel overwhelmed by how fast this industry evolves. The endless loop of new frameworks, languages, and tech stacks. When looking at job descriptions, you naturally wonder: *Do I really need to know it all?*
+
+During an appraisal review, I asked my technical director a question that had been weighing on me: *"How do you overcome this constant feeling of not knowing?"* I looked up to my leadership team and aspired to have that level of deep technical confidence.
+
+He gave me two pieces of advice I will keep for the rest of my career:
+
+1. **Focus on the feeling of building cool things.** What keeps you motivated is that exact spark when you finish an elegant feature and realize, *"Wow, I built something cool."*
+2. **Be strong-hearted.** It is okay to make mistakes in development now, rather than breaking systems in production later.
+
+I am currently taking a deliberate career break to reset, realign, and deep-dive back into pure engineering practices without relying on an AI crutch. I truly believe that if you put in the honest dedication and effort, Allah will bless the journey and handle the rest. I just never want to look back and have regrets for not trying my hardest.
+
+You stop improving the moment you think you know everything. I don't know everything and I'm excited to keep learning.`,
+  },
+  {
     slug: "air-pollution-modelling-dissertation",
     title: "Air Pollution Modelling and Source Inference: My Dissertation Journey",
     date: "July 2025",
