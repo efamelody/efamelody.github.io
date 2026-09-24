@@ -2,6 +2,87 @@ import { Project, Experience, SocialLink } from "@/types";
 
 export const projects: Project[] = [
   {
+    modalId: 16,
+    title: "WhatsApp AI Receptionist — Wedding Vendor SaaS",
+    date: "2026-09-22",
+    img: "whatsapp-saas.svg",
+    alt: "WhatsApp AI Receptionist system flow",
+    projectDate: "Sep 2026 — Ongoing",
+    client: "Personal Project",
+    category: "SaaS & AI Automation",
+    description:
+      "Multi-tenant WhatsApp AI receptionist for wedding vendors. Implements RAG-grounded inquiry handling, capacity-aware booking holds, and a Next.js vendor dashboard with calendar and lead management.",
+    technologies: [
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Better Auth",
+      "Prisma",
+      "PostgreSQL",
+      "n8n",
+      "Google Gemini",
+      "Evolution API",
+      "Docker",
+    ],
+    filterTag: "ongoing",
+    content: `# WhatsApp AI Receptionist — Wedding Vendor SaaS
+
+A multi-tenant SaaS platform that automates WhatsApp inquiry handling for wedding vendors (MUA, henna artists, photographers). The system provides instant, knowledge-base-grounded responses, manages booking state transitions, and centralises lead and calendar operations in a vendor dashboard.
+
+![System flow](img/portfolio/whatsapp-saas.svg)
+
+---
+
+## Overview
+
+Vendors receive high volumes of WhatsApp inquiries while servicing clients, leading to delayed replies and double bookings. This platform introduces an AI receptionist operating on the vendor's own WhatsApp number, paired with a web dashboard for booking and knowledge-base management. The solution preserves the native WhatsApp experience for clients while providing structured workflow control for vendors.
+
+The System Requirement Document (v2.0, 2026-09-22) defines the product scope, data model, state machine, and phased delivery plan.
+
+---
+
+## Features
+
+| Feature | Description |
+|---|---|
+| **RAG-Grounded Responses** | Answers pricing, packages, and FAQs strictly from the vendor's structured knowledge base; calculates total as package price plus location-based travel surcharge |
+| **Availability & Hold Management** | Validates requested dates against capacity rules and blackout dates; creates a tentative \`SOFT_HOLD\` and notifies the vendor |
+| **Vendor Dashboard** | Next.js dashboard with onboarding, WhatsApp QR pairing, bookings table, visual calendar, knowledge-base editor, and payment settings |
+| **Booking Workflow** | State machine \`INQUIRY\` → \`SOFT_HOLD\` → \`DEPOSIT_PENDING\` (24-hour timer) → \`CONFIRMED\`; \`CANCELLED\` releases the slot |
+| **Dual-Channel Approval** | Vendor can accept or decline from the dashboard or via WhatsApp action buttons, both invoking the same status API |
+| **Deposit Handling** | Client receipt upload with vendor preview and confirmation to lock the booking |
+
+---
+
+## System Architecture
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4 |
+| **Authentication** | Better Auth with Google SSO |
+| **Database** | PostgreSQL (Supabase), Prisma ORM — relational fields with indexed queries plus flexible \`knowledgeBase\` JSON |
+| **Automation** | n8n (self-hosted) orchestrating WhatsApp webhooks, RAG inference, and state transitions |
+| **AI** | Google Gemini via Retrieval-Augmented Generation, grounded to vendor knowledge base |
+| **Messaging** | Evolution API (WhatsApp) with per-vendor QR-paired instance |
+| **Infrastructure** | Docker Compose, Vercel |
+
+---
+
+## Implementation Notes
+
+- Designed a hybrid data model combining indexed relational columns (\`vendorId\`, \`status\`, \`eventDate\`) with a JSON knowledge base to support multiple vendor categories without schema migrations.
+- Implemented capacity checks, blackout-date validation, and guarded state transitions at both the API and UI layers.
+- Delivered dashboard modules for lead prioritisation (Needs Your Response), calendar management, and knowledge-base configuration.
+
+---
+
+## Current Status
+
+Ongoing development. Core application, database schema, RAG pipeline, and dashboard are implemented and under beta testing. Deployment is currently in a local environment with planned migration to VPS post-validation.
+
+`,
+  },
+  {
     modalId: 15,
     title: "MRTQuest",
     date: "2026-05-25",

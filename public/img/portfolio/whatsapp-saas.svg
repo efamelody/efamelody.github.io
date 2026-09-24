@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img">
+  <title>WhatsApp AI Receptionist - High-Level Flow</title>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="100%" stop-color="#FCE7F3"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="100%" stop-color="#EDE9FE"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="100%" stop-color="#FDF2F8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#e05a9a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="520" rx="24" fill="#FFFFFF" stroke="#F9A8D4" stroke-opacity="0.35"/>
+  <!-- header -->
+  <text x="500" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="0.14em" fill="#EC4899">WHATSAPP AI RECEPTIONIST — HIGH-LEVEL FLOW</text>
+  <text x="500" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9CA3AF">Teaser diagram · No infra details · Ongoing project</text>
+
+  <!-- Card 1: Client WhatsApp -->
+  <g filter="url(#shadow)">
+    <rect x="36" y="84" width="280" height="320" rx="22" fill="url(#g1)" stroke="#F9A8D4" stroke-width="1.2"/>
+    <circle cx="74" cy="122" r="22" fill="#FFFFFF" stroke="#F9A8D4" stroke-opacity="0.5"/>
+    <text x="74" y="128" text-anchor="middle" font-size="18">💬</text>
+    <text x="108" y="118" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#831843">Client</text>
+    <text x="108" y="136" font-family="Inter, sans-serif" font-size="11" fill="#BE185D">WhatsApp</text>
+    <line x1="56" y1="156" x2="296" y2="156" stroke="#F9A8D4" stroke-opacity="0.35"/>
+    <text x="56" y="180" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#9D174D">Asks on vendor number:</text>
+    <text x="56" y="200" font-family="Inter, sans-serif" font-size="11" fill="#6B7280">• Rate / package / FAQ</text>
+    <text x="56" y="218" font-family="Inter, sans-serif" font-size="11" fill="#6B7280">• "25 Dec 8am available?"</text>
+    <text x="56" y="236" font-family="Inter, sans-serif" font-size="11" fill="#6B7280">• Uploads receipt (image)</text>
+    <rect x="56" y="256" width="240" height="58" rx="12" fill="#FFFFFF" stroke="#F9A8D4" stroke-opacity="0.3"/>
+    <text x="176" y="276" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="0.06em" fill="#EC4899">CLIENT NEVER LEAVES</text>
+    <text x="176" y="292" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#6B7280">Stays in WhatsApp</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g>
+    <line x1="316" y1="244" x2="368" y2="244" stroke="#EC4899" stroke-width="2" stroke-dasharray="0"/>
+    <polygon points="368,244 358,238 358,250" fill="#EC4899"/>
+    <text x="342" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="0.06em" fill="#EC4899">INBOUND</text>
+  </g>
+
+  <!-- Card 2: AI Receptionist -->
+  <g filter="url(#shadow)">
+    <rect x="380" y="84" width="280" height="320" rx="22" fill="url(#g2)" stroke="#C4B5FD" stroke-width="1.2"/>
+    <circle cx="418" cy="122" r="22" fill="#FFFFFF" stroke="#C4B5FD" stroke-opacity="0.6"/>
+    <text x="418" y="128" text-anchor="middle" font-size="16">✨</text>
+    <text x="452" y="118" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#4C1D95">AI Receptionist</text>
+    <text x="452" y="136" font-family="Inter, sans-serif" font-size="11" fill="#7C3AED">RAG on Knowledge Base</text>
+    <line x1="400" y1="156" x2="640" y2="156" stroke="#C4B5FD" stroke-opacity="0.35"/>
+    <!-- knowledge base pill -->
+    <rect x="400" y="172" width="240" height="70" rx="12" fill="#FFFFFF" stroke="#DDD6FE"/>
+    <text x="520" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="0.07em" fill="#7C3AED">KNOWLEDGE BASE</text>
+    <text x="520" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#6B7280">packages · surcharges · FAQs</text>
+    <text x="520" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" fill="#6B7280">portfolio · blackout dates</text>
+    <text x="400" y="264" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">↳ Answers pricing + travel</text>
+    <text x="400" y="282" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">  fee instantly (BM/EN)</text>
+    <text x="400" y="300" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">↳ Checks capacity & holds slot</text>
+    <text x="400" y="318" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">↳ Creates SOFT_HOLD → notifies</text>
+    <text x="400" y="336" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">  vendor (1-tap)</text>
+    <rect x="400" y="350" width="240" height="28" rx="14" fill="#7C3AED"/>
+    <text x="520" y="368" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="0.06em" fill="#FFFFFF">RAG · GROUNDED · NO HALLUCINATION</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g>
+    <line x1="660" y1="244" x2="712" y2="244" stroke="#7C3AED" stroke-width="2"/>
+    <polygon points="712,244 702,238 702,250" fill="#7C3AED"/>
+    <text x="686" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="0.06em" fill="#7C3AED">1-TAP</text>
+  </g>
+
+  <!-- Card 3: Vendor Dashboard -->
+  <g filter="url(#shadow)">
+    <rect x="724" y="84" width="240" height="320" rx="22" fill="url(#g3)" stroke="#F9A8D4" stroke-width="1.2"/>
+    <circle cx="762" cy="122" r="22" fill="#FFFFFF" stroke="#F9A8D4" stroke-opacity="0.5"/>
+    <text x="762" y="128" text-anchor="middle" font-size="16">📊</text>
+    <text x="792" y="118" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#831843">Vendor</text>
+    <text x="792" y="136" font-family="Inter, sans-serif" font-size="11" fill="#BE185D">Dashboard</text>
+    <line x1="744" y1="156" x2="944" y2="156" stroke="#F9A8D4" stroke-opacity="0.35"/>
+    <text x="744" y="180" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">• Needs Response banner</text>
+    <text x="744" y="198" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">• Accept → bank/QR + 24h</text>
+    <text x="744" y="216" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">• Decline → reason + alts</text>
+    <text x="744" y="234" font-family="Inter, sans-serif" font-size="11" fill="#4B5563">• Calendar + revenue</text>
+    <rect x="744" y="254" width="200" height="54" rx="12" fill="#FFFFFF" stroke="#F9A8D4" stroke-opacity="0.3"/>
+    <text x="844" y="272" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="0.06em" fill="#EC4899">STATE MACHINE</text>
+    <text x="844" y="288" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" fill="#6B7280">SOFT_HOLD → DEPOSIT →</text>
+    <text x="844" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" fill="#6B7280">CONFIRMED / CANCELLED</text>
+    <rect x="764" y="328" width="160" height="24" rx="12" fill="#FDF2F8" stroke="#F9A8D4" stroke-opacity="0.4"/>
+    <text x="844" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="0.06em" fill="#BE185D">ZERO ADOPTION FRICTION</text>
+  </g>
+
+  <!-- Return arrow (bottom) -->
+  <g>
+    <path d="M 844 424 C 844 464, 520 464, 520 424" fill="none" stroke="#9CA3AF" stroke-width="1.4" stroke-dasharray="7 6" stroke-linecap="round"/>
+    <polygon points="520,424 526,434 514,434" fill="#9CA3AF" transform="rotate(-90 520 424)"/>
+    <text x="520" y="484" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#6B7280">Vendor decision → client gets update in WhatsApp</text>
+    <text x="520" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#9CA3AF">Dual-channel: Dashboard or WhatsApp buttons (same outcome)</text>
+  </g>
+</svg>
