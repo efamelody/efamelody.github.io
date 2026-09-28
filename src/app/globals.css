@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #fff0f6;
-  --foreground: #3b1f3d;
-  --card: #ffffff;
-  --card-foreground: #3b1f3d;
-  --muted: #fce7f3;
-  --muted-foreground: #b07aad;
-  --border: rgba(224, 90, 154, 0.18);
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -29,4 +19,42 @@
   .word-spacing {
     word-spacing: 0.25em;
   }
+}
+
+/* Ensure prose styles work with our color scheme */
+.prose {
+  --tw-prose-body: #3b1f3d;
+  --tw-prose-headings: #3b1f3d;
+  --tw-prose-links: #db2777;
+  --tw-prose-bold: #500724;
+  --tw-prose-code: #be185d;
+  --tw-prose-quotes: #831843;
+  --tw-prose-quote-borders: #f9a8d4;
+  --tw-prose-hr: #f9a8d4;
+  --tw-prose-th-borders: #f9a8d4;
+  --tw-prose-td-borders: #fce7f3;
+  --tw-prose-counter: #be185d;
+  --tw-prose-bullets: #f472b6;
+}
+
+.prose-sm {
+  font-size: 0.875rem;
+  line-height: 1.7142857;
+}
+
+.prose-sm p {
+  margin-top: 0.7142857em;
+  margin-bottom: 0.7142857em;
+}
+
+.prose-sm h2 {
+  font-size: 1.1428571em;
+  margin-top: 1.7142857em;
+  margin-bottom: 0.5714286em;
+}
+
+.prose-sm h3 {
+  font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 }

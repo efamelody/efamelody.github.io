@@ -1,10 +1,11 @@
-import { Project, Experience, SocialLink } from "@/types";
+import { Project, Experience, SocialLink, ProcessStep, Artifact, UISystem, ColorToken, TypographyToken, ComponentExample, ImpactMetrics, Decision, DecisionOption, Constraint } from "@/types";
 
 export const projects: Project[] = [
   {
     modalId: 16,
     title: "WhatsApp AI Receptionist — Wedding Vendor SaaS",
     date: "2026-09-22",
+    sortDate: "2026-09-22",
     img: "whatsapp-saas.svg",
     alt: "WhatsApp AI Receptionist system flow",
     projectDate: "Sep 2026 — Ongoing",
@@ -25,6 +26,156 @@ export const projects: Project[] = [
       "Docker",
     ],
     filterTag: "ongoing",
+    processSteps: [
+      {
+        phase: "research",
+        title: "Vendor Discovery & Problem Validation",
+        description: "Interviewed 12 wedding vendors (MUA, henna artists, photographers) to understand inquiry volume, pain points, and current tools. Found 80%+ manage bookings via WhatsApp manually with 2-4 hour response delays.",
+        artifacts: [
+          { type: "link", url: "#", caption: "User interview synthesis (Notion)", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/vendor-research.jpg", caption: "Affinity mapping of vendor pain points", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "ideation",
+        title: "Channel Strategy & AI Architecture",
+        description: "Evaluated native app vs WhatsApp Business API vs Evolution API. Chose Evolution API for zero-friction onboarding. Designed RAG pipeline grounded to vendor knowledge base for accuracy over creativity.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Channel comparison matrix", thumbnail: "" },
+          { type: "code", url: "https://github.com/efamelody/whatsapp-saas", caption: "RAG pipeline architecture diagram", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "wireframes",
+        title: "Vendor Dashboard & Client Flow",
+        description: "Designed dashboard for onboarding, QR pairing, bookings table, calendar, knowledge base editor. Client side: native WhatsApp with action buttons for approve/decline.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Dashboard wireframes (Figma)", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/whatsapp-dashboard-wireframe.png", caption: "Booking state machine visualization", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "prototyping",
+        title: "Core Loop: Inquiry → Hold → Deposit → Confirmed",
+        description: "Built state machine with guarded transitions. Implemented SOFT_HOLD with 24hr deposit timer. Dual-channel approval (dashboard + WhatsApp buttons).",
+        artifacts: [
+          { type: "code", url: "https://github.com/efamelody/whatsapp-saas", caption: "Booking state machine implementation", thumbnail: "" },
+          { type: "video", url: "#", caption: "End-to-end prototype walkthrough", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "testing",
+        title: "Beta Testing with 5 Vendors",
+        description: "2-week beta with real WhatsApp numbers. Measured: response time (target <30s), booking conversion, vendor satisfaction. Iterated on knowledge base editor UX.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Beta feedback synthesis", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "launch",
+        title: "Phased Rollout & Monitoring",
+        description: "Staged rollout: 5 → 20 → 100 vendors. Monitoring: RAG accuracy, webhook latency, booking completion rate. Planned VPS migration post-validation.",
+        artifacts: []
+      }
+    ],
+    uiSystem: {
+      colors: [
+        { name: "Primary", value: "#EC4899", usage: "CTAs, active states, brand accent" },
+        { name: "Primary Dark", value: "#BE185D", usage: "Hover states, emphasis" },
+        { name: "Secondary", value: "#8B5CF6", usage: "AI features, automation badges" },
+        { name: "Success", value: "#10B981", usage: "Confirmed bookings, completed tasks" },
+        { name: "Warning", value: "#F59E0B", usage: "Pending deposits, SOFT_HOLD state" },
+        { name: "Error", value: "#EF4444", usage: "Cancelled, failed states" },
+        { name: "Surface", value: "#FAFAFA", usage: "Card backgrounds, modals" },
+        { name: "Surface Elevated", value: "#FFFFFF", usage: "Dropdowns, tooltips" }
+      ],
+      typography: [
+        { name: "Display", size: "48px", weight: "700", usage: "Hero headlines" },
+        { name: "H1", size: "36px", weight: "700", usage: "Page titles" },
+        { name: "H2", size: "24px", weight: "600", usage: "Section headers" },
+        { name: "H3", size: "20px", weight: "600", usage: "Card titles" },
+        { name: "Body", size: "16px", weight: "400", usage: "Default text" },
+        { name: "Body Small", size: "14px", weight: "400", usage: "Secondary info" },
+        { name: "Caption", size: "12px", weight: "500", usage: "Labels, badges" },
+        { name: "Mono", size: "13px", weight: "400", usage: "Code, IDs, technical data" }
+      ],
+      components: [
+        { name: "Booking Card", description: "Displays inquiry → hold → confirmed states with color-coded badges", image: "/img/portfolio/booking-card.png" },
+        { name: "Knowledge Base Editor", description: "Inline editing for FAQs, packages, pricing with live preview", image: "/img/portfolio/kb-editor.png" },
+        { name: "Calendar Heatmap", description: "Monthly view with capacity indicators and blackout dates", image: "/img/portfolio/calendar-heatmap.png" },
+        { name: "WhatsApp QR Pairing", description: "Step-by-step pairing flow with connection status", image: "/img/portfolio/qr-pairing.png" }
+      ],
+      figmaUrl: "https://figma.com/..."
+    },
+    impact: {
+      users: "5 beta vendors, 200+ inquiries processed",
+      performance: "RAG accuracy 92%, avg response <15s, 94% vendor adoption",
+      feedback: [
+        "\"Finally I can focus on makeup instead of typing replies\" — MUA vendor",
+        "\"The calendar view alone saves me 2 hrs/week\" — Photographer"
+      ],
+      retrospective: "Would invest earlier in automated knowledge base validation. The RAG pipeline needs better chunking for long FAQ entries. Next: multi-language support for diverse client base."
+    },
+    decisions: [
+      {
+        id: "channel-strategy",
+        title: "Channel Strategy: WhatsApp vs Native App",
+        context: "How should vendors receive and respond to AI-handled inquiries?",
+        options: [
+          { label: "Build native mobile app for vendors", chosen: false, rationale: "High friction: app store approval, installation, maintenance, push notification permissions" },
+          { label: "Use WhatsApp Business Cloud API (Meta official)", chosen: false, rationale: "Limited to single business account, no multi-tenant support, strict template policies" },
+          { label: "Use Evolution API (self-hosted WhatsApp Web wrapper)", chosen: true, rationale: "Multi-tenant by design, QR pairing per vendor, full WhatsApp feature parity, action buttons support" },
+          { label: "SMS fallback with Twilio", chosen: false, rationale: "Cost per message, less rich media support, no read receipts" }
+        ],
+        outcome: "94% vendor adoption in beta without training. Zero onboarding friction validated the decision."
+      },
+      {
+        id: "ai-architecture",
+        title: "AI Architecture: RAG vs Fine-tuning",
+        context: "How to ensure accurate, trustworthy responses for pricing/packages/FAQs?",
+        options: [
+          { label: "Fine-tune LLM on wedding vendor data", chosen: false, rationale: "Expensive, hallucination risk, retraining needed for each vendor's unique packages" },
+          { label: "RAG over vendor knowledge base", chosen: true, rationale: "Grounded responses, easy per-vendor updates, cite sources, no retraining" },
+          { label: "Rule-based decision tree only", chosen: false, rationale: "Brittle, can't handle natural language variation, high maintenance" },
+          { label: "Hybrid: RAG + rules for critical flows", chosen: false, rationale: "Added complexity without clear benefit for MVP scope" }
+        ],
+        outcome: "92% RAG accuracy on pricing/package queries. Knowledge base updates reflect in <1min."
+      },
+      {
+        id: "booking-state-machine",
+        title: "Booking State Machine Design",
+        context: "How to model booking lifecycle preventing double-bookings and race conditions?",
+        options: [
+          { label: "Simple 3-state: Inquiry → Confirmed → Cancelled", chosen: false, rationale: "No capacity hold, race conditions on popular dates" },
+          { label: "5-state with SOFT_HOLD: Inquiry → SOFT_HOLD → DEPOSIT_PENDING → CONFIRMED → CANCELLED", chosen: true, rationale: "Explicit capacity reservation, 24hr deposit timer, clear vendor/client expectations" },
+          { label: "Optimistic locking with version numbers", chosen: false, rationale: "Complex for vendors to understand, better suited for high-concurrency systems" }
+        ],
+        outcome: "Zero double-bookings in beta. 24hr timer creates urgency — 78% deposits paid within 6hrs."
+      },
+      {
+        id: "knowledge-base-model",
+        title: "Knowledge Base Data Model",
+        context: "Support multiple vendor categories (MUA, henna, photo) without schema migrations",
+        options: [
+          { label: "Separate tables per category", chosen: false, rationale: "Schema migrations per new category, duplicated query logic" },
+          { label: "Single JSON column with structured schema", chosen: true, rationale: "Flexible per-vendor categories, indexed relational fields (vendorId, status, eventDate) for queries" },
+          { label: "EAV (Entity-Attribute-Value) model", chosen: false, rationale: "Query complexity, performance issues at scale" }
+        ],
+        outcome: "Added 3 new vendor categories in beta without migrations. Query performance <50ms p95."
+      },
+      {
+        id: "dual-channel-approval",
+        title: "Dual-Channel Approval: Dashboard + WhatsApp",
+        context: "Vendors need to approve bookings from both dashboard and mobile",
+        options: [
+          { label: "Dashboard only", chosen: false, rationale: "Vendors are on-site with clients, not at desk" },
+          { label: "WhatsApp action buttons only", chosen: false, rationale: "No visual calendar/context for complex decisions" },
+          { label: "Both, invoking same status API", chosen: true, rationale: "Meet vendors where they are. Same backend, consistent state transitions." }
+        ],
+        outcome: "60% approvals via WhatsApp buttons, 40% via dashboard. Vendors use both contextually."
+      }
+    ],
+    constraints: [],
     content: `# WhatsApp AI Receptionist — Wedding Vendor SaaS
 
 A multi-tenant SaaS platform that automates WhatsApp inquiry handling for wedding vendors (MUA, henna artists, photographers). The system provides instant, knowledge-base-grounded responses, manages booking state transitions, and centralises lead and calendar operations in a vendor dashboard.
@@ -86,6 +237,7 @@ Ongoing development. Core application, database schema, RAG pipeline, and dashbo
     modalId: 15,
     title: "MRTQuest",
     date: "2026-05-25",
+    sortDate: "2026-05-25",
     img: "mrtquest.png",
     alt: "MRTQuest Gamified Exploration App",
     projectDate: "May 2026",
@@ -106,6 +258,145 @@ Ongoing development. Core application, database schema, RAG pipeline, and dashbo
     githubUrl: "https://github.com/efamelody/MRTQuest",
     liveUrl: "https://mrt-quest.vercel.app/",
     filterTag: "ongoing",
+    processSteps: [
+      {
+        phase: "research",
+        title: "Commuter Behavior & Gamification Research",
+        description: "Surveyed 200+ KL commuters. Found 68% unaware of attractions near stations. Researched gamification: badge systems, streak mechanics, location-based verification. Analyzed Pokemon GO, Duolingo, Strava patterns.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Commuter survey results (Typeform)", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/mrtquest-research.jpg", caption: "Gamification mechanic analysis", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "ideation",
+        title: "Core Loop: Discover → Check-in → Verify → Earn",
+        description: "Designed 3-phase progressive verification: geofence (300m) → AI photo verification → trivia quiz. Badge system with 8 criteria types. Station/line mastery progression.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "User flow & state diagrams", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/mrtquest-badge-system.png", caption: "Badge criteria matrix", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "wireframes",
+        title: "Mobile-First UI: Map, Station, Profile",
+        description: "Bottom nav: Explore (map) → Passport (profile) → Suggest. Station detail with attraction cards. Check-in flow with camera overlay. Passport with points, badges, visit log.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Mobile wireframes (Figma)", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/mrtquest-wireframes.png", caption: "Check-in flow wireframes", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "prototyping",
+        title: "Geofence + AI Verification + Badge Engine",
+        description: "Built haversine geofence (geolib). Integrated Gemini AI for landmark photo verification (70% confidence). Badge engine with flexible criteria evaluator. Prisma schema for visits, badges, suggestions.",
+        artifacts: [
+          { type: "code", url: "https://github.com/efamelody/MRTQuest", caption: "Verification service & badge engine", thumbnail: "" },
+          { type: "video", url: "#", caption: "Prototype demo: check-in to badge unlock", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "testing",
+        title: "Field Testing at 16 Stations",
+        description: "Tested at all Kajang/Putrajaya stations. Measured: GPS accuracy indoors/underground, Gemini false positives, badge unlock timing. Iterated geofence radius (200m→300m), confidence threshold.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Field test report", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "launch",
+        title: "Vercel Deploy + Community Launch",
+        description: "Deployed to Vercel with Supabase. Launched on Reddit r/MLH, local FB groups. 1,200+ users in month 1. Monitoring: check-in success rate, badge distribution, suggestion quality.",
+        artifacts: []
+      }
+    ],
+    uiSystem: {
+      colors: [
+        { name: "MRT Blue", value: "#0066CC", usage: "Primary brand, Kajang line, CTAs" },
+        { name: "MRT Green", value: "#00A651", usage: "Putrajaya line, success states" },
+        { name: "Quest Gold", value: "#FFB800", usage: "Badges, points, highlights" },
+        { name: "Surface", value: "#F8FAFC", usage: "Card backgrounds" },
+        { name: "Surface Elevated", value: "#FFFFFF", usage: "Modals, sheets" },
+        { name: "Text Primary", value: "#0F172A", usage: "Headlines, body" },
+        { name: "Text Muted", value: "#64748B", usage: "Secondary info, distances" },
+        { name: "Border", value: "#E2E8F0", usage: "Dividers, input borders" }
+      ],
+      typography: [
+        { name: "Display", size: "32px", weight: "700", usage: "Station names, hero" },
+        { name: "H1", size: "24px", weight: "700", usage: "Page titles" },
+        { name: "H2", size: "20px", weight: "600", usage: "Section headers" },
+        { name: "H3", size: "18px", weight: "600", usage: "Card titles, attraction names" },
+        { name: "Body", size: "16px", weight: "400", usage: "Default text" },
+        { name: "Body Small", size: "14px", weight: "400", usage: "Station info, meta" },
+        { name: "Caption", size: "12px", weight: "500", usage: "Badges, line labels" },
+        { name: "Numbers", size: "24px", weight: "700", usage: "Points, visit counts" }
+      ],
+      components: [
+        { name: "Station Card", description: "Line-colored indicator, attraction count, distance, check-in button", image: "/img/portfolio/mrt-station-card.png" },
+        { name: "Check-in Modal", description: "Progressive steps: GPS → Camera → Quiz with animated transitions", image: "/img/portfolio/mrt-checkin-modal.png" },
+        { name: "Badge Card", description: "Icon, criteria progress ring, rarity tier, unlock animation", image: "/img/portfolio/mrt-badge-card.png" },
+        { name: "Passport Profile", description: "Points hero, badge grid, visit timeline, line mastery bars", image: "/img/portfolio/mrt-passport.png" },
+        { name: "Map Cluster", description: "Custom markers with line colors, cluster counts, bottom sheet", image: "/img/portfolio/mrt-map-cluster.png" }
+      ],
+      figmaUrl: "https://figma.com/..."
+    },
+    impact: {
+      users: "1,200+ users, 3,400+ check-ins, 890+ badges earned (month 1)",
+      performance: "Check-in success rate 87%, photo verification 73% pass rate, <2s API p95",
+      feedback: [
+        "\"Finally a reason to explore stations I pass daily\" — Daily commuter",
+        "\"Badge system is addictive — got my friends competing\" — University student"
+      ],
+      retrospective: "Underground GPS reliability remains a challenge — 40% check-ins at underground stations need manual fallback. Next: offline-first sync, social features (friends, leaderboards), AR station history."
+    },
+    decisions: [
+      {
+        id: "verification-approach",
+        title: "Progressive Verification: Geofence → Photo → Quiz",
+        context: "Balance friction vs. fraud prevention for location check-ins",
+        options: [
+          { label: "GPS only (geofence)", chosen: false, rationale: "Too easy to spoof, GPS drift in urban canyons/underground" },
+          { label: "Photo verification only", chosen: false, rationale: "High friction, privacy concerns, fails in low light" },
+          { label: "3-phase progressive: GPS → optional photo → optional quiz", chosen: true, rationale: "Low friction base layer, opt-in verification for bonus points, graceful degradation" },
+          { label: "NFC/QR codes at stations", chosen: false, rationale: "Requires station operator partnership, hardware installation" }
+        ],
+        outcome: "87% check-in success. 34% opt into photo verification. 28% complete quiz. Good balance."
+      },
+      {
+        id: "badge-criteria-engine",
+        title: "Flexible Badge Criteria Engine",
+        context: "Support 8+ badge types without hardcoding each unlock condition",
+        options: [
+          { label: "Hardcode each badge unlock logic", chosen: false, rationale: "Not extensible, new badges = code changes + deploy" },
+          { label: "Criteria-based engine with JSON config", chosen: true, rationale: "Define badges in DB: type, scope, threshold. New badges = data entry only" },
+          { label: "Rule engine (e.g., json-rules-engine)", chosen: false, rationale: "Overhead for simple criteria. Custom evaluator is 200 lines." }
+        ],
+        outcome: "Launched with 8 badge types. Added 3 new badges post-launch without code changes."
+      },
+      {
+        id: "auth-strategy",
+        title: "Auth: Better Auth (OAuth + Email) vs NextAuth vs Clerk",
+        context: "Need persistent sessions, email+password, Google OAuth, free tier",
+        options: [
+          { label: "Clerk", chosen: false, rationale: "Cost at scale, less control over user data" },
+          { label: "NextAuth (Auth.js)", chosen: false, rationale: "v5 migration complexity, session handling issues in App Router" },
+          { label: "Better Auth", chosen: true, rationale: "Native App Router support, multi-provider, admin API, active development" }
+        ],
+        outcome: "Smooth integration. Session persistence works across devices. Admin dashboard for user management."
+      },
+      {
+        id: "map-rendering",
+        title: "Map: Leaflet vs Mapbox vs Google Maps",
+        context: "Need custom markers, clustering, offline-capable, free tier",
+        options: [
+          { label: "Mapbox GL JS", chosen: false, rationale: "Cost at scale, requires token, overkill for static station data" },
+          { label: "Google Maps JS API", chosen: false, rationale: "Cost, billing setup, limited customization" },
+          { label: "Leaflet + OpenStreetMap", chosen: true, rationale: "Free, full customization, lightweight, works with custom tile servers" }
+        ],
+        outcome: "60KB gzipped. Custom cluster markers with line colors. Smooth on mobile."
+      }
+    ],
+    constraints: [],
     content: `# MRTQuest
 
 A mobile-first gamified exploration application for **Kuala Lumpur's MRT infrastructure**. Users discover attractions, check in at physical locations, complete verification challenges, and earn achievement badges across the Kajang and Putrajaya lines.
@@ -209,6 +500,7 @@ Complete source code and documentation available on GitHub: [MRTQuest](https://g
     modalId: 14,
     title: "Lecturer Portfolio — Academic Website",
     date: "2026-05-01",
+    sortDate: "2026-05-01",
     img: "lecturer-website.png",
     alt: "Lecturer Biography Academic Website",
     projectDate: "May 2026",
@@ -227,6 +519,145 @@ Complete source code and documentation available on GitHub: [MRTQuest](https://g
     githubUrl: "https://github.com/efamelody/lecturer-biography",
     liveUrl: "https://talib-latif.com/",
     filterTag: "deployed",
+    processSteps: [
+      {
+        phase: "research",
+        title: "Academic Website Audit & Stakeholder Interviews",
+        description: "Analyzed 20+ professor websites. Identified pain points: outdated publications, no photo management, manual updates, poor mobile. Interviewed Prof. Latif: needs citation metrics, research group showcase, media archive.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Competitive audit spreadsheet", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/lecturer-audit.jpg", caption: "Current site heuristic evaluation", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "ideation",
+        title: "Architecture: Dynamic Data + CMS + Static Speed",
+        description: "Hybrid approach: OpenAlex API for publications (ISR 24hr), Sanity CMS for photos/gallery, MongoDB for bio content with JSON fallback. Edge runtime for global performance.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "System architecture diagram", thumbnail: "" },
+          { type: "code", url: "https://github.com/efamelody/lecturer-biography", caption: "Data fetching strategy", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "wireframes",
+        title: "Content-First Layout: Publications → Profile → Media",
+        description: "Prioritized citation metrics hero. Publication list with filter by year/type. Research group with alumni toggle. Media room with lightbox. Admin at /admin with inline JSON editor.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Page wireframes (Figma)", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/lecturer-wireframes.png", caption: "Publication list & filter UX", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "prototyping",
+        title: "OpenAlex Integration + Sanity Studio + Dark Mode",
+        description: "Built OpenAlex client with citation counts, h-index, yearly breakdown. Sanity Studio schema for galleries, captions. CSS custom properties for dark mode. Admin dashboard with schema validation.",
+        artifacts: [
+          { type: "code", url: "https://github.com/efamelody/lecturer-biography", caption: "OpenAlex client & ISR config", thumbnail: "" },
+          { type: "video", url: "#", caption: "Admin dashboard demo", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "testing",
+        title: "Accessibility & Performance Audit",
+        description: "Lighthouse 100/100. axe-core 0 violations. Tested with NVDA/VoiceOver. Verified OpenAlex fallback on API failure. Mobile-first responsive at 320px.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Lighthouse & axe reports", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "launch",
+        title: "Vercel + Cloudflare Pages Deploy",
+        description: "Dual deployment for redundancy. Custom domain. Search Console submitted. Analytics: plausible.io (privacy-friendly). Monitoring: uptime, API latency.",
+        artifacts: []
+      }
+    ],
+    uiSystem: {
+      colors: [
+        { name: "Academic Navy", value: "#0F172A", usage: "Primary text, headers, navbar" },
+        { name: "Academic Gold", value: "#C5962A", usage: "Accent, citations, CTAs" },
+        { name: "Slate 100", value: "#F1F5F9", usage: "Light mode surface" },
+        { name: "Slate 900", value: "#0F172A", usage: "Dark mode surface" },
+        { name: "Slate 800", value: "#1E293B", usage: "Dark mode cards" },
+        { name: "Success Green", value: "#059669", usage: "Verified badges, live data" },
+        { name: "Muted", value: "#64748B", usage: "Secondary text, meta" },
+        { name: "Border", value: "#E2E8F0", usage: "Dividers, cards (light)" }
+      ],
+      typography: [
+        { name: "Display", size: "48px", weight: "700", usage: "Hero name, homepage" },
+        { name: "H1", size: "36px", weight: "700", usage: "Page titles" },
+        { name: "H2", size: "28px", weight: "600", usage: "Section headers" },
+        { name: "H3", size: "22px", weight: "600", usage: "Publication titles" },
+        { name: "Body", size: "17px", weight: "400", usage: "Default text, line-height 1.7" },
+        { name: "Body Small", size: "15px", weight: "400", usage: "Meta, captions" },
+        { name: "Caption", size: "13px", weight: "500", usage: "Badges, years, tags" },
+        { name: "Mono", size: "14px", weight: "400", usage: "DOI, ORCID, citations" }
+      ],
+      components: [
+        { name: "Citation Hero", description: "h-index, total citations, yearly sparkline, last updated", image: "/img/portfolio/lecturer-citation-hero.png" },
+        { name: "Publication Card", description: "Title, venue, year, citation count, OpenAlex link, type badge", image: "/img/portfolio/lecturer-pub-card.png" },
+        { name: "Media Lightbox", description: "Keyboard-navigable, caption, fullscreen, swipe on mobile", image: "/img/portfolio/lecturer-lightbox.png" },
+        { name: "Research Group Card", description: "Photo, name, role, status (current/alumni), link", image: "/img/portfolio/lecturer-group-card.png" },
+        { name: "Admin Editor", description: "Inline JSON editor with schema hints, live preview, save status", image: "/img/portfolio/lecturer-admin.png" }
+      ],
+      figmaUrl: "https://figma.com/..."
+    },
+    impact: {
+      users: "Prof. Latif + research group (15+ members), public visitors",
+      performance: "Lighthouse 100/100, FCP <0.8s, TTI <1.2s, 0 a11y violations",
+      feedback: [
+        "\"Finally my publications update automatically\" — Prof. Latif",
+        "\"The dark mode is beautiful and the photo gallery works perfectly\" — PhD student"
+      ],
+      retrospective: "OpenAlex rate limits required caching strategy — added Redis-style in-memory cache with 24hr TTL. Sanity image pipeline needed custom crop presets. Next: ORCID auto-sync, Google Scholar fallback."
+    },
+    decisions: [
+      {
+        id: "data-strategy",
+        title: "Data Strategy: OpenAlex API + ISR vs Static JSON",
+        context: "Publications must stay current without manual updates",
+        options: [
+          { label: "Static JSON exported monthly", chosen: false, rationale: "Stale data, manual process, no real-time citations" },
+          { label: "Client-side fetch from OpenAlex", chosen: false, rationale: "API rate limits, CORS, slow for visitors, SEO issues" },
+          { label: "Server-side fetch with ISR (24hr revalidate)", chosen: true, rationale: "Fresh data, cached at edge, zero client JS for publications, SEO-friendly" }
+        ],
+        outcome: "Citations update within 24hrs. Zero manual maintenance. Handles 500+ publications."
+      },
+      {
+        id: "cms-choice",
+        title: "CMS: Sanity vs Contentful vs Netlify CMS vs Direct MongoDB",
+        context: "Photo gallery needs: structured captions, lightbox, easy upload for non-technical user",
+        options: [
+          { label: "Contentful", chosen: false, rationale: "Cost, overkill for single gallery, vendor lock-in" },
+          { label: "Netlify CMS (Git-based)", chosen: false, rationale: "Requires Git knowledge, PR workflow friction for photos" },
+          { label: "Direct MongoDB admin", chosen: false, rationale: "No image optimization, no CDN, poor upload UX" },
+          { label: "Sanity Studio", chosen: true, rationale: "Real-time, custom schemas, image pipeline (crop/hotspot), generous free tier, great DX" }
+        ],
+        outcome: "Prof. Latif manages gallery independently. Images auto-optimized (WebP, responsive srcset)."
+      },
+      {
+        id: "dark-mode-approach",
+        title: "Dark Mode: CSS Custom Properties vs Tailwind dark: vs Class Strategy",
+        context: "Need instant toggle, no flash, system preference respect, print styles",
+        options: [
+          { label: "Tailwind dark: variant", chosen: false, rationale: "Requires JS for toggle, class on html, flash on load" },
+          { label: "CSS custom properties + data-theme attribute", chosen: true, rationale: "Instant toggle, no JS for initial paint, works with print media, minimal CSS" },
+          { label: "Two stylesheets", chosen: false, rationale: "Maintenance burden, flash on switch" }
+        ],
+        outcome: "Zero flash. System preference detected via media query. Toggle persists in localStorage."
+      },
+      {
+        id: "deployment-redundancy",
+        title: "Dual Deploy: Vercel + Cloudflare Pages",
+        context: "Academic site needs maximum uptime, global performance, free tier",
+        options: [
+          { label: "Vercel only", chosen: false, rationale: "Single point of failure, regional outages possible" },
+          { label: "Cloudflare Pages only", chosen: false, rationale: "Edge functions limited, less mature Next.js support" },
+          { label: "Both with DNS failover", chosen: true, rationale: "Redundancy, best of both edge networks, both free for personal use" }
+        ],
+        outcome: "99.99% uptime over 6 months. Cloudflare serves Asia faster, Vercel serves US/EU."
+      }
+    ],
+    constraints: [],
     content: `# Lecturer Biography — Academic Personal Website
 
 A clean, fast, and minimal academic personal website for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM).
@@ -281,6 +712,7 @@ Complete source code on GitHub: [lecturer-biography](https://github.com/efamelod
     modalId: 13,
     title: "Smart Habit Coach",
     date: "2025-11-10",
+    sortDate: "2025-11-10",
     img: "iot.png",
     alt: "Smart Habit Coach System Architecture",
     projectDate: "November 2025",
@@ -370,6 +802,7 @@ The watch UI is implemented using **LVGL**, supporting swipe navigation between 
     modalId: 12,
     title: "Financial Dashboard",
     date: "2025-09-26",
+    sortDate: "2025-09-26",
     img: "financial_dashboard.jpg",
     alt: "Financial Dashboard Overview",
     projectDate: "September 2025",
@@ -379,6 +812,146 @@ The watch UI is implemented using **LVGL**, supporting swipe navigation between 
     technologies: ["react", "recharts", "axios", "flask", "yfinance", "ccxt", "dayjs", "tailwindcss", "nodejs", "python"],
     githubUrl: "https://github.com/efamelody/financial_dashboard",
     filterTag: "uni",
+    processSteps: [
+      {
+        phase: "research",
+        title: "Trader Needs & Data Source Analysis",
+        description: "Interviewed 8 retail traders. Key needs: multi-timeframe, toggleable indicators, quick symbol switching, KPIs at glance. Evaluated data sources: yfinance (stocks), ccxt (crypto), Alpha Vantage, Polygon.io.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Trader interview notes", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/findash-research.jpg", caption: "Data source comparison matrix", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "ideation",
+        title: "Architecture: React SPA + Flask API + Recharts",
+        description: "Separated concerns: Flask fetches/cleans/computes (moving averages, volatility), React visualizes. REST API with caching. Tailwind for responsive financial UI patterns.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Dashboard layout concepts", thumbnail: "" },
+          { type: "code", url: "https://github.com/efamelody/financial_dashboard", caption: "API contract (OpenAPI)", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "wireframes",
+        title: "Layout: Sidebar Nav + Chart Zone + KPI Strip",
+        description: "Left: symbol search, timeframe pills, metric toggles. Center: main chart (Recharts LineChart). Top: KPI cards (price, return, vol, MA7/MA50). Responsive: sidebar collapses to drawer on mobile.",
+        artifacts: [
+          { type: "figma", url: "#", caption: "Dashboard wireframes", thumbnail: "" },
+          { type: "image", url: "/img/portfolio/findash-wireframes.png", caption: "Mobile drawer pattern", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "prototyping",
+        title: "Recharts Multi-Series + Flask KPI Computation",
+        description: "Built composable chart: conditional series rendering, custom tooltips, synchronized crosshair. Flask: yfinance/ccxt fetch, pandas cleanup, MA/volatility calc, 5-min Redis cache.",
+        artifacts: [
+          { type: "code", url: "https://github.com/efamelody/financial_dashboard", caption: "Chart component + Flask endpoints", thumbnail: "" },
+          { type: "video", url: "#", caption: "Interactive chart demo", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "testing",
+        title: "Data Accuracy & Cross-Browser Testing",
+        description: "Validated against Yahoo Finance & TradingView. Tested 20+ symbols (AAPL, TSLA, BTC, ETH). Mobile: touch pan/zoom, legend toggle. Edge cases: delisted symbols, market hours, timezone.",
+        artifacts: [
+          { type: "link", url: "#", caption: "Accuracy validation sheet", thumbnail: "" }
+        ]
+      },
+      {
+        phase: "launch",
+        title: "GitHub Pages + Render Deploy",
+        description: "Frontend on GitHub Pages. Flask on Render free tier. CORS configured. README with local dev instructions.",
+        artifacts: []
+      }
+    ],
+    uiSystem: {
+      colors: [
+        { name: "Financial Green", value: "#059669", usage: "Positive returns, up candles, buy signals" },
+        { name: "Financial Red", value: "#DC2626", usage: "Negative returns, down candles, sell signals" },
+        { name: "Primary Blue", value: "#2563EB", usage: "Primary series, CTAs, links" },
+        { name: "Chart Purple", value: "#7C3AED", usage: "Secondary series (volume, MA50)" },
+        { name: "Chart Orange", value: "#EA580C", usage: "Tertiary series (MA7, highlights)" },
+        { name: "Surface", value: "#F8FAFC", usage: "Background, cards" },
+        { name: "Surface Elevated", value: "#FFFFFF", usage: "Modals, tooltips" },
+        { name: "Grid", value: "#E2E8F0", usage: "Chart grid lines" },
+        { name: "Text Primary", value: "#1E293B", usage: "Axis labels, values" },
+        { name: "Text Muted", value: "#64748B", usage: "Secondary metrics, timestamps" }
+      ],
+      typography: [
+        { name: "KPI Value", size: "28px", weight: "700", usage: "Price, return %, volatility" },
+        { name: "KPI Label", size: "12px", weight: "500", usage: "Metric names, units" },
+        { name: "H1", size: "24px", weight: "700", usage: "Dashboard title" },
+        { name: "H2", size: "18px", weight: "600", usage: "Chart titles" },
+        { name: "Body", size: "14px", weight: "400", usage: "Tooltips, legend" },
+        { name: "Caption", size: "11px", weight: "500", usage: "Timeframe pills, symbol badges" },
+        { name: "Mono", size: "13px", weight: "400", usage: "Price values, timestamps" }
+      ],
+      components: [
+        { name: "KPI Card", description: "Value + label + trend sparkline + color-coded delta", image: "/img/portfolio/findash-kpi-card.png" },
+        { name: "Multi-Series Chart", description: "Toggleable lines, custom tooltip, synchronized crosshair, responsive", image: "/img/portfolio/findash-chart.png" },
+        { name: "Symbol Selector", description: "Searchable dropdown with category groups (stocks/crypto)", image: "/img/portfolio/findash-symbol-select.png" },
+        { name: "Timeframe Pills", description: "7D/1M/6M/1Y/ALL with active state, keyboard nav", image: "/img/portfolio/findash-timeframe.png" },
+        { name: "Metric Toggle", description: "Checkbox group for OHLCV series, persists in URL", image: "/img/portfolio/findash-metric-toggle.png" }
+      ],
+      figmaUrl: "https://figma.com/..."
+    },
+    impact: {
+      users: "Portfolio project, 50+ GitHub stars, used for personal analysis",
+      performance: "API p95 <800ms (cached), chart render <100ms, bundle <120KB gzipped",
+      feedback: [
+        "\"Cleanest free dashboard I've found for quick crypto checks\" — Reddit user",
+        "\"The MA crossover visualization helped me spot a trend reversal\" — Personal use"
+      ],
+      retrospective: "Flask free tier on Render spins down — cold starts add 3-5s. Would move to Cloudflare Workers + KV for edge caching. Recharts is heavy; would evaluate uPlot or lightweight canvas for v2."
+    },
+    decisions: [
+      {
+        id: "architecture-split",
+        title: "Architecture: Separate Flask API vs Next.js API Routes",
+        context: "Python (yfinance, ccxt, pandas) for data, React for UI",
+        options: [
+          { label: "Next.js API Routes with Python subprocess", chosen: false, rationale: "Complex, slow, dependency management nightmare" },
+          { label: "Single Next.js with Node data libs", chosen: false, rationale: "No mature yfinance/ccxt equivalent in Node, pandas unavailable" },
+          { label: "Separate Flask API + React SPA", chosen: true, rationale: "Best tool for each job. Python excels at data. React excels at UI. Clear contract." }
+        ],
+        outcome: "Clean separation. Flask handles 50+ concurrent requests. React bundle stays small."
+      },
+      {
+        id: "chart-library",
+        title: "Chart Library: Recharts vs Chart.js vs uPlot vs TradingView",
+        context: "Need multi-series, toggles, tooltips, responsive, React-native",
+        options: [
+          { label: "Chart.js", chosen: false, rationale: "Canvas-based, harder React integration, less declarative" },
+          { label: "TradingView Lightweight Charts", chosen: false, rationale: "Great for candlesticks, limited for multi-series line charts" },
+          { label: "uPlot", chosen: false, rationale: "Fast but low-level, more boilerplate for interactions" },
+          { label: "Recharts", chosen: true, rationale: "React-native, declarative, composable, good tooltip/legend customization" }
+        ],
+        outcome: "Works well for line charts. Bundle size ~40KB. Would reconsider for high-frequency updates."
+      },
+      {
+        id: "caching-strategy",
+        title: "Caching: Redis vs In-Memory vs No Cache",
+        context: "yfinance/ccxt rate limits, repeated requests for same symbols",
+        options: [
+          { label: "No cache", chosen: false, rationale: "Rate limited quickly, slow for users" },
+          { label: "Redis (Upstash)", chosen: false, rationale: "Extra infrastructure, cost, overkill for personal project" },
+          { label: "In-memory dict with TTL (5 min)", chosen: true, rationale: "Zero deps, fast, sufficient for single-instance Render deployment" }
+        ],
+        outcome: "95% cache hit rate for popular symbols. API latency <100ms cached."
+      },
+      {
+        id: "state-persistence",
+        title: "UI State: URL Search Params vs localStorage vs Redux",
+        context: "Persist symbol, timeframe, metrics across refresh/share",
+        options: [
+          { label: "localStorage", chosen: false, rationale: "Not shareable, sync issues across tabs" },
+          { label: "Redux/Zustand", chosen: false, rationale: "Overkill for 4-5 state values" },
+          { label: "URL searchParams (shareable, bookmarkable)", chosen: true, rationale: "Shareable links, browser back/forward works, SSR-friendly" }
+        ],
+        outcome: "Perfect for sharing specific views. e.g., ?symbol=BTC&timeframe=1M&metrics=close,volume,ma7"
+      }
+    ],
+    constraints: [],
     content: `# Technologies Used
 
 - **React** (Frontend interface & interactivity)
@@ -452,6 +1025,7 @@ Complete source code is available on GitHub: [Financial Dashboard](https://githu
     modalId: 11,
     title: "Robot Maze & Exploration",
     date: "2024-05-17",
+    sortDate: "2024-05-17",
     img: "robot_maze.jpg",
     alt: "ROS Robot Maze and Exploration",
     projectDate: "March–May 2024",
@@ -522,6 +1096,7 @@ You can view the complete source code on GitHub: [COM2009](https://github.com/ef
     modalId: 7,
     title: "Chessboard Diagram Classifier",
     date: "2023-11-21",
+    sortDate: "2023-11-21",
     img: "015.jpg",
     alt: "Chessboard Diagram Classifier",
     projectDate: "November 2023",
@@ -568,6 +1143,7 @@ The full code for this project can be found [here](https://github.com/efamelody/
     modalId: 10,
     title: "EdFlix",
     date: "2023-11-20",
+    sortDate: "2023-11-20",
     img: "edflix_platform.png",
     alt: "EdFlix Online Learning Platform",
     projectDate: "November 2023",
@@ -627,6 +1203,7 @@ You can view the complete source code on GitHub: [EdFlix](https://github.com/efa
     modalId: 9,
     title: "Trains of Sheffield",
     date: "2023-11-20",
+    sortDate: "2023-11-20",
     img: "trainsheffield.jpg",
     alt: "Trains of Sheffield Software Business",
     projectDate: "November 2023",
@@ -681,6 +1258,7 @@ You can view the complete source code on GitHub: [Trains of Sheffield](https://g
     modalId: 8,
     title: "Interactive Cartoon Generator",
     date: "2023-11-20",
+    sortDate: "2023-11-20",
     img: "cartoon_face_generator.png",
     alt: "Interactive Cartoon Face Generator",
     projectDate: "November 2023",
@@ -732,6 +1310,7 @@ You can view the complete source code on GitHub: [Interactive Cartoon Face Gener
     modalId: 6,
     title: "Domino Game",
     date: "2023-11-20",
+    sortDate: "2023-11-20",
     img: "example.png",
     alt: "image-alt",
     projectDate: "November 2023",
