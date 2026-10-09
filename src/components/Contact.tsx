@@ -7,13 +7,39 @@ import { Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 3500);
+    setStatus("sending");
+    setErrorMsg("");
+    try {
+      const res = await fetch("https://formspree.io/f/mblkjkoy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `Portfolio contact from ${form.name}`,
+        }),
+      });
+      if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("error");
+      setErrorMsg(
+        `Couldn't send just now. Please email me directly at ${siteConfig.email}`
+      );
+    }
   };
 
   return (
@@ -93,6 +119,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   value={form.name}
                   onChange={(e) =>
                     setForm((p) => ({ ...p, name: e.target.value }))
@@ -108,6 +135,7 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   value={form.email}
                   onChange={(e) =>
                     setForm((p) => ({ ...p, email: e.target.value }))
@@ -124,6 +152,7 @@ export default function Contact() {
                 Message
               </label>
               <textarea
+                name="message"
                 value={form.message}
                 onChange={(e) =>
                   setForm((p) => ({ ...p, message: e.target.value }))
@@ -137,9 +166,12 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold text-sm hover:from-pink-400 hover:to-purple-400 transition-all duration-200 shadow-[0_8px_28px_rgba(224,90,154,0.25)]"
+              disabled={status === "sending"}
+              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold text-sm hover:from-pink-400 hover:to-purple-400 transition-all duration-200 shadow-[0_8px_28px_rgba(224,90,154,0.25)] disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {sent ? (
+              {status === "sending" ? (
+                "Sending…"
+              ) : status === "sent" ? (
                 "Message sent!"
               ) : (
                 <>
@@ -151,6 +183,9 @@ export default function Contact() {
                 </>
               )}
             </button>
+            {status === "error" && (
+              <p className="text-sm text-red-500 font-medium">{errorMsg}</p>
+            )}
           </form>
         </div>
       </div>
