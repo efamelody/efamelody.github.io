@@ -26,10 +26,10 @@ export default function About() {
 
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <span className="text-xs font-mono text-pink-500 tracking-[0.2em] uppercase mb-4 block font-semibold">
+          <span className="text-xs font-mono text-pink-600 tracking-[0.2em] uppercase mb-4 block font-semibold">
             Profile
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-pink-950">
+          <h2 className="text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-pink-950">
             About Me
           </h2>
         </div>
@@ -41,7 +41,7 @@ export default function About() {
               <span className="w-3 h-3 rounded-full bg-amber-300 block" />
               <span className="w-3 h-3 rounded-full bg-emerald-300 block" />
             </div>
-            <span className="text-xs text-pink-400 select-none font-mono">efa@portfolio:~</span>
+            <span className="text-xs text-pink-500 select-none font-mono">efa@portfolio:~</span>
             <div className="w-12" />
           </div>
 
@@ -51,7 +51,7 @@ export default function About() {
               className={`flex items-center gap-2 px-5 py-3 border-r border-pink-200/50 transition-colors font-semibold ${
                 activeTab === "about"
                   ? "bg-white text-pink-600 border-t-2 border-t-pink-400"
-                  : "text-pink-400/70 hover:text-pink-600"
+                  : "text-pink-500/80 hover:text-pink-600"
               }`}
             >
               <FileText size={14} /> about_me.md
@@ -62,7 +62,7 @@ export default function About() {
               className={`flex items-center gap-2 px-5 py-3 border-r border-pink-200/50 transition-colors font-semibold ${
                 activeTab === "skills"
                   ? "bg-white text-pink-600 border-t-2 border-t-pink-400"
-                  : "text-pink-400/70 hover:text-pink-600"
+                  : "text-pink-500/80 hover:text-pink-600"
               }`}
             >
               <Terminal size={14} /> tech_stack.json
@@ -71,18 +71,18 @@ export default function About() {
 
           <div className="p-6 md:p-8 min-h-[360px]">
             {activeTab === "about" && (
-              <div className="space-y-6 text-sm md:text-base text-pink-800/60 leading-relaxed max-w-2xl">
+              <div className="space-y-6 text-sm md:text-base text-pink-900/75 leading-relaxed max-w-2xl">
                 <div className="flex items-center gap-2 text-pink-400 font-mono text-xs mb-4">
                   <span className="text-pink-400">//</span> ~/about_me.md
                 </div>
 
-                <h3 className="text-2xl font-extrabold text-pink-950 tracking-tight">
+                <h3 className="text-2xl font-heading font-extrabold text-pink-950 tracking-tight">
                   <span className="text-pink-400">#</span> Nur Izfarwiza <span className="text-pink-400 font-mono text-lg">(Efa)</span>
                 </h3>
 
                 <p>
                   Hi! I am Nur Izfarwiza, but people call me{" "}
-                  <span className="text-pink-500 font-semibold">Efa</span>.
+                  <span className="text-pink-600 font-semibold">Efa</span>.
                   I&apos;m a fresh Computer Science graduate from the{" "}
                   <span className="text-pink-900 font-medium underline decoration-pink-300 underline-offset-4">
                     University of Sheffield
@@ -100,7 +100,7 @@ export default function About() {
                 <p>
                   My dissertation explored practical ML at scale with the Advection
                   Gaussian Process framework, earning a{" "}
-                  <span className="text-pink-500 font-mono font-semibold bg-pink-100 border border-pink-200 px-2 py-0.5 rounded-full">
+                  <span className="text-pink-600 font-mono font-semibold bg-pink-100 border border-pink-200 px-2 py-0.5 rounded-full">
                     Distinction (75)
                   </span>
                   . I care deeply about writing code that is not just functional but
@@ -108,13 +108,13 @@ export default function About() {
                 </p>
 
                 <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="text-xs px-3 py-1.5 rounded-full bg-pink-100 text-pink-500 border border-pink-200 font-medium">
+                  <span className="text-xs px-3 py-1.5 rounded-full bg-pink-100 text-pink-600 border border-pink-200 font-medium">
                     <Sparkles size={12} className="inline -mt-0.5" /> full-stack dev
                   </span>
-                  <span className="text-xs px-3 py-1.5 rounded-full bg-purple-100 text-purple-500 border border-purple-200 font-medium">
+                  <span className="text-xs px-3 py-1.5 rounded-full bg-pink-100 text-pink-600 border border-pink-200 font-medium">
                     <Cpu size={12} className="inline -mt-0.5" /> AI/ML enthusiast
                   </span>
-                  <span className="text-xs px-3 py-1.5 rounded-full bg-pink-100 text-pink-500 border border-pink-200 font-medium">
+                  <span className="text-xs px-3 py-1.5 rounded-full bg-pink-100 text-pink-600 border border-pink-200 font-medium">
                     <Heart size={12} className="inline -mt-0.5" /> lifelong learner
                   </span>
                 </div>
@@ -127,32 +127,32 @@ export default function About() {
                   <span className="text-pink-400">//</span> ~/tech_stack.json
                 </div>
 
-                <pre className="text-pink-800/70 leading-relaxed overflow-x-auto whitespace-pre font-mono">
+                <pre className="text-pink-900/80 leading-relaxed overflow-x-auto whitespace-pre font-mono">
                   <code className="block">
-                    <span className="text-pink-300">{"{"}</span>
+                    <span className="text-pink-400">{"{"}</span>
                     {Object.entries(TECH_STACK).map(([key, values], categoryIdx) => (
                       <span key={key}>
-                        {"\n"}  <span className="text-purple-400">&quot;{LABEL_MAP[key]}&quot;</span>: <span className="text-pink-300">[</span>
+                        {"\n"}  <span className="text-pink-600">&quot;{LABEL_MAP[key]}&quot;</span>: <span className="text-pink-400">[</span>
                         {values.map((item, idx) => (
                           <span key={item}>
-                            {"\n"}    <span className="text-pink-500">&quot;{item}&quot;</span>
-                            {idx < values.length - 1 ? <span className="text-pink-300">,</span> : ""}
+                            {"\n"}    <span className="text-pink-600">&quot;{item}&quot;</span>
+                            {idx < values.length - 1 ? <span className="text-pink-400">,</span> : ""}
                           </span>
                         ))}
-                        {"\n"}  <span className="text-pink-300">]</span>
-                        {categoryIdx < Object.keys(TECH_STACK).length - 1 ? <span className="text-pink-300">,</span> : ""}
+                        {"\n"}  <span className="text-pink-400">]</span>
+                        {categoryIdx < Object.keys(TECH_STACK).length - 1 ? <span className="text-pink-400">,</span> : ""}
                       </span>
                     ))}
-                    {"\n"}<span className="text-pink-300">{"}"}</span>
+                    {"\n"}<span className="text-pink-400">{"}"}</span>
                   </code>
                 </pre>
               </div>
             )}
           </div>
 
-          <div className="px-6 py-4 bg-pink-50/40 border-t border-pink-200/40 text-xs text-pink-400 flex items-center gap-2 select-none font-mono">
-            <span className="text-pink-500">efa@portfolio:~$</span>
-            <span className="text-pink-300">_</span>
+          <div className="px-6 py-4 bg-pink-50/40 border-t border-pink-200/40 text-xs text-pink-600 flex items-center gap-2 select-none font-mono">
+            <span className="text-pink-600">efa@portfolio:~$</span>
+            <span className="text-pink-400">_</span>
             <span className="w-2 h-4 bg-pink-400 animate-pulse block" />
           </div>
         </div>

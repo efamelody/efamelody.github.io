@@ -4,14 +4,16 @@ export const projects: Project[] = [
   {
     modalId: 16,
     title: "WhatsApp AI Receptionist — Wedding Vendor SaaS",
+    slug: "whatsapp-receptionist",
     date: "2026-09-22",
     img: "whatsapp-saas.svg",
-    alt: "WhatsApp AI Receptionist system flow",
+    alt: "WhatsApp AI Receptionist high-level flow",
     projectDate: "Sep 2026 — Ongoing",
-    client: "Personal Project",
+    context: "Personal project · multi-tenant SaaS",
+    role: "Solo build — architecture, RAG pipeline, and dashboard",
     category: "SaaS & AI Automation",
     description:
-      "Multi-tenant WhatsApp AI receptionist for wedding vendors. Implements RAG-grounded inquiry handling, capacity-aware booking holds, and a Next.js vendor dashboard with calendar and lead management.",
+      "A booking assistant that runs on a wedding vendor's own WhatsApp number — answering pricing questions, checking availability, and holding slots — with a dashboard so vendors can approve bookings and manage leads.",
     technologies: [
       "Next.js 16",
       "TypeScript",
@@ -24,75 +26,65 @@ export const projects: Project[] = [
       "Evolution API",
       "Docker",
     ],
-    filterTag: "ongoing",
-    content: `# WhatsApp AI Receptionist — Wedding Vendor SaaS
+    liveUrl: "https://whatsapp-saas-dashboard-eosin.vercel.app/",
+    track: "work",
+    status: "beta",
+    content: `## The problem
 
-A multi-tenant SaaS platform that automates WhatsApp inquiry handling for wedding vendors (MUA, henna artists, photographers). The system provides instant, knowledge-base-grounded responses, manages booking state transitions, and centralises lead and calendar operations in a vendor dashboard.
+Wedding vendors — makeup artists, henna artists, photographers — field a high volume of WhatsApp enquiries while they are on set with a client. Replies arrive late, prices get quoted inconsistently, and the same date gets promised twice.
 
-![System flow](img/portfolio/whatsapp-saas.svg)
+## What it does
 
----
+The platform runs an AI receptionist on the vendor's own WhatsApp number, so clients never leave a chat they already know how to use.
 
-## Overview
-
-Vendors receive high volumes of WhatsApp inquiries while servicing clients, leading to delayed replies and double bookings. This platform introduces an AI receptionist operating on the vendor's own WhatsApp number, paired with a web dashboard for booking and knowledge-base management. The solution preserves the native WhatsApp experience for clients while providing structured workflow control for vendors.
-
-The System Requirement Document (v2.0, 2026-09-22) defines the product scope, data model, state machine, and phased delivery plan.
-
----
-
-## Features
-
-| Feature | Description |
+| Capability | Behaviour |
 |---|---|
-| **RAG-Grounded Responses** | Answers pricing, packages, and FAQs strictly from the vendor's structured knowledge base; calculates total as package price plus location-based travel surcharge |
-| **Availability & Hold Management** | Validates requested dates against capacity rules and blackout dates; creates a tentative \`SOFT_HOLD\` and notifies the vendor |
-| **Vendor Dashboard** | Next.js dashboard with onboarding, WhatsApp QR pairing, bookings table, visual calendar, knowledge-base editor, and payment settings |
-| **Booking Workflow** | State machine \`INQUIRY\` → \`SOFT_HOLD\` → \`DEPOSIT_PENDING\` (24-hour timer) → \`CONFIRMED\`; \`CANCELLED\` releases the slot |
-| **Dual-Channel Approval** | Vendor can accept or decline from the dashboard or via WhatsApp action buttons, both invoking the same status API |
-| **Deposit Handling** | Client receipt upload with vendor preview and confirmation to lock the booking |
+| **Grounded answers** | Replies about packages, pricing and FAQs come from the vendor's own knowledge base, never from the model's memory. Total price = package price + location-based travel surcharge. |
+| **Availability checks** | Requests are validated against capacity rules and blackout dates before any slot is offered. |
+| **Tentative holds** | A valid request creates a \`SOFT_HOLD\` and notifies the vendor, so a date is reserved while they decide. |
+| **Deposit handling** | The client uploads a receipt; the vendor previews and confirms it, which locks the booking. |
+| **Dual-channel approval** | The vendor can accept or decline from the dashboard *or* from WhatsApp action buttons — both hit the same status API. |
 
----
-
-## System Architecture
+## How it's built
 
 | Layer | Technology |
 |---|---|
 | **Frontend** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4 |
 | **Authentication** | Better Auth with Google SSO |
-| **Database** | PostgreSQL (Supabase), Prisma ORM — relational fields with indexed queries plus flexible \`knowledgeBase\` JSON |
-| **Automation** | n8n (self-hosted) orchestrating WhatsApp webhooks, RAG inference, and state transitions |
-| **AI** | Google Gemini via Retrieval-Augmented Generation, grounded to vendor knowledge base |
-| **Messaging** | Evolution API (WhatsApp) with per-vendor QR-paired instance |
+| **Data** | PostgreSQL (Supabase) via Prisma — indexed relational columns plus a flexible \`knowledgeBase\` JSON field |
+| **Automation** | n8n (self-hosted) orchestrating WhatsApp webhooks, RAG inference and state transitions |
+| **AI** | Google Gemini, retrieval-augmented and grounded to the vendor knowledge base |
+| **Messaging** | Evolution API with a QR-paired instance per vendor |
 | **Infrastructure** | Docker Compose, Vercel |
 
----
+The booking lifecycle is modelled as an explicit state machine: \`INQUIRY\` → \`SOFT_HOLD\` → \`DEPOSIT_PENDING\` (24-hour timer) → \`CONFIRMED\`, with \`CANCELLED\` releasing the slot.
 
-## Implementation Notes
+## Engineering decisions
 
-- Designed a hybrid data model combining indexed relational columns (\`vendorId\`, \`status\`, \`eventDate\`) with a JSON knowledge base to support multiple vendor categories without schema migrations.
-- Implemented capacity checks, blackout-date validation, and guarded state transitions at both the API and UI layers.
-- Delivered dashboard modules for lead prioritisation (Needs Your Response), calendar management, and knowledge-base configuration.
+- **A hybrid data model.** Indexed relational columns (\`vendorId\`, \`status\`, \`eventDate\`) carry the queryable state, while the knowledge base stays JSON, so supporting a new vendor category does not require a schema migration.
+- **Guarded transitions.** Capacity checks, blackout-date validation and status changes are enforced at both the API and the UI, so a race in the interface cannot book a slot the API would reject.
+- **One approval path, two surfaces.** The dashboard and the WhatsApp buttons call the same status endpoint, so there is a single definition of "booked" and a single audit trail.
 
----
+## Where it stands today
 
-## Current Status
+Deployed and in testing. The core application, database schema, RAG pipeline and dashboard are implemented, and the product is being validated with real vendors ahead of a wider release.
 
-Ongoing development. Core application, database schema, RAG pipeline, and dashboard are implemented and under beta testing. Deployment is currently in a local environment with planned migration to VPS post-validation.
-
+> The System Requirement Document (v2.0, 2026-09-22) defines the product scope, data model, state machine and phased delivery plan.
 `,
   },
   {
     modalId: 15,
     title: "MRTQuest",
+    slug: "mrtquest",
     date: "2026-05-25",
     img: "mrtquest.png",
-    alt: "MRTQuest Gamified Exploration App",
+    alt: "MRTQuest gamified exploration app",
     projectDate: "May 2026",
-    client: "Personal Project",
+    context: "Personal project",
+    role: "Solo build — data model, check-in verification, and gamification",
     category: "Mobile-First Web App",
     description:
-      "A mobile-first gamified exploration application for Kuala Lumpur's MRT infrastructure. Users discover attractions, check in at physical locations, complete verification challenges, and earn achievement badges across the Kajang and Putrajaya lines.",
+      "A mobile-first exploration game for Kuala Lumpur's MRT. Check in at real stations, clear landmark and trivia challenges, and collect badges across the Kajang and Putrajaya lines.",
     technologies: [
       "Next.js 15",
       "React 19",
@@ -105,117 +97,67 @@ Ongoing development. Core application, database schema, RAG pipeline, and dashbo
     ],
     githubUrl: "https://github.com/efamelody/MRTQuest",
     liveUrl: "https://mrt-quest.vercel.app/",
-    filterTag: "ongoing",
-    content: `# MRTQuest
+    track: "work",
+    status: "live",
+    content: `## The problem
 
-A mobile-first gamified exploration application for **Kuala Lumpur's MRT infrastructure**. Users discover attractions, check in at physical locations, complete verification challenges, and earn achievement badges across the Kajang and Putrajaya lines.
+Kuala Lumpur's MRT is one of the most-used pieces of infrastructure in the country, and almost nobody explores it deliberately. The stations are functional, but there is little reason to get off at one.
+
+## What it does
+
+MRTQuest turns the network into a game. You discover attractions near each station, check in at the physical location, and clear challenges to earn badges.
+
+| Capability | Behaviour |
+|---|---|
+| **Station explorer** | The full station catalogue, organised by line, with the attraction inventory for each. |
+| **Three-phase check-in** | Proximity detection first, then optional landmark photo verification and a trivia challenge. |
+| **Badge system** | Eight unlock criteria covering visit counts, station stamps, line mastery, quiz accuracy and time-based achievements. |
+| **Passport** | A profile dashboard with quest points, earned badges, recent visits and progression rankings. |
+| **Suggestions** | Users can propose new attractions for operator review and catalogue expansion. |
 
 **Coverage:** Kajang Line, Putrajaya Line, 16 operational stations, 24 mapped attractions.
 
----
-
-## Features
-
-| Feature | Description |
-|---|---|
-| **Authentication** | OAuth via Google and email-password credentials with persistent session management |
-| **Station Explorer** | Browseable catalog of MRT stations organized by line with full attraction inventory per station |
-| **Check-in System** | Progressive verification through geofence proximity detection, AI-powered landmark photo verification, and location-based trivia challenges |
-| **Gamification** | Comprehensive badge system with eight criteria types including visit counts, station coverage, line mastery, and time-based achievements |
-| **User Profile** | Passport dashboard displaying cumulative quest points, earned badges, recent visits, and user progression rankings |
-| **Suggestions** | User-submitted attraction proposals for operator review and catalog expansion |
-
----
-
-## Tech Stack
+## How it's built
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 15+ (App Router) |
-| UI Library | React 19 |
-| Language | TypeScript (strict mode) |
-| Styling | Tailwind CSS v4 (CSS-configured) |
-| Icons | Lucide React |
-| ORM | Prisma 6.19+ |
-| Database | PostgreSQL (Supabase) |
-| Authentication | Better Auth 1.6.9 (OAuth + email-password) |
-| Image Verification | Google Gemini AI |
-| Geolocation | geolib v3 |
-| Package Manager | pnpm |
+| **Framework** | Next.js 15 (App Router), React 19 |
+| **Language** | TypeScript (strict mode) |
+| **Styling** | Tailwind CSS v4, Lucide React icons |
+| **Data** | Prisma 6.19+, PostgreSQL (Supabase) |
+| **Authentication** | Better Auth (Google OAuth + email/password) |
+| **Image verification** | Google Gemini AI |
+| **Geolocation** | geolib v3 (haversine distance) |
+| **Deployment** | Vercel, pnpm |
 
----
+![Database schema](img/portfolio/mrtquest-db-diagram.png)
 
-## Check-in Verification System
+The schema is built around the visit graph: a user checks in at a station, the check-in records the visit against the station's attraction inventory, and badge criteria are evaluated over that history rather than stored as counters that can drift.
 
-Three-phase progressive verification workflow:
+## Engineering decisions
 
-**Phase 1: Geofence Detection**
-- User location calculated via browser Geolocation API
-- Distance computed using haversine formula (geolib library)
-- Check-in enabled when user is within 300m radius
+- **Progressive verification instead of a single gate.** Geofence proximity is mandatory because it is cheap and reliable; photo recognition and trivia are optional layers that award bonus points. A check-in never blocks on an AI call.
+- **Server Components for reads, client fetches for writes.** Page-level data is loaded in Server Components, with independent queries parallelised through \`Promise.all\`; the client only refetches after a mutation.
+- **Session-scoped isolation.** Every query is filtered by the authenticated user, and authorisation is enforced in the application layer rather than trusted to the client.
 
-**Phase 2: Landmark Photo Verification (Optional)**
-- User captures photo via webcam
-- Image sent to Google Gemini AI for landmark recognition
-- Confidence threshold (default 70%) determines success
-- Awards bonus points on successful verification
+## Where it stands today
 
-**Phase 3: Trivia Quiz Challenge (Optional)**
-- Multi-choice questions presented after check-in
-- Points awarded based on answer accuracy
-
----
-
-## Badge System
-
-Flexible criteria-based achievement framework supporting multiple unlock patterns:
-
-| Criteria Type | Unlock Condition |
-|---|---|
-| visit_count | User accumulates N total visits (optionally scoped by category or line) |
-| station_stamp | User visits specific designated station |
-| line_master | User visits all active stations on a given MRT line |
-| quiz_master | User achieves N correct quiz submissions |
-| first_review | User submits initial review |
-| photo_review | User submits N reviews including photos |
-| time_check | User check-in occurs before/after specific hour |
-| multi_line | User accumulates visits across multiple MRT lines |
-
----
-
-## Architecture
-
-**Data Fetching Pattern:**
-- Server Components retrieve data at the page level using Prisma client
-- Parallel independent queries utilize \`Promise.all([...])\`
-- Client Components use fetch-on-mount for state updates only
-
-**Security Model:**
-- Session-based user isolation (all queries filtered by authenticated userId)
-- Application layer enforces access control
-- Service role keys used only for administrative aggregations
-
----
-
-## Deployment
-
-- **Production:** [mrt-quest.vercel.app](https://mrt-quest.vercel.app/)
-- **Source:** GitHub repository
-
-Complete source code and documentation available on GitHub: [MRTQuest](https://github.com/efamelody/MRTQuest)
+Live and playable at [mrt-quest.vercel.app](https://mrt-quest.vercel.app/). Source code and documentation are public on GitHub.
 `,
   },
   {
     modalId: 14,
     title: "Lecturer Portfolio — Academic Website",
+    slug: "lecturer-portfolio",
     date: "2026-05-01",
     img: "lecturer-website.png",
-    alt: "Lecturer Biography Academic Website",
+    alt: "Lecturer biography academic website",
     projectDate: "May 2026",
-    client: "Personal/Portfolio Project",
+    context: "Client work · Prof. Dr. Mohd Talib Latif, UKM",
+    role: "Solo build — front end, OpenAlex integration, and CMS wiring",
     category: "Web Development",
     description:
-      "A clean, fast academic personal website for Prof. Dr. Mohd Talib Latif featuring dynamic publication data via OpenAlex API, Sanity CMS photo gallery, and an admin dashboard for content management.",
+      "A publication website for an atmospheric chemistry professor, pulling live citation metrics from OpenAlex and managing photo galleries through a Sanity CMS. Built as commissioned client work.",
     technologies: [
       "Next.js 14",
       "TypeScript",
@@ -226,573 +168,440 @@ Complete source code and documentation available on GitHub: [MRTQuest](https://g
     ],
     githubUrl: "https://github.com/efamelody/lecturer-biography",
     liveUrl: "https://talib-latif.com/",
-    filterTag: "deployed",
-    content: `# Lecturer Biography — Academic Personal Website
+    track: "work",
+    status: "live",
+    content: `## The problem
 
-A clean, fast, and minimal academic personal website for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM).
+A senior academic with a substantial publication record needed a website that kept itself current. A hand-maintained page is out of date the moment a new paper lands, and a static list of publications says nothing about their impact.
 
-**Live site**: [talib-latif.com](https://talib-latif.com/)
+## What it does
 
----
+A clean, fast academic site for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM), built as commissioned client work.
 
-## Tech Stack
+| Capability | Behaviour |
+|---|---|
+| **Live publication data** | Citations, works and metrics are pulled from the OpenAlex API and cached with ISR, so the numbers are current and the page stays fast. |
+| **Sanity photo gallery** | A lightbox media gallery managed through Sanity Studio, with no code change needed to publish. |
+| **Admin dashboard** | A password-protected inline editor at \`/admin\` for content changes. |
+| **Resilient content source** | Content is read from MongoDB, falling back to local JSON if the database is unavailable. |
+| **Dark mode and edge runtime** | CSS custom properties drive the theming; the root layout runs on the edge. |
 
-| Category       | Technology                              |
-| -------------- | --------------------------------------- |
-| Framework      | Next.js 14 (App Router)                 |
-| Language       | TypeScript                              |
-| Styling        | Tailwind CSS v4                         |
-| CMS            | Sanity CMS v5 (photo gallery)           |
-| Icons          | lucide-react                            |
-| Database       | MongoDB Atlas (with static JSON fallback) |
-| APIs           | OpenAlex API, MongoDB driver, Sanity GROQ |
-| Deployment     | Vercel + Cloudflare Pages               |
+Pages include the homepage with hero and citation stats, a full biography with education, awards and affiliations, a publications list, research group members and alumni, a media room, and the admin dashboard.
 
----
+## How it's built
 
-## Features
+| Layer | Technology |
+|---|---|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS v4, Lucide React icons |
+| **CMS** | Sanity CMS v5 (photo gallery) |
+| **Data** | MongoDB Atlas, with a static JSON fallback |
+| **APIs** | OpenAlex, MongoDB driver, Sanity GROQ |
+| **Deployment** | Vercel + Cloudflare Pages, edge runtime |
 
-- **Dynamic Publication Data** — Real-time citation metrics via OpenAlex API with ISR caching
-- **Sanity CMS Photo Gallery** — Lightbox-enabled media gallery managed through Sanity Studio
-- **Admin Dashboard** — Password-protected inline JSON editor at /admin
-- **MongoDB + JSON Fallback** — Content fetched from MongoDB, falling back to local JSON
-- **Dark Mode** — Built-in dark mode support via CSS custom properties
-- **Edge Runtime** — Root layout runs on Vercel Edge / Cloudflare Workers
+## Engineering decisions
 
----
+- **ISR over a build-time fetch.** Publication data changes weekly; incremental regeneration keeps the page fresh without rebuilding the site or blocking on the OpenAlex API on every request.
+- **Graceful degradation on the data source.** The JSON fallback means a database outage degrades the site to a static version rather than an error page.
+- **Content split by editing cost.** Only the gallery needs a full CMS; everything else is edited in the lightweight admin panel, which keeps the authoring surface small for a non-technical client.
 
-## Key Pages
+## Where it stands today
 
-- Homepage with hero, profile, citation stats
-- Full biography with education, awards, affiliations
-- Publications list (featured + recent from OpenAlex)
-- Research group members and alumni
-- Media room with lightbox photo gallery
-- Admin dashboard for content management
-
----
-
-## Source Code
-
-Complete source code on GitHub: [lecturer-biography](https://github.com/efamelody/lecturer-biography)
+Live at [talib-latif.com](https://talib-latif.com/). Source code is public on GitHub.
 `,
   },
   {
     modalId: 13,
     title: "Smart Habit Coach",
+    slug: "smart-habit-coach",
     date: "2025-11-10",
     img: "iot.png",
-    alt: "Smart Habit Coach System Architecture",
+    screenshot: "plantPageReal.png",
+    alt: "Smart Habit Coach virtual plant screen on the T-Watch 2020",
     projectDate: "November 2025",
-    client: "Personal/Portfolio Project",
+    context: "University of Sheffield · team project",
+    role: "Firmware and LVGL interface for the LilyGO T-Watch 2020",
     category: "IoT & Embedded Systems",
-    description: "A wearable Smart Habit Coach that tracks steps, inactivity, and hydration with a virtual plant UI using LilyGO T-Watch 2020.",
+    description:
+      "A smartwatch that turns daily habits into something you can watch grow. Tracks steps, nudges you when you go inactive, and grows a virtual plant as you log water.",
     technologies: ["ESP32", "LilyGO T-Watch 2020", "LVGL", "PlatformIO", "ArduinoOTA", "BMA423 Accelerometer"],
     githubUrl: "https://github.com/efamelody/IoT/",
-    filterTag: "uni",
-    content: `# Overview
+    track: "research",
+    status: "prototype",
+    content: `## The problem
 
-The **Smart Habit Coach** is a wearable project built on the **LilyGO T-Watch 2020** (V1 & V3), designed to encourage healthy habits. The watch monitors user activity, sends gentle vibration reminders during inactivity, tracks step goals, logs water intake, and motivates users with a **virtual plant** that grows as hydration goals are met. OTA firmware updates allow wireless development.
+Habit trackers live in a phone and are checked in a phone, which is exactly the friction that stops people keeping one. A wearable can notice the behaviour itself — and prompt you at the moment it matters.
 
-![System Architecture](img/portfolio/system-architecture.png)
+## What it does
 
----
+A habit coach built on the **LilyGO T-Watch 2020** (V1 and V3) that monitors activity, nudges you when you go inactive, and makes progress visible.
 
-# Features
+| Feature | Behaviour | Status |
+|---|---|---|
+| Step counting | Steps detected and displayed on the watch | Complete |
+| Inactivity reminder | Vibrates after one minute without movement | Complete |
+| Visual step tracker | Daily goal shown as a progress arc | Complete |
+| Drink tracker | Water logged by cup; a virtual plant grows with each one | Complete |
+| OTA updates | Firmware pushed wirelessly over the air | Complete |
 
-| Feature | Description | Status |
-| ------- | ----------- | ------ |
-| Step Counting | Detect and display steps | ✅ Completed |
-| Inactivity Reminder | Vibrate after 1 min of inactivity | ✅ Completed |
-| Visual Step Tracker | Show daily goal progress | ✅ Completed |
-| Drink Tracker | Log hydration with virtual plant growth | ✅ Completed |
-| OTA Upload | Wireless firmware updates | ✅ Completed |
+The plant grows in stages: a dry seedling at 0–2 cups, a small sprout at 3–4, a mid-size plant at 5–6, and full growth at 7 cups or more.
 
----
+## How it's built
 
-# How It Works
+- **Hardware** — LilyGO T-Watch 2020 (ESP32), with a BMA423 accelerometer for motion.
+- **Firmware** — C++ on the ESP32, built with PlatformIO, using **LVGL** for the interface and ArduinoOTA for wireless updates.
+- **Navigation** — LVGL swipe gestures across four screens: main (time, date, activity status), step tracker, virtual plant and settings.
 
-**Step & Inactivity Monitoring**
+![System architecture](img/portfolio/system-architecture.png)
 
-* Uses the **BMA423 accelerometer** to track steps.
-* Inactivity triggers **vibration alerts** and messages after 60 seconds.
-* Automatically resets when movement is detected.
+![Drink tracker and plant growth flow](img/portfolio/cupflow.png)
 
-**Drink Tracker & Virtual Plant**
+## Engineering decisions
 
-* Users log cups of water with a **+ Cup** button.
-* Progress bar and plant image update dynamically:
-  * 0–2 cups → Dry seedling
-  * 3–4 cups → Small sprout
-  * 5–6 cups → Mid-size plant
-  * 7–8+ cups → Fully grown plant
+- **Vibration over notifications.** The prompt is a physical nudge on the wrist, so it works without the phone and needs no companion app.
+- **Growth as the feedback loop.** The plant is the progress display. There is no separate dashboard to interpret — the state of the watch is the state of the habit.
+- **A custom board-support library.** The T-Watch needed a patched \`TTGO_TWatch_Library\` to resolve \`GxEPD\` display and font errors, maintained per board revision.
+- **Conditional compilation per hardware revision.** V1 and V3 differ in their vibration motor, so that is handled at compile time rather than probed at runtime.
 
-![Drink Tracker Flow](img/portfolio/cupflow.png)
+## Where it stands today
 
----
-
-# User Interface
-
-The watch UI is implemented using **LVGL**, supporting swipe navigation between four screens:
-
-* **Main Page** – shows time, date, and activity status
-* **Step Tracker** – displays step count and progress arc
-* **Virtual Plant** – logs water intake and grows the plant
-* **Settings** – configure step target
-
-![UI Screens](img/portfolio/mainPageReal.png)
-![Step Tracker](img/portfolio/stepTrackerReal.png)
-![Virtual Plant](img/portfolio/plantPageReal.png)
-![Settings](img/portfolio/settingsReal.png)
-
----
-
-# Challenges & Lessons Learned
-
-* **Library Issues**: Custom \`TTGO_TWatch_Library\` resolved \`GxEPD\` and font errors.
-* **OTA Limitations**: Firmware grew too large (~1.3MB) for ESP32 OTA partition.
-* **Hardware Differences**: V1 vs V3 required conditional compilation for vibration motor.
-* **Wi-Fi Setup**: iPhone hotspots unreliable; static IP reservation on home Wi-Fi solved OTA issues.
-* **Team Workflow**: Separate \`platformio.ini\` and libraries maintained cross-device compatibility.
-
----
-
-# Demo Video
-
-* [📺 YouTube Demo](https://youtube.com/shorts/KFeomGP4ZeQ?feature=share)
-
-# GitHub Repository
-
-* [GitHub](https://github.com/efamelody/IoT/)
+Complete and demonstrated on hardware. A demo video is linked below, and the firmware is public on GitHub.
 `,
   },
   {
     modalId: 12,
     title: "Financial Dashboard",
+    slug: "financial-dashboard",
     date: "2025-09-26",
     img: "financial_dashboard.jpg",
-    alt: "Financial Dashboard Overview",
+    alt: "Financial dashboard overview with price charts",
     projectDate: "September 2025",
-    client: "Personal/Portfolio Project",
+    context: "Personal project",
+    role: "Solo build — Flask API, chart interactions, and KPI computation",
     category: "Web Development & Data Visualization",
-    description: "Interactive Stock & Crypto Dashboard with React and Flask",
+    description:
+      "A stock and crypto dashboard that pulls live market data, computes performance indicators, and lets you chart any metric across a chosen date range.",
     technologies: ["react", "recharts", "axios", "flask", "yfinance", "ccxt", "dayjs", "tailwindcss", "nodejs", "python"],
     githubUrl: "https://github.com/efamelody/financial_dashboard",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "prototype",
+    content: `## The problem
 
-- **React** (Frontend interface & interactivity)
-- **Recharts** (Charts & graphs)
-- **Axios** (API requests to backend)
-- **Flask** (Backend API server)
-- **yfinance** (Stock data fetching)
-- **ccxt** (Crypto exchange data fetching)
-- **Day.js** (Date manipulation & filtering)
-- **TailwindCSS** (Styling & UI components)
+Market data is easy to fetch and hard to read. Most tickers give you a number and a chart and leave you to work out the trend, the volatility, and whether the move you are looking at is actually unusual.
 
-# Financial Dashboard – Stock & Crypto Visualizer
+## What it does
 
-This project involved designing and developing an **interactive financial dashboard** to visualize both **stock and cryptocurrency data** in real time. Users can explore historical prices, toggle data series, filter by date ranges, and view key performance indicators.
+An interactive dashboard for stocks and cryptocurrency that computes the performance indicators and lets you compare them on demand.
 
----
+| Capability | Behaviour |
+|---|---|
+| **Multi-series charts** | Open, high, low, close and volume, with a legend for toggling each metric. |
+| **Date ranges** | Filter the chart to 7D, 1M, 6M, 1Y or all time. |
+| **KPIs** | Latest price, percentage return, volatility, and MA7 / MA50 moving averages for trend. |
+| **Asset switching** | Stocks via Yahoo Finance (\`yfinance\`) and crypto via exchange APIs (\`ccxt\`), from a single dropdown. |
+| **Responsive** | Built for desktop and mobile, with tooltips and legends for interpreting the data. |
 
-## Features
+## How it's built
 
-- **Dynamic Charts & Metrics**
-  - Multi-line charts for Open, High, Low, Close, and Volume.
-  - Interactive legends and toggle buttons for user-selected metrics.
-  - Date range filters (7D, 1M, 6M, 1Y, ALL).
+- **Frontend** — React with Recharts, Day.js for date manipulation, TailwindCSS for the interface.
+- **Backend** — a Flask API exposing \`/api/stock/<ticker>\` and \`/api/crypto/<symbol>\`, with lightweight caching to reduce upstream calls.
 
-- **Key Performance Indicators (KPIs)**
-  - Latest price, percentage return, volatility.
-  - Moving averages (MA7, MA50) for trend analysis.
+![Architecture](img/portfolio/diagram_finance.jpg)
 
-- **Stock & Crypto Support**
-  - Fetch live stock data via Yahoo Finance (\`yfinance\`).
-  - Fetch live crypto prices via exchange APIs (\`ccxt\`).
-  - Dropdown to switch between multiple stocks (AAPL, TSLA, MSFT, etc.).
+## Engineering decisions
 
-- **Frontend Interactivity**
-  - Responsive design for desktop and mobile.
-  - Toggle metrics and visualize selected data instantly.
-  - Tooltips and legends for easy data interpretation.
+- **The backend computes, the frontend draws.** Moving averages, volatility and returns are calculated server-side, so the chart only has to render and the same numbers are consistent everywhere.
+- **Flattening the data at the boundary.** \`yfinance\` returns multi-index columns; the API normalises them into flat records before the front end ever sees them.
+- **Caching at the API, not in the browser.** A short server-side cache cuts repeated upstream calls without making the chart feel stale.
 
-- **Backend API**
-  - Flask server fetches data, computes KPIs and moving averages.
-  - Returns JSON data formatted for frontend visualization.
-  - Lightweight caching to reduce API requests.
+## Where it stands today
 
----
-
-## Key Implementation Details
-
-![Diagram](img/portfolio/diagram_finance.jpg)
-
-- **React & Recharts**
-  - Multi-line \`LineChart\` components with conditional rendering based on selected metrics.
-  - Date filtering logic handled by Day.js to update charts dynamically.
-
-- **Flask Backend**
-  - Endpoints: \`/api/stock/<ticker>\` and \`/api/crypto/<symbol>\`.
-  - Data cleaning: flatten multi-index column names, compute moving averages.
-  - API returns KPIs and full historical data for frontend consumption.
-
-- **Responsive UI & Styling**
-  - TailwindCSS for clean buttons, dropdowns, and chart container layouts.
-  - Color-coded metrics for intuitive visual distinction.
-
----
-
-## Source Code
-
-Complete source code is available on GitHub: [Financial Dashboard](https://github.com/efamelody/financial_dashboard)
+Complete and hosted as a portfolio project. Source code is public on GitHub.
 `,
   },
   {
     modalId: 11,
     title: "Robot Maze & Exploration",
+    slug: "robot-maze",
     date: "2024-05-17",
     img: "robot_maze.jpg",
-    alt: "ROS Robot Maze and Exploration",
+    alt: "ROS robot maze navigation and exploration",
     projectDate: "March–May 2024",
-    client: "University of Sheffield",
+    context: "University of Sheffield · COM2009 robotics module",
+    role: "Velocity control, obstacle avoidance, maze navigation, and beacon detection",
     category: "Robotics & ROS Development",
-    description: "Autonomous Robot Control and Navigation using ROS in C++",
+    description:
+      "A ROS package for a TurtleBot3 that navigates a maze, avoids obstacles with LIDAR, and searches unexplored areas for coloured beacon targets — built for both simulation and live hardware.",
     technologies: ["git", "python", "turtlebot3", "ros", "linux", "gazebo", "c++"],
     githubUrl: "https://github.com/efamelody/com2009_team52",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-- **ROS (Robot Operating System)**
-- **Gazebo Simulator**
-- **Python**
-- **Linux (Ubuntu WSL)**
-- **Git**
-- **TurtleBot3 Waffle Pi**
+The COM2009 module assessed whether a team could make a real robot behave sensibly, first under control and then on its own. None of it works unless each behaviour can be launched and judged the same way every time.
 
-# Assignment #2 – Autonomous Robot Control & Navigation
-**Team 52 – University Robotics Project**
+## What it does
 
-This project involved designing, developing, and deploying robot behaviours for a TurtleBot3 Waffle Pi using the Robot Operating System (ROS). We worked in a small team and completed both simulated and real-world tasks across two parts of the assignment.
+A ROS package for a TurtleBot3 Waffle Pi, developed in simulation in Gazebo and then run on the lab robot.
 
----
+| Task | Behaviour | Setting |
+|---|---|---|
+| Velocity control | Follows a target velocity with smooth acceleration | Real robot |
+| Obstacle avoidance | Navigates around dynamic obstacles using LIDAR in real time | Real robot |
+| Maze navigation | A C++ state machine guides the robot through a complex maze | Simulation |
+| Exploration and beacon search | Frontier-based exploration with colour-based target detection and image capture, parameterised by target colour | Simulation and real robot |
 
-## Part A: Basic Robot Behaviours
-Assessed using a real robot in the robotics lab.
+The exploration task is configurable through ROS parameters — \`target_colour:={red|blue|green|yellow}\` — so the same node can be pointed at a different beacon without a rebuild.
 
-### Tasks:
-- **Task 1: Velocity Control**
-  - Programmed the robot to follow a target velocity with smooth acceleration.
-- **Task 2: Obstacle Avoidance**
-  - Used LIDAR sensor data to navigate around dynamic obstacles in real time.
-- **"Out-of-the-Box" Submission**
-  - Delivered a plug-and-play ROS package with tested launch files and documentation.
+## How it's built
 
----
+ROS (Robot Operating System) · Gazebo simulator · C++ and Python · Ubuntu · Git · TurtleBot3 Waffle Pi
 
-## Part B: Autonomy & Exploration
-Task 3 tested in simulation, Task 4 on real robot hardware.
+## Engineering decisions
 
-### Tasks:
-- **Task 3: Maze Navigation**
-  - Developed a state machine in C++ to guide the robot through a complex maze.
-- **Task 4: Exploration & Beacon Search**
-  - Implemented autonomous frontier-based exploration.
-  - Added a colour-based target detection system to capture images of specific beacons using ROS parameters (\`target_colour:={red|blue|green|yellow}\`).
-  - Integrated camera feeds and image capture logic for beacon detection.
+- **One launch file per task.** Each behaviour is a self-contained \`roslaunch\` configuration, so a single behaviour can be run and assessed in isolation.
+- **A state machine rather than a behaviour tree.** The maze task is a fixed sequence of situations, and a state machine makes the transitions explicit and testable.
+- **Parameters over recompilation.** Target colour and similar settings are ROS parameters, which keeps exploratory work configurable on the robot.
+- **Camera feed integrated with capture.** Image capture is wired into the detection pipeline rather than run separately, so a detected beacon is guaranteed to be the one that was photographed.
 
----
+## Where it stands today
 
-## Key Features & Implementation
-
-- **Robust Launch File Structure**: Each task included a dedicated \`roslaunch\` configuration.
-
-- **Peer Collaboration**: Participated in structured peer evaluations at multiple stages using Buddycheck.
-
-- **Real Robot Safety Compliance**: Completed health and safety training for real robot operation.
-
----
-
-## Source Code
-
-You can view the complete source code on GitHub: [COM2009](https://github.com/efamelody/com2009_team52)
+Completed as a team project, with the robot tasks assessed on lab hardware. Source code is public on GitHub.
 `,
   },
   {
     modalId: 7,
     title: "Chessboard Diagram Classifier",
+    slug: "chessboard-classifier",
     date: "2023-11-21",
     img: "015.jpg",
-    alt: "Chessboard Diagram Classifier",
+    alt: "Chessboard diagram classification sample",
     projectDate: "November 2023",
-    client: "Start Bootstrap",
+    context: "University of Sheffield · machine learning coursework",
+    role: "Feature extraction, PCA pipeline, and classification model",
     category: "Python Machine Learning",
-    description: "A Chessboard Diagram Classifier using Nearest Neighbour and PCA",
+    description:
+      "Reads chess positions from scanned diagrams and predicts the board state, combining feature extraction with PCA and nearest-neighbour classification. 98% accuracy on both clean and noisy input.",
     technologies: ["python", "pandas", "numpy", "scikit-learn", "matplotlib"],
     githubUrl: "https://github.com/efamelody/Chessboard",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-- **Python**
-- **Pandas**
-- **NumPy**
-- **Scikit-learn**
-- **Matplotlib**
+Chess engines need a board position, not a photograph of one. Turning a scanned diagram into a position a machine can read means solving two problems: recognising what is on the squares, and ignoring the noise of a hand-drawn or low-quality scan.
 
-# Features
+## What it does
 
-## Chessboard Diagram Classifier
-A Python-based classifier for chessboard diagrams that employs Nearest Neighbour and Principal Component Analysis (PCA) for dimensionality reduction.
+A Python classifier that reads a chessboard diagram and predicts the position on it.
 
-### Key Highlights
-- **Feature Extraction**: Implemented advanced feature extraction techniques, providing clear justifications for the chosen methods in the accompanying report.
-- **Classification Methods**: Enhanced classification methods through rigorous experimentation and analysis, resulting in improved accuracy and robustness.
-- **Independent Square and Full-Board Classification**: Successfully created two versions of the classifier, achieving 98% accuracy on both clean and noisy datasets.
+| Capability | Behaviour |
+|---|---|
+| **Feature extraction** | Extracts a feature representation from the diagram, with the method choices justified in the accompanying report. |
+| **Dimensionality reduction** | Uses PCA to project the extracted features onto a lower-dimensional space, improving both accuracy and speed. |
+| **Classification** | Nearest-neighbour classification over those features. |
+| **Two granularities** | Implemented for individual squares and for full-board positions, reaching 98% accuracy on both clean and noisy datasets. |
 
-### Implementation Details
-- **Nearest Neighbour**: Utilized the Nearest Neighbour algorithm to classify chessboard diagrams based on extracted features.
-- **PCA**: Employed PCA to reduce dimensionality and improve computational efficiency, facilitating better performance in classification tasks.
+## How it's built
 
-# Installation
+Python · Pandas · NumPy · Scikit-learn · Matplotlib
 
-To run this project, ensure you have Python installed on your machine along with the necessary libraries. You can install the required libraries using pip:
+## Engineering decisions
 
-\`\`\`
-pip install pandas numpy scikit-learn matplotlib
-\`\`\`
+- **PCA before classification.** Reducing dimensionality first makes nearest-neighbour search cheaper and discards variation that carries no board information.
+- **Clean and noisy evaluated separately.** Reporting 98% on both is only meaningful because the noisy set is measured explicitly rather than averaged in.
+- **A square-level model as well as a board-level one.** Classifying squares separately means a single misread square can be located, instead of the whole board simply being wrong.
 
-The full code for this project can be found [here](https://github.com/efamelody/Chessboard).
+## Where it stands today
+
+Complete, with a written report and public source code.
 `,
   },
   {
     modalId: 10,
     title: "EdFlix",
+    slug: "edflix",
     date: "2023-11-20",
-    img: "edflix_platform.png",
-    alt: "EdFlix Online Learning Platform",
+    alt: "EdFlix online learning platform",
     projectDate: "November 2023",
-    client: "Start Bootstrap",
+    context: "University of Sheffield · team of seven",
+    role: "Contributed to the recommendation engine and course catalogue features",
     category: "Web Development",
-    description: "An Online Learning Platform Developed with Agile Methodologies",
+    description:
+      "A team-built online learning platform with a SQL-driven recommendation engine that suggests courses to signed-up students. Built with seven classmates using agile methods.",
     technologies: ["html", "ruby", "git", "mysql"],
     githubUrl: "https://github.com/efamelody/edFlix",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-- **Ruby**
-- **HTML**
-- **CSS**
-- **SQL**
-- **GitHub**
+An online learning platform needs to be more than a course list. With a large catalogue, the hard part is getting a student to the course that is actually relevant to them.
 
-## EdFlix Online Learning Platform
-Collaborated with a team of seven Computer Science students using Agile Development methodologies to create a tailored online learning platform.
+## What it does
 
-### Key Contributions
-- **Customisable Recommendation System**: Spearheaded the design and implementation of a recommendation system using SQL queries to enhance user experience and engagement.
-- **Problem Solving and Teamwork**: Actively contributed to resolving database issues and optimizing editing functions, ensuring a seamless user experience.
-- **Technical Proficiency**: Demonstrated strong skills in Ruby, HTML, CSS, SQL, and version control through GitHub throughout the project lifecycle.
+A team-built online learning platform developed with Agile methodologies across a semester.
 
-### Achievements
-- Successfully produced a working system that passed unit testing.
-- Conducted a demonstration of the platform to University staff, showcasing its features and functionalities.
+| Capability | Behaviour |
+|---|---|
+| **Learning catalogue** | Students register, browse and work through course material. |
+| **Recommendation engine** | Course suggestions generated from SQL queries over user and course data, so recommendations reflect what a student has engaged with. |
+| **Content editing** | In-platform editing so course material can be maintained without touching the database directly. |
 
-**Author**: Aamir, Aybike, Maryam, Gabes, Saif
+## How it's built
 
-# Installation
+Ruby on the server side, with HTML, CSS and SQL for the front end and persistence, and Git for version control. Developed as a team of seven computer science students using Agile methods.
 
-To run the EdFlix platform locally, follow these steps:
+## Engineering decisions
 
-1. Clone the repository or download the source code.
-2. Ensure you have Ruby and the necessary dependencies installed.
-3. Set up your database and run the required migrations.
-4. Start the local server to access the application.
+- **Recommendations computed in SQL.** The recommendation logic lives in the database, so it queries the same data the rest of the platform uses rather than a second copy of it in application memory.
+- **Agile over a fixed specification.** Weekly increments let the team get feedback on the recommendation experience while it was still cheap to change.
+- **One schema, one source of truth.** Shared data-model decisions early on avoided the divergent tables that usually appear between a course module and a recommendation module.
 
-# Usage
+## Where it stands today
 
-1. Launch the application by starting the server.
-2. Register a new account to explore the learning resources and features.
-3. Utilise the customizable recommendation system to find relevant courses.
-
-# Source Code
-
-You can view the complete source code on GitHub: [EdFlix](https://github.com/efamelody/edFlix)
-
-# Report
-
-📄 [Download the full report (PDF)](/assets/files/edflix_report.pdf)
+Completed and unit tested, and demonstrated to University staff. The full project report is available as a PDF.
 `,
   },
   {
     modalId: 9,
     title: "Trains of Sheffield",
+    slug: "trains-of-sheffield",
     date: "2023-11-20",
     img: "trainsheffield.jpg",
-    alt: "Trains of Sheffield Software Business",
+    alt: "Trains of Sheffield software business application",
     projectDate: "November 2023",
-    client: "Start Bootstrap",
+    context: "University of Sheffield · team of four",
+    role: "Contributed to the UML design, database layer, and order management",
     category: "Java Software Development",
-    description: "A Java Swing Application for Train Business Management",
+    description:
+      "A Java Swing desktop application for a train business, covering customer orders and stock monitoring against a MySQL database. Built with three classmates for a university software engineering module.",
     technologies: ["git", "Java", "mysql"],
     githubUrl: "https://github.com/efamelody/TrainsOfSheffield",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-- **Java**
-- **Java Swing**
-- **MySQL**
-- **UML Diagrams**
+A train business needed software to take orders, keep track of stock, and hold customer records including bank details. The brief was a business process, so the modelling had to be right before any code was written.
 
-## Trains of Sheffield
-Collaborated with three other Computer Science students to develop a Java Swing application tailored for a train business.
+## What it does
 
-### Key Contributions
-- **Business Requirements Interpretation**: Worked on translating business requirements into UML diagrams, including Class diagrams, Normalized Database designs, and State Machine diagrams.
-- **Database Integration**: Integrated a MySQL database with a focus on preventing SQL injection attacks, ensuring secure data handling.
-- **Data Security**: Implemented robust security measures to protect sensitive customer data, including bank details.
-- **Core Features Implementation**:
-  - **User Registration**: Developed functionality for new user registration.
-  - **Order Management**: Enabled users to manage orders efficiently.
-  - **Stock Monitoring**: Implemented features to monitor stock levels accurately.
+A Java Swing desktop application for a train business, developed as a team of four.
 
-**Outcome**: Successfully completed the project and was awarded a distinction for our efforts.
+| Capability | Behaviour |
+|---|---|
+| **User registration** | New customers can create an account. |
+| **Order management** | Customers place and track orders. |
+| **Stock monitoring** | Stock levels are tracked against the catalogue. |
+| **Customer records** | Customer details, including bank information, are stored against a normalised schema. |
 
-# Installation
+## How it's built
 
-To run the application locally, follow these steps:
+Java and Java Swing on the client, MySQL for persistence, with UML class, database and state-machine diagrams produced during the requirements phase.
 
-1. Clone the repository or download the source code.
-2. Ensure you have Java Development Kit (JDK) installed on your machine.
-3. Set up a MySQL database and import the provided schema.
-4. Compile and run the Java Swing application.
+## Engineering decisions
 
-# Usage
+- **Requirements captured as UML before implementation.** Class diagrams, a normalised database design and a state machine were agreed first, so the data model and the order flow were settled before any code.
+- **Parameterised queries throughout.** All MySQL access uses prepared statements, which is what keeps the customer bank details safe.
+- **Normalised storage for sensitive records.** Customer, order and stock data are separated into related tables rather than duplicated into wide records.
 
-1. Launch the application by running the main Java class.
-2. Create a new user account to access features like order management and stock monitoring.
-3. Navigate through the user-friendly interface to explore different functionalities.
+## Where it stands today
 
-# Source Code
-
-You can view the complete source code on GitHub: [Trains of Sheffield](https://github.com/efamelody/TrainsOfSheffield)
+Completed and awarded a distinction. Source code is public on GitHub.
 `,
   },
   {
     modalId: 8,
     title: "Interactive Cartoon Generator",
+    slug: "cartoon-generator",
     date: "2023-11-20",
     img: "cartoon_face_generator.png",
-    alt: "Interactive Cartoon Face Generator",
+    alt: "Interactive cartoon face generator",
     projectDate: "November 2023",
-    client: "Start Bootstrap",
+    context: "University of Sheffield · web development coursework",
+    role: "Solo build — canvas rendering, expression logic, and interactive effects",
     category: "JavaScript Web Development",
-    description: "An Interactive Cartoon Face Generator Web App using HTML5 Canvas",
+    description:
+      "A browser toy that draws a cartoon face on an HTML5 canvas — pick eyes, noses and mouths, switch expression, and trigger effects like blinking or changing lip colour.",
     technologies: ["javascript", "html", "css"],
     githubUrl: "https://github.com/efamelody/interactiveCartoon",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-- **JavaScript**
-- **HTML5**
-- **CSS**
+Drawing a cartoon face from scratch in a browser is more work than it looks, because every feature has to be drawn with primitive canvas operations and the result still has to read as a face.
 
-# Features
+## What it does
 
-## Interactive Cartoon Face Generator
-This JavaScript application allows users to create and customize cartoon faces on an HTML5 canvas.
+A browser toy that renders a cartoon face on an HTML5 canvas and lets you change it.
 
-### Key Features
-- **Facial Feature Generation**: Users can generate various facial features such as eyes, noses, and mouths.
-- **Expression Selection**: Choose from different expressions, including neutral, happy, and angry.
-- **Interactive Effects**: Trigger effects like closing eyes or changing lip color for a more engaging experience.
+| Capability | Behaviour |
+|---|---|
+| **Feature generation** | Eyes, noses and mouths are drawn programmatically in a range of styles. |
+| **Expression selection** | Switch between neutral, happy and angry expressions. |
+| **Interactive effects** | Trigger effects such as closing the eyes or changing the lip colour, on demand. |
 
-### Implementation Details
-- **Canvas Drawing**: Utilizes basic drawing commands within the Canvas API to render facial features dynamically.
-- **Event Listeners**: Employs event listeners to enable real-time user interaction, allowing for a seamless experience.
+## How it's built
 
-# Installation
+Plain JavaScript, HTML and CSS, using the Canvas 2D API for all drawing. Event listeners drive the interaction, so the canvas redraws as the user changes features.
 
-To run this application locally, simply clone the repository or download the source code.
+## Engineering decisions
 
-1. Ensure you have a web browser installed.
-2. Open the \`index.html\` file in your browser to access the app.
+- **Everything drawn from primitives.** No sprite sheet and no image assets — the faces are composed from canvas drawing calls, which keeps the whole app in a single dependency-free page.
+- **One render path per state change.** A single render function rebuilds the face from the current feature and expression, so the canvas can never disagree with the controls.
+- **Effects as first-class state.** "Close the eyes" is a state the renderer understands, not a one-off mutation, so effects compose with each other.
 
-# Usage
+## Where it stands today
 
-1. Launch the application by opening \`index.html\`.
-2. Use the controls to customize your cartoon face by selecting different features and expressions.
-3. Experiment with interactive effects to see the changes in real-time.
-
-# Source Code
-
-You can view the complete source code on GitHub: [Interactive Cartoon Face Generator](https://github.com/efamelody/interactiveCartoon)
+Complete — open \`index.html\` in a browser to use it. Source code is public on GitHub.
 `,
   },
   {
     modalId: 6,
     title: "Domino Game",
+    slug: "domino-game",
     date: "2023-11-20",
     img: "example.png",
-    alt: "image-alt",
+    alt: "Domino game implemented in Haskell",
     projectDate: "November 2023",
-    client: "Start Bootstrap",
+    context: "University of Sheffield · functional programming coursework",
+    role: "Solo build — game logic, scoring, and player strategies",
     category: "Haskell Functional Programming",
-    description: "A Domino Game using Haskell",
+    description:
+      "A Haskell implementation of a two-player dominoes match, with a seeded random number generator and competing simple and smart player strategies.",
     technologies: ["haskell"],
     githubUrl: "https://github.com/efamelody/DomsMatch",
-    filterTag: "uni",
-    content: `# Technologies Used
+    track: "research",
+    status: "archived",
+    content: `## The problem
 
-Haskell
+A dominoes match is a small, self-contained problem with a surprisingly large state space: two hands, a board, two scores, and a rule that the game can end before either target is reached. Writing it so it is reproducible and testable means treating the players as pluggable behaviour.
 
-# Features
+## What it does
 
-**DomsMatch:** A Haskell implementation to play a dominoes match between two players.
+A Haskell implementation of a two-player dominoes match.
 
-The top-level function is \`domsMatch\`, which takes five arguments:
-- \`games\`: Number of games to play
-- \`target\`: Target score to reach
-- \`player1\`, \`player2\`: Functions representing the two players (\`DomsPlayer\`)
-- \`seed\`: Integer to seed the random number generator
+The top-level function \`domsMatch\` takes five arguments and returns the number of games won by each player:
 
-The function returns a pair showing how many games were won by each player.
+- \`games\` — how many games to play
+- \`target\` — the score that wins
+- \`player1\`, \`player2\` — the two player strategies
+- \`seed\` — the seed for the random number generator
 
-**DomsPlayer Functions:** Functions must take four arguments:
-- \`Hand\`: Current set of dominos in hand
-- \`Board\`: Current state of the game board
-- \`Player\`: Either P1 or P2
-- \`Scores\`: Current scores of both players
+A player strategy is a function over the current hand, the board, whose turn it is, and the scores.
 
-**Author:** Nur Izfarwiza Binti Mohd Talib
+## How it's built
 
-**File Contents Summary:**
-1. **Scoring Functions:** \`scoreBoard\`, \`isDouble\`, \`calculateScore\`
-2. **Game Logic Functions:** \`blocked\`, \`canPlay\`, \`playDom\`
-3. **Player Strategies:** \`simplePlayer\`, \`smartPlayer\`, \`regularMoveStrategy\`
-4. **Scoring Strategy Functions:** \`findBestMove\`, \`listDomino\`, \`playDominoAtBestEnd\`, \`findHighestScoreDomino\`
-5. **Helper Functions:** \`updatePipCountLeft\`, \`updatePipCountRight\`, \`isMultThreeFive\`, \`calculateTotalPip\`
-6. **Utility Functions:** \`swapDomino\`
+Haskell, run from GHCi. The implementation is grouped into scoring functions (\`scoreBoard\`, \`isDouble\`, \`calculateScore\`), game logic (\`blocked\`, \`canPlay\`, \`playDom\`), player strategies (\`simplePlayer\`, \`smartPlayer\`, \`regularMoveStrategy\`), and helpers.
 
-# Installation
+## Engineering decisions
 
-You would need GHCi installed on your machine, which can be downloaded from [Haskell Platform](https://www.haskell.org/downloads/).
+- **Players as arguments, not globals.** Passing the two strategies into \`domsMatch\` makes it possible to run the same game with different opponents, and makes each strategy independently testable.
+- **A seeded random number generator.** The seed is a parameter, so any match can be replayed exactly — which is what makes a failing run debuggable.
+- **Pure functions for the state transitions.** Scoring and move legality are computed from the current hand and board and return the next state, so the rules can be reasoned about without simulating the loop.
 
-# Usage
+## Where it stands today
 
-1. Open GHCi by typing \`ghci\` in your terminal.
-2. Load your Haskell file using \`:load DomsMatch.hs\`.
-3. Run the match using the \`domsMatch\` function with specified parameters.
-
-The \`domsMatch\` function requires:
-- Number of games to play
-- Initial number of dominos in hand
-- Target score
-- Two player functions (\`simplePlayer\` or \`smartPlayer\`)
-- A seed for the random number generator
-
-# Source Code
-
-Link to the GitHub repository: [DomsMatch](https://github.com/efamelody/DomsMatch)
+Complete. The source is public on GitHub, and the match can be run directly in GHCi.
 `,
   },
 ];
@@ -877,6 +686,4 @@ export const siteConfig = {
   githubUsername: "efamelody",
   location: "Bangi, Selangor",
   copyright: "Efa",
-  credits:
-    'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.',
 };

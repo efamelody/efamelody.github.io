@@ -5,10 +5,10 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen pt-32 pb-20 px-6">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-pink-950 tracking-tight mb-3">
+        <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-pink-950 tracking-tight mb-3">
           Blog
         </h1>
-        <p className="text-pink-500/70 text-sm md:text-base mb-14">
+        <p className="text-pink-600 text-sm md:text-base mb-14">
           Personal experiences, projects, and reflections.
         </p>
 
@@ -20,7 +20,7 @@ export default function BlogPage() {
               className="block group"
             >
               <article className="bg-white rounded-2xl border border-pink-100/80 p-7 md:p-9 hover:border-pink-200/80 hover:shadow-md hover:shadow-pink-50 transition-all duration-200">
-                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-purple-400 font-mono mb-3">
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-pink-600 font-mono mb-3">
                   <span>{post.date}</span>
                   {post.tags && post.tags.length > 0 && (
                     <>
@@ -28,7 +28,7 @@ export default function BlogPage() {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-500 text-[11px] font-sans font-medium"
+                          className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-600 text-[11px] font-sans font-medium"
                         >
                           {tag}
                         </span>
@@ -37,15 +37,15 @@ export default function BlogPage() {
                   )}
                 </div>
 
-                <h2 className="text-xl md:text-2xl font-bold text-pink-900 group-hover:text-pink-600 transition-colors mb-3 leading-snug">
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-pink-900 group-hover:text-pink-600 transition-colors mb-3 leading-snug">
                   {post.title}
                 </h2>
 
-                <p className="text-pink-700/60 text-sm leading-relaxed">
+                <p className="text-pink-900/80 text-sm leading-relaxed">
                   {post.excerpt}
                 </p>
 
-                <div className="mt-5 text-sm font-semibold text-pink-500 group-hover:text-purple-500 transition-colors inline-flex items-center gap-1">
+                <div className="mt-5 text-sm font-semibold text-pink-600 group-hover:text-pink-700 transition-colors inline-flex items-center gap-1">
                   Read more
                   <span className="group-hover:translate-x-0.5 transition-transform inline-block">
                     &rarr;

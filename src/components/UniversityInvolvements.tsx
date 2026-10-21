@@ -75,15 +75,15 @@ export default function UniversityInvolvements() {
 
   return (
     <section id="university" className="relative py-28 px-6 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-purple-300/20 pointer-events-none" style={{ filter: "blur(90px)" }} />
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-pink-300/20 pointer-events-none" style={{ filter: "blur(90px)" }} />
       <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-pink-200/30 pointer-events-none" style={{ filter: "blur(90px)" }} />
 
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <span className="text-xs font-mono text-pink-500 tracking-[0.2em] uppercase mb-4 block font-semibold">
+          <span className="text-xs font-mono text-pink-600 tracking-[0.2em] uppercase mb-4 block font-semibold">
             University Life
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-pink-950">
+          <h2 className="text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-pink-950">
             University Involvements
           </h2>
         </div>
@@ -97,7 +97,7 @@ export default function UniversityInvolvements() {
               className={`relative px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
                 activeTab === tab.id
                   ? "bg-white text-pink-900 shadow-sm"
-                  : "text-pink-500/70 hover:text-pink-700"
+                  : "text-pink-600 hover:text-pink-700"
               }`}
             >
               {tab.label}
@@ -115,22 +115,22 @@ export default function UniversityInvolvements() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {/* Education banner */}
-              <div className="rounded-3xl border border-purple-200/70 bg-gradient-to-br from-purple-50/80 to-pink-50/80 p-6 md:p-8 mb-8">
+              <div className="rounded-3xl border border-pink-200/70 bg-gradient-to-br from-pink-50/90 to-pink-100/40 p-6 md:p-8 mb-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2.5 mb-2">
-                      <BookOpen size={16} className="text-purple-500" />
-                      <span className="text-xs font-mono text-purple-500 tracking-wider uppercase font-semibold">
+                      <BookOpen size={16} className="text-pink-600" />
+                      <span className="text-xs font-mono text-pink-600 tracking-wider uppercase font-semibold">
                         BSc Computer Science
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold text-pink-950 tracking-tight">
+                    <h3 className="text-2xl font-heading font-bold text-pink-950 tracking-tight">
                       University of Sheffield
                     </h3>
-                    <p className="text-pink-500/70 text-sm mt-1">2022 — 2025</p>
-                    <p className="text-pink-500/70 text-sm mt-1">Focus areas: full-stack systems, data-driven computing, and machine learning</p>
+                    <p className="text-pink-600 text-sm mt-1">2022 — 2025</p>
+                    <p className="text-pink-600 text-sm mt-1">Focus areas: full-stack systems, data-driven computing, and machine learning</p>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-purple-600 font-semibold bg-purple-50 border border-purple-100 px-3.5 py-2 rounded-full self-start">
+                  <span className="inline-flex items-center gap-1.5 text-xs text-pink-700 font-semibold bg-pink-50 border border-pink-100 px-3.5 py-2 rounded-full self-start">
                     YTP MARA Scholar
                   </span>
                 </div>
@@ -143,12 +143,12 @@ export default function UniversityInvolvements() {
                   <div className="w-3 h-3 rounded-full bg-rose-300" />
                   <div className="w-3 h-3 rounded-full bg-amber-300" />
                   <div className="w-3 h-3 rounded-full bg-emerald-300" />
-                  <span className="text-xs text-pink-400 ml-2">advection_gp_pipeline.sh — zsh</span>
+                  <span className="text-xs text-pink-500 ml-2">advection_gp_pipeline.sh — zsh</span>
                 </div>
 
                 {/* Pipeline flow */}
                 <div className="mb-8">
-                  <div className="text-xs text-purple-500 font-bold mb-4 tracking-wider">
+                  <div className="text-xs text-pink-600 font-bold mb-4 tracking-wider">
                     # Pipeline Overview
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
@@ -157,10 +157,10 @@ export default function UniversityInvolvements() {
                         <div className="flex flex-col items-center text-center p-3 rounded-2xl bg-pink-50/70 border border-pink-100">
                           <step.icon size={18} className="text-pink-500 mb-2" />
                           <span className="text-xs font-bold text-pink-900">{step.label}</span>
-                          <span className="text-[10px] text-pink-400 mt-0.5">{step.desc}</span>
+                          <span className="text-[10px] text-pink-600 mt-0.5">{step.desc}</span>
                         </div>
                         {i < PIPELINE_STEPS.length - 1 && (
-                          <ArrowRight size={14} className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 text-pink-300" />
+                          <ArrowRight size={14} className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 text-pink-400" />
                         )}
                       </div>
                     ))}
@@ -169,7 +169,7 @@ export default function UniversityInvolvements() {
 
                 {/* Parameters table */}
                 <div className="mb-8">
-                  <div className="text-xs text-purple-500 font-bold mb-4 tracking-wider">
+                  <div className="text-xs text-pink-600 font-bold mb-4 tracking-wider">
                     # Configuration Parameters
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -178,7 +178,7 @@ export default function UniversityInvolvements() {
                         key={p.param}
                         className="flex items-center gap-3 p-3 rounded-xl bg-pink-50/50 border border-pink-100"
                       >
-                        <span className="text-[11px] text-pink-400 font-semibold w-28 shrink-0">
+                        <span className="text-[11px] text-pink-600 font-semibold w-28 shrink-0">
                           {p.param}
                         </span>
                         <span className="text-xs text-pink-800">{p.value}</span>
@@ -189,14 +189,14 @@ export default function UniversityInvolvements() {
 
                 {/* Workflows */}
                 <div>
-                  <div className="text-xs text-purple-500 font-bold mb-4 tracking-wider">
+                  <div className="text-xs text-pink-600 font-bold mb-4 tracking-wider">
                     # Workflow Modules
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {WORKFLOWS.map((wf) => (
                       <div
                         key={wf.title}
-                        className="p-4 rounded-2xl bg-gradient-to-br from-purple-50/60 to-pink-50/60 border border-purple-100"
+                        className="p-4 rounded-2xl bg-gradient-to-br from-pink-50/70 to-pink-100/40 border border-pink-100"
                       >
                         <div className="text-sm font-bold text-pink-900 mb-3">
                           {">"} {wf.title}
@@ -205,9 +205,9 @@ export default function UniversityInvolvements() {
                           {wf.items.map((item, j) => (
                             <li
                               key={j}
-                              className="flex items-start gap-2 text-xs text-pink-700/60"
+                              className="flex items-start gap-2 text-xs text-pink-900/70"
                             >
-                              <span className="text-purple-400 mt-0.5">$</span>
+                              <span className="text-pink-500 mt-0.5">$</span>
                               <span>{item}</span>
                             </li>
                           ))}
@@ -223,7 +223,7 @@ export default function UniversityInvolvements() {
                 <a
                   href="/assets/files/my-dissertation.pdf"
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold text-sm hover:from-pink-400 hover:to-purple-400 transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-pink-700 text-white font-semibold text-sm hover:from-pink-400 hover:to-pink-600 transition-all duration-200"
                 >
                   <Download size={14} />
                   Download Full PDF
@@ -265,19 +265,19 @@ export default function UniversityInvolvements() {
                     className="rounded-3xl border border-pink-200/70 bg-white/80 p-6 md:p-7 hover:border-pink-300 hover:shadow-[0_8px_32px_rgba(224,90,154,0.08)] transition-all duration-300"
                   >
                     <div className="flex items-start justify-between gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 border border-pink-200 flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-100 to-pink-200 border border-pink-200 flex items-center justify-center shrink-0">
                         <Users size={16} className="text-pink-500" />
                       </div>
-                      <span className="inline-flex items-center gap-1 text-xs text-pink-500/70 font-mono bg-pink-50 px-2.5 py-1.5 rounded-full border border-pink-100 shrink-0">
+                      <span className="inline-flex items-center gap-1 text-xs text-pink-600 font-mono bg-pink-50 px-2.5 py-1.5 rounded-full border border-pink-100 shrink-0">
                         <Calendar size={10} />
                         {exp.date}
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-pink-950 tracking-tight mb-1">
+                    <h3 className="text-lg font-heading font-bold text-pink-950 tracking-tight mb-1">
                       {exp.title}
                     </h3>
-                    <p className="text-sm text-pink-500 font-semibold mb-4">
+                    <p className="text-sm text-pink-600 font-semibold mb-4">
                       {exp.organization}
                     </p>
 
@@ -285,7 +285,7 @@ export default function UniversityInvolvements() {
                       {exp.details.map((detail, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-2 text-xs text-pink-700/60"
+                          className="flex items-start gap-2 text-xs text-pink-900/70"
                         >
                           <span className="w-1 h-1 rounded-full bg-pink-400 mt-1.5 shrink-0" />
                           <span>{detail}</span>
