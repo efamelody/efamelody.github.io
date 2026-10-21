@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #fff0f6;
-  --foreground: #3b1f3d;
+  --background: #fff8fc;
+  --foreground: #4b1029;
   --card: #ffffff;
-  --card-foreground: #3b1f3d;
-  --muted: #fce7f3;
-  --muted-foreground: #b07aad;
-  --border: rgba(224, 90, 154, 0.18);
+  --card-foreground: #4b1029;
+  --muted: #f8d8e8;
+  --muted-foreground: #8a4a6b;
+  --border: rgba(232, 62, 145, 0.16);
 }
 
 @layer base {

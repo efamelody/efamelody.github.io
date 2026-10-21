@@ -7,7 +7,7 @@ import { Menu, X, ChevronRight } from "lucide-react";
 
 const NAV_LINKS: { label: string; target: string; isRoute?: boolean }[] = [
   { label: "About", target: "about" },
-  { label: "Projects", target: "projects" },
+  { label: "Work", target: "projects" },
   { label: "Experience", target: "experience" },
   { label: "University Involvements", target: "university" },
   { label: "Contact", target: "contact" },
@@ -36,13 +36,13 @@ export default function Navbar() {
       : undefined;
 
     const className =
-      "text-sm text-pink-800/55 hover:text-pink-700 transition-colors duration-200 relative group font-medium";
+      "text-sm text-pink-900/75 hover:text-pink-700 transition-colors duration-200 relative group font-medium";
 
     if (isRouteLink) {
       return (
         <Link key={link.target} href={href!} className={className}>
           {link.label}
-          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300" />
+          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-pink-400 to-pink-600 group-hover:w-full transition-all duration-300" />
         </Link>
       );
     }
@@ -54,7 +54,7 @@ export default function Navbar() {
         className={className}
       >
         {link.label}
-        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300" />
+        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-pink-400 to-pink-600 group-hover:w-full transition-all duration-300" />
       </button>
     );
   };
@@ -109,14 +109,14 @@ export default function Navbar() {
         {isHome ? (
           <button
             onClick={() => scrollTo("page-top")}
-            className="text-sm font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"
+            className="text-sm font-heading font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent"
           >
             Nur Izfarwiza
           </button>
         ) : (
           <Link
             href="/"
-            className="text-sm font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"
+            className="text-sm font-heading font-extrabold tracking-tight bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent"
           >
             Nur Izfarwiza
           </Link>

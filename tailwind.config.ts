@@ -5,34 +5,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Overrides Tailwind's stock pink scale so every `pink-*` utility in
+        // the codebase resolves to the portfolio's warm, high-contrast ramp.
+        pink: {
+          50: "#FFF8FC", // warm white — page canvas and subtle surfaces
+          100: "#F8D8E8", // blush — chips, soft fills
+          200: "#F3BCD3", // borders
+          300: "#EE93BC", // decorative
+          400: "#EC5FA0", // light accent
+          500: "#E83E91", // signature pink — interactive accents
+          600: "#C92C6F", // accessible accent for small text
+          700: "#A81E58",
+          800: "#7E1442",
+          900: "#5A0E30",
+          950: "#4B1029", // deep burgundy — headings and primary text
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#e05a9a",
-          50: "#fdf2f8",
-          100: "#fce7f3",
-          200: "#f9a8d4",
-          300: "#f472b6",
-          400: "#e05a9a",
-          500: "#db2777",
-          600: "#be185d",
-          700: "#9d174d",
-          800: "#831843",
-          900: "#500724",
-          950: "#3b1f3d",
-        },
-        secondary: {
-          DEFAULT: "#a855f7",
-          50: "#faf5ff",
-          100: "#f3e8ff",
-          200: "#e9d5ff",
-          300: "#d8b4fe",
-          400: "#c084fc",
-          500: "#a855f7",
-          600: "#9333ea",
-          700: "#7e22ce",
-          800: "#6b21a8",
-          900: "#581c87",
+          DEFAULT: "#E83E91",
+          50: "#FFF8FC",
+          100: "#F8D8E8",
+          200: "#F3BCD3",
+          300: "#EE93BC",
+          400: "#EC5FA0",
+          500: "#E83E91",
+          600: "#C92C6F",
+          700: "#A81E58",
+          800: "#7E1442",
+          900: "#5A0E30",
+          950: "#4B1029",
         },
         muted: {
           DEFAULT: "var(--muted)",
@@ -43,25 +45,34 @@ const config: Config = {
         "card-foreground": "var(--card-foreground)",
       },
       fontFamily: {
-        heading: ["Montserrat", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-        body: ["Lato", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-      },
-      maxWidth: {
-        grid: "1200px",
+        heading: [
+          "var(--font-heading)",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+        body: [
+          "var(--font-body)",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
       },
       typography: {
         primary: {
           css: {
-            "--tw-prose-body": "#3b1f3d",
-            "--tw-prose-headings": "#3b1f3d",
-            "--tw-prose-links": "#db2777",
-            "--tw-prose-bold": "#500724",
-            "--tw-prose-code": "#be185d",
-            "--tw-prose-quotes": "#831843",
-            "--tw-prose-quote-borders": "#f9a8d4",
-            "--tw-prose-hr": "#f9a8d4",
-            "--tw-prose-th-borders": "#f9a8d4",
-            "--tw-prose-td-borders": "#fce7f3",
+            "--tw-prose-body": "#4B1029",
+            "--tw-prose-headings": "#4B1029",
+            "--tw-prose-links": "#C92C6F",
+            "--tw-prose-bold": "#4B1029",
+            "--tw-prose-code": "#A81E58",
+            "--tw-prose-quotes": "#7E1442",
+            "--tw-prose-quote-borders": "#F3BCD3",
+            "--tw-prose-hr": "#F3BCD3",
+            "--tw-prose-th-borders": "#F3BCD3",
+            "--tw-prose-td-borders": "#F8D8E8",
           },
         },
       },

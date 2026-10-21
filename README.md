@@ -1,59 +1,99 @@
 # efamelody.github.io
 
-## Project Overview
+Personal portfolio and blog for **Nur Izfarwiza** — a software engineer and
+computer science graduate from the University of Sheffield.
 
-Personal project website based on Jekyll Freelancer theme. Includes: portfolio, blog posts, static pages, and configuration for GitHub Pages deployment.
+The site is a statically exported Next.js app. It showcases selected work
+(client and product builds), research and university projects, work
+experience, campus involvement, and a blog.
 
-## Repository Structure
+## Stack
 
-- `_config.yml` : Jekyll metadata and site settings.
-- `index.html`, `index.markdown`: Landing page and content entry.
-- `about.markdown`, `404.html`, `feed.xml` : static site pages.
-- `style.css` : base stylesheet.
+| Concern            | Choice                                            |
+| ------------------ | ------------------------------------------------- |
+| Framework          | Next.js 14 (App Router, `output: "export"`)        |
+| UI                 | React 18, TypeScript (strict)                      |
+| Styling            | Tailwind CSS 3.4 with a custom pink scale          |
+| Animation          | Framer Motion                                     |
+| Content            | Markdown via `react-markdown` + `remark-gfm`        |
+| Icons              | lucide-react                                      |
+| Fonts              | Montserrat (headings) / Lato (body), via `next/font` |
 
-- `_layouts/` : layout templates used by Jekyll.
-  - `default.html` : main page structure.
-  - `style.css` : layout-specific styles.
+## Local development
 
-- `_includes/` : reusable partial templates.
-  - `header.html`, `nav.html`, `footer.html`, `portfolio_grid.html`, etc.
-  - `css/` : theme CSS files.
+```bash
+pnpm install
+pnpm dev
+```
 
-- `_posts/` : blog post content in Markdown format with images.
-  - `2023-11-21-Chessboard-Diagram-Classifier.markdown`
-  - `2024-05-17-Robotics.markdown`
-  - `2024-06-30-Domino-Game.markdown`
-  - `2024-10-02-EdFlix.markdown`
-  - `2024-10-02-Interactive-Cartoon-Generator.markdown`
-  - `2024-10-02-Trains-of-Sheffield.markdown`
-  - `2025-09-26-Financial-Dashboard.markdown`
+Open <http://localhost:3000>.
 
-- `css/`, `js/`, `img/`, `assets/` : theme and content assets.
+## Build
 
-- `.github/workflows/jekyll-gh-pages.yml` : CI for GitHub Pages deployment.
-- `Gemfile`, `Gemfile.lock` : Ruby dependencies.
-- `freelancer-theme-jekyll.gemspec`: gemspec for theme packaging.
+```bash
+pnpm build
+```
 
-## Assets Details
+Static export writes the deployable site to `out/`.
 
-- `assets/files` : PDF attachments including dissertation and reports.
-- `img/portfolio` : portfolio project thumbnails.
-- `img/icons` : technology icon assets.
-- `js` : front-end behavior scripts (Bootstrap, jQuery, validation, animations, toggles).
+Type check without emitting:
 
-## Local Development
+```bash
+node node_modules/typescript/bin/tsc --noEmit
+```
 
-1. Install Ruby + Bundler.
-2. `bundle install`
-3. `bundle exec jekyll serve --watch`
-4. Open `http://localhost:4000`.
+## Repository structure
 
-## Deploy
+```
+src/
+  app/
+    layout.tsx          # Root layout, font variables, metadata
+    page.tsx            # Home page: section order
+    globals.css         # Design tokens (CSS variables) + base styles
+    blog/
+      page.tsx          # Blog index
+      [slug]/page.tsx   # Blog post
+  components/           # UI components (Navbar, Hero, PortfolioGrid, ...)
+  data/
+    portfolio.ts        # All project and experience content
+  hooks/
+    useSmoothScroll.ts  # Anchor scrolling for in-page navigation
+  lib/
+    assets.ts           # Public asset path helpers
+  types/
+    index.ts            # Project, Experience, SocialLink types
+public/
+  img/portfolio/        # Project screenshots
+  img/experience/       # Campus involvement photos
+  assets/files/         # Dissertation and report PDFs
+```
 
-- GitHub Pages with `.github/workflows/jekyll-gh-pages.yml`.
-- Push to `main` (or default branch) to auto-deploy.
+## Content model
 
-## Notes
+All portfolio content lives in `src/data/portfolio.ts` as a typed
+`Project[]`. Each project carries:
 
-- The site is built from a Jekyll portfolio template and extended with custom project posts.
-- Add new posts under `_posts/` and update portfolio images if required.
+- `slug` — stable identifier used in the browser tab and deep links.
+- `track` — `work` (selected work) or `research` (research and exploration);
+  drives the grouping and filter pills on the home page.
+- `status` — `live`, `beta`, `in-development`, `prototype`, or `archived`;
+  rendered as a semantic badge.
+- `screenshot` / `img` — image used for the card and modal hero. A missing
+  file degrades to a "Screenshot pending" placeholder rather than a broken
+  image.
+- `content` — the case study, written in Markdown with a consistent
+  structure: the problem, what it does, how it's built, engineering
+  decisions, and where it stands today.
+
+To add a project, append an entry to `projects` and drop its screenshot into
+`public/img/portfolio/`.
+
+## Deployment
+
+GitHub Actions (`.github/workflows/deploy.yml`) builds the site and publishes
+the `out/` directory to GitHub Pages on every push to `main`.
+
+## Legacy
+
+`_site/` contains the output of the previous Jekyll-based version of this
+site. It is not part of the build and is not deployed.

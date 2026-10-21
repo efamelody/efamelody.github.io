@@ -17,7 +17,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <article className="max-w-3xl mx-auto">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-pink-500 hover:text-purple-500 transition-colors mb-10 font-medium group"
+          className="inline-flex items-center gap-1.5 text-sm text-pink-600 hover:text-pink-700 transition-colors mb-10 font-medium group"
         >
           <span className="group-hover:-translate-x-0.5 transition-transform inline-block">
             &larr;
@@ -26,7 +26,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </Link>
 
         <div className="bg-white/90 rounded-3xl border border-pink-100/80 p-8 md:p-12 shadow-sm">
-          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-purple-400 font-mono mb-4">
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-pink-600 font-mono mb-4">
             <span>{post.date}</span>
             {post.tags && post.tags.length > 0 && (
               <>
@@ -34,7 +34,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-500 text-[11px] font-sans font-medium"
+                    className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-600 text-[11px] font-sans font-medium"
                   >
                     {tag}
                   </span>
@@ -43,7 +43,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             )}
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold text-pink-950 tracking-tight mb-10 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-pink-950 tracking-tight mb-10 leading-tight">
             {post.title}
           </h1>
 
@@ -57,7 +57,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <div className="mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-pink-500 hover:text-purple-500 transition-colors font-medium group"
+            className="inline-flex items-center gap-1.5 text-sm text-pink-600 hover:text-pink-700 transition-colors font-medium group"
           >
             <span className="group-hover:-translate-x-0.5 transition-transform inline-block">
               &larr;

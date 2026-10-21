@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Montserrat, Lato } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+  weight: ["600", "700", "800"],
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Efa's Portfolio",
@@ -12,7 +27,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-body antialiased">
+      <body
+        className={`${montserrat.variable} ${lato.variable} font-body antialiased`}
+      >
         <Navbar />
         {children}
       </body>
