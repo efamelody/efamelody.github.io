@@ -1,10 +1,35 @@
 import GlowOrb from "./GlowOrb";
-import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  BrainCircuit,
+  Database,
+  ExternalLink,
+  Layers,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 
-const METRICS = [
-  { val: "2:1", label: "BSc Computer Science" },
-  { val: "Distinction", label: "ML Dissertation" },
-  { val: "3", label: "Deployed Products" },
+const CAPABILITIES = [
+  {
+    icon: Layers,
+    title: "Product engineering",
+    body: "Full-stack applications, APIs and database-backed systems.",
+  },
+  {
+    icon: Database,
+    title: "Data & performance",
+    body: "Query optimisation, server-side pagination and large datasets.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI & research",
+    body: "RAG, workflow automation and applied machine learning.",
+  },
+  {
+    icon: Wrench,
+    title: "Ownership & learning",
+    body: "Building independent projects and learning unfamiliar systems.",
+  },
 ];
 
 export default function Hero() {
@@ -30,28 +55,40 @@ export default function Hero() {
             </h1>
 
             <h2 className="text-3xl md:text-5xl font-heading font-extrabold tracking-tight leading-[1.12] mb-6 max-w-3xl bg-gradient-to-r from-pink-600 via-pink-500 to-pink-700 bg-clip-text text-transparent">
-              I build thoughtful software for real-world problems.
+              Fullstack Developer
             </h2>
 
-            <p className="text-pink-900/75 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-              I design and build full-stack products end to end — from
-              AI-assisted messaging and booking systems to dashboards, APIs and
-              data pipelines. What I&apos;m drawn to is the hard part of a
-              product: tenant isolation, reliable state, and interfaces people
-              actually want to use.
+            <p className="text-pink-900/75 text-lg md:text-xl max-w-3xl leading-relaxed mb-10">
+              I&apos;m a Computer Science graduate from the University of
+              Sheffield with hands-on experience building full-stack products,
+              data-intensive applications and AI-powered automation.
             </p>
 
-            <div className="flex flex-wrap gap-8 mb-10">
-              {METRICS.map((m) => (
-                <div key={m.label}>
-                  <div className="text-2xl md:text-3xl font-heading font-extrabold text-pink-900 tracking-tight">
-                    {m.val}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-3xl">
+              {CAPABILITIES.map((c) => {
+                const Icon = c.icon;
+                return (
+                  <div
+                    key={c.title}
+                    className="group relative overflow-hidden rounded-2xl border border-pink-200/70 bg-white/70 backdrop-blur-sm p-5 shadow-[0_2px_16px_rgba(232,62,145,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-pink-300 hover:shadow-[0_14px_34px_rgba(232,62,145,0.16)]"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="flex items-start gap-3.5">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 text-white shadow-[0_4px_14px_rgba(232,62,145,0.28)] transition-transform duration-300 group-hover:scale-105">
+                        <Icon size={18} strokeWidth={1.9} />
+                      </span>
+                      <div>
+                        <h3 className="text-base md:text-lg font-heading font-extrabold text-pink-950 mb-1 leading-snug">
+                          {c.title}
+                        </h3>
+                        <p className="text-sm text-pink-900/70 leading-relaxed">
+                          {c.body}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-xs text-pink-600/90 mt-1 font-mono">
-                    {m.label}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">

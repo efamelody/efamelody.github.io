@@ -2,7 +2,7 @@ import { Github, Linkedin } from "@/components/icons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-pink-100 py-8 px-6 bg-white/40">
+    <footer className="border-t border-pink-100 py-8 px-6 bg-white/40 print:hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="text-sm font-heading font-extrabold bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent">
           Nur Izfarwiza

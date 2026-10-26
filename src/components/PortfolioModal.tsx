@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import ProjectImage from "@/components/ProjectImage";
 import StatusBadge from "@/components/StatusBadge";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { portfolioAsset, publicPath } from "@/lib/assets";
 
 interface Props {
@@ -163,6 +164,16 @@ export default function PortfolioModal({ project, onClose }: Props) {
               className="w-full max-w-lg mx-auto rounded-2xl shadow-md border border-pink-100 mb-8"
               placeholderClassName="w-full max-w-lg mx-auto rounded-2xl border border-pink-200 mb-8 py-16"
             />
+          )}
+
+          {/* Demo video */}
+          {project.videoUrl && (
+            <div className="mb-8">
+              <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-pink-600 mb-3 text-center">
+                Demo
+              </div>
+              <YouTubeEmbed url={project.videoUrl} title={project.title} />
+            </div>
           )}
 
           {/* Case study */}
