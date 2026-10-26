@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import CvFloatingLink from "@/components/CvFloatingLink";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <Navbar />
         {children}
+        <CvFloatingLink />
       </body>
     </html>
   );

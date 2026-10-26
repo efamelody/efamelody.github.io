@@ -3,26 +3,29 @@ import { Project, Experience, SocialLink } from "@/types";
 export const projects: Project[] = [
   {
     modalId: 16,
-    title: "WhatsApp AI Receptionist — Wedding Vendor SaaS",
+    title: "Aida — WhatsApp AI Receptionist for Wedding Vendors",
     slug: "whatsapp-receptionist",
     date: "2026-09-22",
     img: "whatsapp-saas.svg",
-    alt: "WhatsApp AI Receptionist high-level flow",
+    screenshot: "whatsapp/landing_page.png",
+    alt: "Aida WhatsApp AI receptionist landing page with a live chat demo",
     projectDate: "Sep 2026 — Ongoing",
     context: "Personal project · multi-tenant SaaS",
-    role: "Solo build — architecture, RAG pipeline, and dashboard",
+    role: "Solo build — product design, full-stack dashboard, AI workflow, and infrastructure",
     category: "SaaS & AI Automation",
     description:
-      "A booking assistant that runs on a wedding vendor's own WhatsApp number — answering pricing questions, checking availability, and holding slots — with a dashboard so vendors can approve bookings and manage leads.",
+      "Aida is a multi-tenant SaaS that puts an AI receptionist on a wedding vendor's own WhatsApp number. It answers pricing and FAQ questions from the vendor's knowledge base, checks capacity, holds tentative dates, and gives the vendor a dashboard for approvals, deposits, and finances.",
     technologies: [
       "Next.js 16",
-      "TypeScript",
-      "Tailwind CSS v4",
-      "Better Auth",
-      "Prisma",
-      "PostgreSQL",
       "n8n",
       "Google Gemini",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Prisma",
+      "PostgreSQL",
+      "Better Auth",
+      "Stripe",
+      "DeepSeek",
       "Evolution API",
       "Docker",
     ],
@@ -35,41 +38,224 @@ Wedding vendors — makeup artists, henna artists, photographers — field a hig
 
 ## What it does
 
-The platform runs an AI receptionist on the vendor's own WhatsApp number, so clients never leave a chat they already know how to use.
+Aida runs an AI receptionist on the vendor's own WhatsApp number, so clients never leave a chat they already know how to use.
 
 | Capability | Behaviour |
 |---|---|
 | **Grounded answers** | Replies about packages, pricing and FAQs come from the vendor's own knowledge base, never from the model's memory. Total price = package price + location-based travel surcharge. |
-| **Availability checks** | Requests are validated against capacity rules and blackout dates before any slot is offered. |
-| **Tentative holds** | A valid request creates a \`SOFT_HOLD\` and notifies the vendor, so a date is reserved while they decide. |
-| **Deposit handling** | The client uploads a receipt; the vendor previews and confirms it, which locks the booking. |
-| **Dual-channel approval** | The vendor can accept or decline from the dashboard *or* from WhatsApp action buttons — both hit the same status API. |
+| **Availability checks** | Date requests are checked against the vendor's daily capacity and existing holds before any slot is offered. |
+| **Tentative holds** | A valid request creates a \`SOFT_HOLD\` and alerts the vendor on WhatsApp, so a date is reserved while they decide. |
+| **Approvals and deposits** | The vendor accepts or declines from the dashboard. Accepted bookings move to \`DEPOSIT_PENDING\` with a 24-hour countdown, deposit tracking and a PDF invoice. |
+| **Human takeover** | If the vendor replies manually, the AI steps back. \`!pause\`, \`!resume\`, \`!confirm\` and \`!paid\` commands hand control back and forth without leaving WhatsApp. |
+| **Operations dashboard** | Onboarding, bookings, a visual calendar, a modular knowledge-base editor, finance reporting and expense tracking. |
+| **Plans** | A free dashboard tier for manual CRM work, and a Pro tier (RM49/mo after a 72-hour trial) that unlocks the WhatsApp AI. |
+
+## Inside the product
+
+![Aida dashboard with today's bookings and deposit alerts](img/portfolio/whatsapp/homepage.png)
+**Dashboard** — needs-response queue, today's bookings, deposit alerts and revenue at a glance.
+
+![Aida vendor onboarding, step 1 of 3](img/portfolio/whatsapp/onboarding.png)
+**Onboarding** — a three-step setup covering business profile, service packages and payment details.
+
+![Aida calendar with soft holds, confirmed bookings and a booking detail drawer](img/portfolio/whatsapp/calendar.png)
+**Calendar** — soft holds, confirmed bookings, blackout dates and a booking drawer with approvals.
+
+![Aida finance view with collected, outstanding and overdue payments](img/portfolio/whatsapp/finance.png)
+**Finance** — collected, outstanding and overdue payments, expenses and profit, with PDF invoices and CSV export.
 
 ## How it's built
 
 | Layer | Technology |
 |---|---|
 | **Frontend** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4 |
-| **Authentication** | Better Auth with Google SSO |
-| **Data** | PostgreSQL (Supabase) via Prisma — indexed relational columns plus a flexible \`knowledgeBase\` JSON field |
-| **Automation** | n8n (self-hosted) orchestrating WhatsApp webhooks, RAG inference and state transitions |
-| **AI** | Google Gemini, retrieval-augmented and grounded to the vendor knowledge base |
-| **Messaging** | Evolution API with a QR-paired instance per vendor |
-| **Infrastructure** | Docker Compose, Vercel |
+| **Authentication** | Better Auth with Google SSO and email/password |
+| **Data** | PostgreSQL (Supabase) via Prisma — indexed relational columns plus a flexible \`knowledgeBase\` JSON document |
+| **Automation** | n8n (self-hosted) orchestrating WhatsApp webhooks, slot checks, soft holds and state transitions |
+| **AI** | Google Gemini with a DeepSeek fallback and a static last resort, grounded to the vendor knowledge base |
+| **Messaging** | Evolution API (Baileys) with a QR-paired instance per vendor |
+| **Billing** | Stripe Checkout, Customer Portal and a signature-verified webhook |
+| **Infrastructure** | Docker Compose for n8n and Evolution API, Vercel for the dashboard, Supabase for Postgres |
 
-The booking lifecycle is modelled as an explicit state machine: \`INQUIRY\` → \`SOFT_HOLD\` → \`DEPOSIT_PENDING\` (24-hour timer) → \`CONFIRMED\`, with \`CANCELLED\` releasing the slot.
+The booking lifecycle is modelled as an explicit state machine: \`INQUIRY\` → \`SOFT_HOLD\` → \`DEPOSIT_PENDING\` (24-hour countdown) → \`CONFIRMED\`, with \`CANCELLED\` releasing the slot.
 
 ## Engineering decisions
 
 - **A hybrid data model.** Indexed relational columns (\`vendorId\`, \`status\`, \`eventDate\`) carry the queryable state, while the knowledge base stays JSON, so supporting a new vendor category does not require a schema migration.
-- **Guarded transitions.** Capacity checks, blackout-date validation and status changes are enforced at both the API and the UI, so a race in the interface cannot book a slot the API would reject.
-- **One approval path, two surfaces.** The dashboard and the WhatsApp buttons call the same status endpoint, so there is a single definition of "booked" and a single audit trail.
+- **AI that fails closed.** Gemini is the primary model, DeepSeek is the first fallback and a static reply is the last resort, so a client always gets an answer even when a model is rate-limited or down.
+- **The human stays in charge.** A vendor reply puts the conversation into a 30-minute cooldown; \`!pause\` silences Aida for 24 hours, and \`!confirm\` / \`!paid\` let the vendor close a booking without opening the dashboard. The AI is never allowed to confirm a date on its own.
+- **Money is a first-class part of the workflow.** Deposits are snapshotted onto the booking when it is created, payments are recorded against that booking, and invoices are generated from the same record, so later knowledge-base edits cannot rewrite history.
+- **One entitlement check, server-side.** \`isProVendor()\` gates WhatsApp pairing, and Stripe webhooks are the only writer of subscription state.
 
 ## Where it stands today
 
-Deployed and in testing. The core application, database schema, RAG pipeline and dashboard are implemented, and the product is being validated with real vendors ahead of a wider release.
+Beta and live at [whatsapp-saas-dashboard-eosin.vercel.app](https://whatsapp-saas-dashboard-eosin.vercel.app/). The dashboard, onboarding, knowledge base, bookings, calendar, finance, billing and the WhatsApp AI pipeline are implemented, and the product is being tested with friendly vendors. You can [try the sandbox demo](https://whatsapp-saas-dashboard-eosin.vercel.app/demo) without connecting a number.
 
-> The System Requirement Document (v2.0, 2026-09-22) defines the product scope, data model, state machine and phased delivery plan.
+The next milestones are WhatsApp Accept/Decline buttons (approval is dashboard-only today), two-way Google Calendar sync, automated deposit expiry, and moving the messaging stack from the beta tunnel to a VPS. The source repository is private.
+`,
+  },
+  {
+    modalId: 17,
+    title: "MealKit — AI Meal Planning & Fitness Dashboard",
+    slug: "mealkit",
+    date: "2026-10-21",
+    screenshot: "meal-dashboard/homepage.png",
+    alt: "MealKit dashboard with a weekly meal plan, daily calorie target and grocery list",
+    projectDate: "Oct 2026 — Ongoing",
+    context: "Personal project",
+    role: "Solo build — product design, full-stack features, Supabase data layer, and the Gemini AI workflow",
+    category: "AI Web App",
+    description:
+      "A mobile-first meal planner and fitness tracker that turns the meals you already cook into a weekly plan, a ready-to-shop grocery list, and a personalised calorie target — with Gemini filling in ingredients, nutrition estimates and activity calories along the way.",
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite 8",
+      "Tailwind CSS v4",
+      "React Router 7",
+      "Supabase",
+      "PostgreSQL",
+      "Google Gemini",
+    ],
+    githubUrl: "https://github.com/efamelody/meal-dashboard",
+    liveUrl: "https://meal-dashboard-eta.vercel.app/",
+    track: "work",
+    status: "live",
+    content: `## The problem
+
+Meal planning fails because it asks you to do three jobs at once: decide what to cook, work out what to buy, and stay within a calorie target you were never actually given. Most tools handle one of those and leave you to carry the other two in your head.
+
+## What it does
+
+MealKit turns the meals you already make into a full week of plans, a grocery list that builds itself, and a daily calorie target that is actually yours.
+
+| Area | Behaviour |
+|---|---|
+| **Meal library** | Add a meal by typing ingredients as a sentence; they split into tags. Autocomplete suggests ingredients you have used before, and Gemini can fill in the ingredient list and estimate calories, protein, carbs and fat from a meal name alone. |
+| **Weekly planner** | A 7-day × meal-type grid (breakfast, lunch, dinner, snack) with prev/next week navigation and a "Today" button. Each slot is stored on a concrete date, with live daily and weekly calorie totals per column. |
+| **Kitchen inventory** | Track what is in stock with quantity and unit, toggled in or out of stock, editable and searchable. |
+| **Smart grocery list** | Generate a per-week list from the viewed week's plan. Items already marked in stock are pre-checked as bought, so you never buy what you already own. |
+| **Fitness profile** | Age, sex, height, weight, goal (lose / maintain / build) and lifestyle. MealKit computes BMR and TDEE (Mifflin-St Jeor), then Gemini personalises a calorie target with a protein/carb/fat split and an explanation. |
+| **Activity & progress** | Log movement from a plain description — Gemini interprets it, with an on-device rule parser as fallback — and calories burned come from the MET method, never from the model. Progress shows intake against activity over time. |
+| **Community** | A lightweight social layer to see friends' activity alongside your own. |
+
+## Inside the product
+
+![MealKit dashboard with today's meals, daily calorie target and grocery needs](img/portfolio/meal-dashboard/homepage.png)
+**Dashboard** — today's meals, the daily calorie target and grocery needs at a glance.
+
+![MealKit meal log with logged meals and calorie totals](img/portfolio/meal-dashboard/meal-log.png)
+**Meal log** — what you ate, when, and how it stacks against your target.
+
+![MealKit AI nutrition estimate for a saved meal](img/portfolio/meal-dashboard/AI-estimate.png)
+**AI nutrition estimate** — one click turns a meal into calories, protein, carbs and fat.
+
+![MealKit progress view comparing intake and activity over time](img/portfolio/meal-dashboard/progress.png)
+**Progress** — intake, activity and the balance between them over time.
+
+## How it's built
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 19, TypeScript, Vite 8 |
+| **Styling** | Tailwind CSS v4 via the \`@tailwindcss/vite\` plugin |
+| **Routing** | React Router 7 with legacy redirects preserving query strings |
+| **Data** | Supabase (PostgreSQL) with Row Level Security scoped to \`auth.uid()\` |
+| **Authentication** | Supabase Auth, with a landing page and a \`/demo\` route for unauthenticated preview |
+| **AI** | Google Gemini over REST (no SDK) with a model-fallback chain and a runtime model switcher |
+
+## Engineering decisions
+
+- **AI never invents a calorie number.** Gemini is used for language tasks — ingredient suggestions, nutrition estimates, activity interpretation — while energy math (BMR/TDEE, MET-based activity burn) is deterministic and lives in plain TypeScript modules. The language model describes; the app calculates.
+- **A fallback that says so.** When the Gemini call fails or times out, activity descriptions fall back to an on-device rule parser that is surfaced to the user as a local guess, not silently dressed up as an AI result.
+- **The model fallback chain keeps AI usable.** If a Gemini model is overloaded, MealKit retries with lighter models, and a footer switcher lets the user pick between \`gemini-3.6-flash\`, \`gemini-2.5-flash\` and \`gemini-3.5-flash-lite\`.
+- **Per-week grocery lists.** Each week owns its grocery list, so navigating between weeks never clobbers another week's shopping, and smart deduction reads the inventory at generation time.
+- **Date-keyed meal slots.** The planner stores slots on concrete dates rather than a single static week, which keeps week navigation honest and reserves a \`google_calendar_event_id\` column for future calendar sync.
+
+## Where it stands today
+
+Live at [meal-dashboard-eta.vercel.app](https://meal-dashboard-eta.vercel.app/). The meal library, inventory, week-aware planner, smart grocery lists, fitness profile with AI calorie targets, activity logging and progress are implemented, and the source is public on GitHub. Planned next: strength and cardio session tracking, Apple Health sync, and Google Calendar sync for meal-plan slots.
+`,
+  },
+  {
+    modalId: 14,
+    title: "Prof. Talib — Academic Portfolio",
+    slug: "lecturer-portfolio",
+    date: "2026-05-01",
+    img: "lecturer-website.png",
+    screenshot: "lecturer/about.png",
+    alt: "About page with Prof. Dr. Mohd Talib Latif's portrait, biography and education",
+    projectDate: "May 2026 — Ongoing",
+    context: "Client work · Prof. Dr. Mohd Talib Latif, UKM",
+    role: "Solo build — front end, academic data integration, admin and deployment",
+    category: "Web Development",
+    description:
+      "An academic website for Prof. Dr. Mohd Talib Latif that keeps his publication record, citation metrics, media archive and research team current. Built as commissioned client work, with live academic data and a password-gated admin for the records he maintains.",
+    technologies: [
+      "Next.js 14",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "OpenAlex API",
+      "Scopus API",
+      "Vercel Blob",
+      "Cloudflare Pages",
+    ],
+    githubUrl: "https://github.com/efamelody/lecturer-biography",
+    liveUrl: "https://talib-latif.com/",
+    track: "work",
+    status: "live",
+    content: `## The problem
+
+Prof. Dr. Mohd Talib Latif's public record spans a large publication catalogue, years of news coverage and a research group that changes every year. A hand-maintained profile page would be out of date immediately, and a static list of papers would not show their reach.
+
+## What it does
+
+A commissioned academic site for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM). It pairs a long-form public profile with the live data behind it.
+
+| Area | Behaviour |
+|---|---|
+| **Live research metrics** | Citations, h-index and publication totals come from Scopus when configured, with OpenAlex as the fallback and a daily revalidation window. |
+| **Publication record** | Works are fetched from OpenAlex by ORCID, filtered against two known mis-attributed DOIs, grouped by year and ranked by citation count. |
+| **Media archive** | News, interviews, broadcasts, events and policy resources, with search, topic, outlet and year filters, plus press clippings. |
+| **Research team** | Academic staff, postgraduate researchers and alumni, with searchable profiles and category filters. |
+| **Editorial admin** | A password-gated /admin route for the media library and team records, including image uploads stored privately in Vercel Blob. |
+| **Profile and recognition** | Biography, education, affiliations, research areas, awards and contact details, presented as an editorial academic profile. |
+
+## Inside the site
+
+![Publications page with most-cited works and citation counts](img/portfolio/lecturer/publication.png)
+**Publications** — most-cited works, a year-by-year archive and direct DOI links.
+
+![Media and public engagement archive](img/portfolio/lecturer/media.png)
+**Media** — public engagement across newspapers, broadcasts and events, with outlet, topic and year filters.
+
+## How it's built
+
+| Layer | Technology |
+|---|---|
+| **Framework** | Next.js 14 (App Router), React 19 |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS v4, Playfair Display and Inter, Lucide icons |
+| **Publications** | OpenAlex API, scoped by ORCID and revalidated daily |
+| **Metrics** | Scopus API with OpenAlex fallback |
+| **Media archive** | Typed JSON validated at read time |
+| **Editable records** | Private Vercel Blob JSON for the media library and team, plus image blobs |
+| **Admin** | Password-gated route and API handlers with 5 MB image validation |
+| **Deployment** | Cloudflare Pages via next-on-pages, edge runtime, Vercel Analytics |
+
+## Engineering decisions
+
+- **Two sources for metrics, one visible number.** Scopus is the primary source when its API key is configured; OpenAlex covers it when Scopus is unavailable. Both fetches revalidate daily, so citations move without a deploy.
+- **Filter the record before ranking it.** Publication data is scoped to the professor's ORCID, two known mis-attributed DOIs are excluded, and top-cited lists are derived only after that cleanup.
+- **Validate the archive at the boundary.** Media records are parsed field by field — topic, language, attribution and safe HTTP(S) links — so malformed entries never reach the rendered archive.
+- **Explicit date precision.** The media model stores day, month or year separately, so incomplete press records sort and display without inventing a date.
+- **Small authoring surface.** Only the media library and team records live in private Vercel Blob storage; the profile, publications and media archive stay typed JSON and live API data.
+- **Private images behind a cache.** Uploads are stored in private Vercel Blob storage and streamed through a proxy route with immutable caching, rather than exposed as public object URLs.
+
+## Where it stands today
+
+Live at [talib-latif.com](https://talib-latif.com/). The profile, publications, media archive, research team and admin are implemented, and the source code is public on GitHub. The site is maintained as new papers and coverage are added.
 `,
   },
   {
@@ -146,72 +332,6 @@ Live and playable at [mrt-quest.vercel.app](https://mrt-quest.vercel.app/). Sour
 `,
   },
   {
-    modalId: 14,
-    title: "Lecturer Portfolio — Academic Website",
-    slug: "lecturer-portfolio",
-    date: "2026-05-01",
-    img: "lecturer-website.png",
-    alt: "Lecturer biography academic website",
-    projectDate: "May 2026",
-    context: "Client work · Prof. Dr. Mohd Talib Latif, UKM",
-    role: "Solo build — front end, OpenAlex integration, and CMS wiring",
-    category: "Web Development",
-    description:
-      "A publication website for an atmospheric chemistry professor, pulling live citation metrics from OpenAlex and managing photo galleries through a Sanity CMS. Built as commissioned client work.",
-    technologies: [
-      "Next.js 14",
-      "TypeScript",
-      "Tailwind CSS",
-      "Sanity CMS",
-      "MongoDB",
-      "OpenAlex API",
-    ],
-    githubUrl: "https://github.com/efamelody/lecturer-biography",
-    liveUrl: "https://talib-latif.com/",
-    track: "work",
-    status: "live",
-    content: `## The problem
-
-A senior academic with a substantial publication record needed a website that kept itself current. A hand-maintained page is out of date the moment a new paper lands, and a static list of publications says nothing about their impact.
-
-## What it does
-
-A clean, fast academic site for **Prof. Dr. Mohd Talib Latif**, Professor of Atmospheric Chemistry at Universiti Kebangsaan Malaysia (UKM), built as commissioned client work.
-
-| Capability | Behaviour |
-|---|---|
-| **Live publication data** | Citations, works and metrics are pulled from the OpenAlex API and cached with ISR, so the numbers are current and the page stays fast. |
-| **Sanity photo gallery** | A lightbox media gallery managed through Sanity Studio, with no code change needed to publish. |
-| **Admin dashboard** | A password-protected inline editor at \`/admin\` for content changes. |
-| **Resilient content source** | Content is read from MongoDB, falling back to local JSON if the database is unavailable. |
-| **Dark mode and edge runtime** | CSS custom properties drive the theming; the root layout runs on the edge. |
-
-Pages include the homepage with hero and citation stats, a full biography with education, awards and affiliations, a publications list, research group members and alumni, a media room, and the admin dashboard.
-
-## How it's built
-
-| Layer | Technology |
-|---|---|
-| **Framework** | Next.js 14 (App Router) |
-| **Language** | TypeScript |
-| **Styling** | Tailwind CSS v4, Lucide React icons |
-| **CMS** | Sanity CMS v5 (photo gallery) |
-| **Data** | MongoDB Atlas, with a static JSON fallback |
-| **APIs** | OpenAlex, MongoDB driver, Sanity GROQ |
-| **Deployment** | Vercel + Cloudflare Pages, edge runtime |
-
-## Engineering decisions
-
-- **ISR over a build-time fetch.** Publication data changes weekly; incremental regeneration keeps the page fresh without rebuilding the site or blocking on the OpenAlex API on every request.
-- **Graceful degradation on the data source.** The JSON fallback means a database outage degrades the site to a static version rather than an error page.
-- **Content split by editing cost.** Only the gallery needs a full CMS; everything else is edited in the lightweight admin panel, which keeps the authoring surface small for a non-technical client.
-
-## Where it stands today
-
-Live at [talib-latif.com](https://talib-latif.com/). Source code is public on GitHub.
-`,
-  },
-  {
     modalId: 13,
     title: "Smart Habit Coach",
     slug: "smart-habit-coach",
@@ -227,6 +347,7 @@ Live at [talib-latif.com](https://talib-latif.com/). Source code is public on Gi
       "A smartwatch that turns daily habits into something you can watch grow. Tracks steps, nudges you when you go inactive, and grows a virtual plant as you log water.",
     technologies: ["ESP32", "LilyGO T-Watch 2020", "LVGL", "PlatformIO", "ArduinoOTA", "BMA423 Accelerometer"],
     githubUrl: "https://github.com/efamelody/IoT/",
+    videoUrl: "https://www.youtube.com/shorts/KFeomGP4ZeQ",
     track: "research",
     status: "prototype",
     content: `## The problem
@@ -266,7 +387,7 @@ The plant grows in stages: a dry seedling at 0–2 cups, a small sprout at 3–4
 
 ## Where it stands today
 
-Complete and demonstrated on hardware. A demo video is linked below, and the firmware is public on GitHub.
+Complete and demonstrated on hardware. A demo video is embedded above, and the firmware is public on GitHub.
 `,
   },
   {

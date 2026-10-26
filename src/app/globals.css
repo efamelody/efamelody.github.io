@@ -30,3 +30,78 @@
     word-spacing: 0.25em;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm 11mm 11mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  body {
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv-page {
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .cv-sheet {
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .cv-sheet-grid {
+    display: block !important;
+  }
+
+  .cv-main {
+    padding: 0 !important;
+  }
+
+  .cv-main p,
+  .cv-main li {
+    line-height: 1.4;
+  }
+
+  .cv-project,
+  .cv-skill-group,
+  .cv-print-header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-projects-grid > :nth-child(1),
+  .cv-projects-grid > :nth-child(2) {
+    border-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .cv-section-heading,
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+}
