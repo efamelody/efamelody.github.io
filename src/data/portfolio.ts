@@ -348,7 +348,7 @@ Live and playable at [mrt-quest.vercel.app](https://mrt-quest.vercel.app/). Sour
     technologies: ["ESP32", "LilyGO T-Watch 2020", "LVGL", "PlatformIO", "ArduinoOTA", "BMA423 Accelerometer"],
     githubUrl: "https://github.com/efamelody/IoT/",
     videoUrl: "https://www.youtube.com/shorts/KFeomGP4ZeQ",
-    track: "research",
+    track: "work",
     status: "prototype",
     content: `## The problem
 

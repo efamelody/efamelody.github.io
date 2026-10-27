@@ -6,6 +6,7 @@ import { projects } from "@/data/portfolio";
 import PortfolioCard from "./PortfolioCard";
 import PortfolioModal from "./PortfolioModal";
 import GlowOrb from "./GlowOrb";
+import FeaturedProject from "./FeaturedProject";
 
 type Filter = "all" | "work" | "research";
 
@@ -14,6 +15,8 @@ const FILTERS: { id: Filter; label: string }[] = [
   { id: "work", label: "Selected Work" },
   { id: "research", label: "Research & Exploration" },
 ];
+
+const LEAD_PROJECT_SLUG = "whatsapp-receptionist";
 
 function GroupHeading({
   index,
@@ -38,7 +41,7 @@ function GroupHeading({
 }
 
 export default function PortfolioGrid() {
-  const [activeFilter, setActiveFilter] = useState<Filter>("all");
+  const [activeFilter, setActiveFilter] = useState<Filter>("work");
   const [selected, setSelected] = useState<Project | null>(null);
 
   const filtered = useMemo(() => {
@@ -46,9 +49,13 @@ export default function PortfolioGrid() {
     return projects.filter((p) => p.track === activeFilter);
   }, [activeFilter]);
 
-  const featured = filtered.filter((p) => p.track === "work");
+  const selectedWork = filtered.filter((p) => p.track === "work");
   const research = filtered.filter((p) => p.track === "research");
-  const isEmpty = featured.length === 0 && research.length === 0;
+  const leadProject = selectedWork.find((p) => p.slug === LEAD_PROJECT_SLUG);
+  const remainingWork = leadProject
+    ? selectedWork.filter((p) => p.modalId !== leadProject.modalId)
+    : selectedWork;
+  const isEmpty = selectedWork.length === 0 && research.length === 0;
 
   return (
     <section id="projects" className="relative py-28 px-6 overflow-hidden">
@@ -109,23 +116,47 @@ export default function PortfolioGrid() {
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="space-y-16"
             >
-              {featured.length > 0 && (
+              {selectedWork.length > 0 && (
                 <section>
                   <GroupHeading
                     index="01"
                     title="Selected Work"
                     hint="Products and client work I designed, built and shipped."
                   />
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {featured.map((project) => (
-                      <PortfolioCard
-                        key={project.modalId}
-                        project={project}
-                        onSelect={setSelected}
-                        variant="compact"
-                      />
-                    ))}
-                  </div>
+
+                  {leadProject && (
+                    <FeaturedProject
+                      project={leadProject}
+                      onSelect={setSelected}
+                    />
+                  )}
+
+                  {remainingWork.length > 0 && (
+                    <div className={leadProject ? "mt-14" : ""}>
+                      {leadProject && (
+                        <div className="mb-6 flex items-center gap-4">
+                          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-pink-600">
+                            More selected work
+                          </span>
+                          <span
+                            className="h-px flex-1 bg-pink-200/70"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      )}
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {remainingWork.map((project) => (
+                          <PortfolioCard
+                            key={project.modalId}
+                            project={project}
+                            onSelect={setSelected}
+                            variant="compact"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </section>
               )}
 

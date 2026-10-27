@@ -59,6 +59,8 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
+        display: ["var(--font-display)", "Georgia", "Cambria", "serif"],
+        hand: ["var(--font-hand)", "Segoe Script", "cursive"],
       },
       typography: {
         primary: {

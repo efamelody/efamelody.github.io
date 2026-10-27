@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Lato } from "next/font/google";
+import { Montserrat, Lato, Playfair_Display, Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import CvFloatingLink from "@/components/CvFloatingLink";
 import "./globals.css";
@@ -18,6 +18,20 @@ const lato = Lato({
   weight: ["400", "700"],
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["600", "700", "800", "900"],
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-hand",
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   title: "Efa's Portfolio",
   description:
@@ -29,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${lato.variable} font-body antialiased`}
+        className={`${montserrat.variable} ${lato.variable} ${playfair.variable} ${caveat.variable} font-body antialiased`}
       >
         <Navbar />
         {children}

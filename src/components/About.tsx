@@ -1,7 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { FileText, Terminal, Sparkles, Cpu, Heart } from "lucide-react";
+import {
+  BrainCircuit,
+  Code2,
+  Cpu,
+  Database,
+  FileText,
+  Heart,
+  PenLine,
+  Sparkles,
+  Terminal,
+} from "lucide-react";
 
 const TECH_STACK = {
   programming_languages: ["Python", "TypeScript", "JavaScript", "SQL", "Java", "C/C++"],
@@ -17,8 +27,33 @@ const LABEL_MAP: Record<string, string> = {
   data_science_vision: "data_science_and_geospatial",
 };
 
+const STRENGTHS = [
+  {
+    icon: Code2,
+    title: "Product engineering",
+    body: "Full-stack applications, APIs and database-backed systems.",
+  },
+  {
+    icon: Database,
+    title: "Data & performance",
+    body: "Query optimisation, server-side pagination and large datasets.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI & research",
+    body: "RAG, workflow automation and applied machine learning.",
+  },
+  {
+    icon: PenLine,
+    title: "Ownership & learning",
+    body: "Building independent projects and learning unfamiliar systems.",
+  },
+];
+
 export default function About() {
-  const [activeTab, setActiveTab] = useState<"about" | "skills">("about");
+  const [activeTab, setActiveTab] = useState<
+    "about" | "skills" | "strengths"
+  >("about");
 
   return (
     <section id="about" className="relative py-28 px-6 overflow-hidden">
@@ -45,27 +80,38 @@ export default function About() {
             <div className="w-12" />
           </div>
 
-          <div className="flex border-b border-pink-200/50 bg-pink-50/40 text-xs select-none">
+          <div className="flex overflow-x-auto border-b border-pink-200/50 bg-pink-50/40 text-xs select-none">
             <button
               onClick={() => setActiveTab("about")}
-              className={`flex items-center gap-2 px-5 py-3 border-r border-pink-200/50 transition-colors font-semibold ${
+              className={`flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 py-3 text-[11px] border-r border-pink-200/50 transition-colors font-semibold sm:px-5 sm:text-xs ${
                 activeTab === "about"
                   ? "bg-white text-pink-600 border-t-2 border-t-pink-400"
                   : "text-pink-500/80 hover:text-pink-600"
               }`}
             >
-              <FileText size={14} /> about_me.md
+              <FileText size={14} className="hidden sm:block" aria-hidden="true" /> about_me.md
             </button>
 
             <button
               onClick={() => setActiveTab("skills")}
-              className={`flex items-center gap-2 px-5 py-3 border-r border-pink-200/50 transition-colors font-semibold ${
+              className={`flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 py-3 text-[11px] border-r border-pink-200/50 transition-colors font-semibold sm:px-5 sm:text-xs ${
                 activeTab === "skills"
                   ? "bg-white text-pink-600 border-t-2 border-t-pink-400"
                   : "text-pink-500/80 hover:text-pink-600"
               }`}
             >
-              <Terminal size={14} /> tech_stack.json
+              <Terminal size={14} className="hidden sm:block" aria-hidden="true" /> tech_stack.json
+            </button>
+
+            <button
+              onClick={() => setActiveTab("strengths")}
+              className={`flex shrink-0 items-center gap-2 whitespace-nowrap px-2.5 py-3 text-[11px] border-r border-pink-200/50 transition-colors font-semibold sm:px-5 sm:text-xs ${
+                activeTab === "strengths"
+                  ? "bg-white text-pink-600 border-t-2 border-t-pink-400"
+                  : "text-pink-500/80 hover:text-pink-600"
+              }`}
+            >
+              <Sparkles size={14} className="hidden sm:block" aria-hidden="true" /> strengths.md
             </button>
           </div>
 
@@ -146,6 +192,66 @@ export default function About() {
                     {"\n"}<span className="text-pink-400">{"}"}</span>
                   </code>
                 </pre>
+              </div>
+            )}
+
+            {activeTab === "strengths" && (
+              <div className="space-y-6 text-xs md:text-sm">
+                <div className="flex items-center gap-2 text-pink-400 font-mono text-xs mb-4">
+                  <span className="text-pink-400">//</span> ~/strengths.md
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <h3 className="shrink-0 font-mono text-[10px] uppercase tracking-[0.22em] text-pink-600">
+                    What I bring to the table
+                  </h3>
+                  <span
+                    className="h-px flex-1 bg-pink-200/70"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2">
+                  {STRENGTHS.map((strength, index) => {
+                    const Icon = strength.icon;
+                    const topBorder =
+                      index === 0
+                        ? ""
+                        : index < 2
+                          ? "border-t border-pink-200/60 pt-5 md:border-t-0 md:pt-0"
+                          : "border-t border-pink-200/60 pt-5";
+                    const column =
+                      index % 2 === 0
+                        ? "md:pr-8"
+                        : "md:border-l md:border-pink-200/60 md:pl-8";
+
+                    return (
+                      <article
+                        key={strength.title}
+                        className={`flex h-full gap-3.5 ${topBorder} ${column}`}
+                      >
+                        <Icon
+                          size={20}
+                          strokeWidth={1.5}
+                          className="mt-0.5 shrink-0 text-pink-600"
+                          aria-hidden="true"
+                        />
+
+                        <div>
+                          <h4 className="font-heading text-[13px] font-bold uppercase tracking-[0.04em] text-pink-950">
+                            <span className="mr-2 font-mono text-[10px] font-medium tracking-[0.1em] text-pink-500">
+                              {String(index + 1).padStart(2, "0")} —
+                            </span>
+                            {strength.title}
+                          </h4>
+                          <p className="mt-2 text-sm leading-[1.7] text-pink-900/75">
+                            {strength.body}
+                          </p>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>

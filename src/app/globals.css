@@ -23,11 +23,92 @@
   * {
     @apply border-border;
   }
+  ::selection {
+    background: #f3bcd3;
+    color: #4b1029;
+  }
 }
 
 @layer utilities {
   .word-spacing {
     word-spacing: 0.25em;
+  }
+
+  /* Warm paper wash with a faint grain. The homepage is wrapped in this,
+     while interior routes keep their quiet white canvas. */
+  .editorial-paper {
+    background-color: #fdf5f2;
+    background-image: radial-gradient(
+        ellipse 85% 55% at 12% 0%,
+        rgba(248, 216, 232, 0.72),
+        transparent 68%
+      ),
+      radial-gradient(
+        ellipse 60% 48% at 96% 4%,
+        rgba(252, 236, 230, 0.85),
+        transparent 70%
+      ),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23grain)' opacity='0.06'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-size: 100% 1100px, 100% 900px, 140px 140px;
+    background-position: top left, top right, top left;
+  }
+
+  .tape {
+    background-color: rgba(248, 216, 232, 0.72);
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.35) 0 5px,
+      rgba(255, 255, 255, 0) 5px 11px
+    );
+    box-shadow: 0 1px 2px rgba(75, 16, 41, 0.08);
+  }
+
+  .paper-note {
+    filter: drop-shadow(0 14px 22px rgba(75, 16, 41, 0.12));
+  }
+
+  .torn-note {
+    clip-path: polygon(
+      0 2%,
+      4% 0,
+      9% 2%,
+      14% 0,
+      20% 1%,
+      27% 0,
+      33% 2%,
+      40% 0,
+      47% 1%,
+      54% 0,
+      61% 2%,
+      68% 0,
+      75% 1%,
+      82% 0,
+      88% 2%,
+      94% 0,
+      100% 1%,
+      100% 93%,
+      96% 97%,
+      92% 94%,
+      88% 99%,
+      83% 95%,
+      78% 99%,
+      73% 94%,
+      68% 99%,
+      62% 95%,
+      57% 99%,
+      52% 94%,
+      47% 99%,
+      42% 95%,
+      37% 99%,
+      31% 94%,
+      26% 99%,
+      21% 95%,
+      16% 99%,
+      11% 94%,
+      6% 98%,
+      0 94%
+    );
   }
 }
 
@@ -38,7 +119,8 @@
   }
 
   html,
-  body {
+  body,
+  .editorial-paper {
     background: #ffffff !important;
   }
 

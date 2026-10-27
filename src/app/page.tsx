@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="editorial-paper">
       <Hero />
       <About />
       <PortfolioGrid />
@@ -16,6 +16,6 @@ export default function Home() {
       <UniversityInvolvements />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }
