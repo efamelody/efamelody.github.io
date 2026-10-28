@@ -83,7 +83,8 @@ The booking lifecycle is modelled as an explicit state machine: \`INQUIRY\` → 
 
 - **A hybrid data model.** Indexed relational columns (\`vendorId\`, \`status\`, \`eventDate\`) carry the queryable state, while the knowledge base stays JSON, so supporting a new vendor category does not require a schema migration.
 - **AI that fails closed.** Gemini is the primary model, DeepSeek is the first fallback and a static reply is the last resort, so a client always gets an answer even when a model is rate-limited or down.
-- **The human stays in charge.** A vendor reply puts the conversation into a 30-minute cooldown; \`!pause\` silences Aida for 24 hours, and \`!confirm\` / \`!paid\` let the vendor close a booking without opening the dashboard. The AI is never allowed to confirm a date on its own.
+- **The human stays in charge.** Each conversation carries its own state (\`aiPaused\`, \`aiCooldownUntil\`): a vendor reply puts the thread into a 30-minute cooldown, \`!pause\` silences Aida for 24 hours, and a lenient \`!confirm <date> <time>\` / \`!paid RM200\` parser lets the vendor close a booking straight from chat. The AI is never allowed to confirm a date on its own.
+- **Multi-tenant by construction.** An edge middleware guards every route on a signed session cookie, and each vendor pairs their own WhatsApp instance, so conversations and data stay isolated per vendor.
 - **Money is a first-class part of the workflow.** Deposits are snapshotted onto the booking when it is created, payments are recorded against that booking, and invoices are generated from the same record, so later knowledge-base edits cannot rewrite history.
 - **One entitlement check, server-side.** \`isProVendor()\` gates WhatsApp pairing, and Stripe webhooks are the only writer of subscription state.
 
@@ -136,8 +137,9 @@ MealKit turns the meals you already make into a full week of plans, a grocery li
 | **Kitchen inventory** | Track what is in stock with quantity and unit, toggled in or out of stock, editable and searchable. |
 | **Smart grocery list** | Generate a per-week list from the viewed week's plan. Items already marked in stock are pre-checked as bought, so you never buy what you already own. |
 | **Fitness profile** | Age, sex, height, weight, goal (lose / maintain / build) and lifestyle. MealKit computes BMR and TDEE (Mifflin-St Jeor), then Gemini personalises a calorie target with a protein/carb/fat split and an explanation. |
-| **Activity & progress** | Log movement from a plain description — Gemini interprets it, with an on-device rule parser as fallback — and calories burned come from the MET method, never from the model. Progress shows intake against activity over time. |
-| **Community** | A lightweight social layer to see friends' activity alongside your own. |
+| **Meal log** | Log what you ate by photo or description — Gemini identifies each food and drink, estimates per-serving calories/protein/carbs/fat with a low/medium/high confidence and a written justification, and a correction overrides a wrong identification. |
+| **Activity & progress** | Describe a workout in your own words (typed, voice or photo) — Gemini parses it into structured fields, falling back to an on-device rule parser when offline — and calories burned come from the MET method, never from the model. Progress charts intake against activity over time. |
+| **Community** | A social layer to follow friends, share posts and plan group meals, alongside your own dashboard. |
 
 ## Inside the product
 
@@ -167,6 +169,8 @@ MealKit turns the meals you already make into a full week of plans, a grocery li
 ## Engineering decisions
 
 - **AI never invents a calorie number.** Gemini is used for language tasks — ingredient suggestions, nutrition estimates, activity interpretation — while energy math (BMR/TDEE, MET-based activity burn) is deterministic and lives in plain TypeScript modules. The language model describes; the app calculates.
+- **The AI is clamped to the maths.** Gemini's daily calorie target is accepted only within ±10% of the Mifflin-St Jeor result, so a model slip can never produce a dangerous number.
+- **Photo estimates explain themselves.** Each food identified from a photo carries a portion, a written justification and a low/medium/high confidence, and the user's correction always overrides the model.
 - **A fallback that says so.** When the Gemini call fails or times out, activity descriptions fall back to an on-device rule parser that is surfaced to the user as a local guess, not silently dressed up as an AI result.
 - **The model fallback chain keeps AI usable.** If a Gemini model is overloaded, MealKit retries with lighter models, and a footer switcher lets the user pick between \`gemini-3.6-flash\`, \`gemini-2.5-flash\` and \`gemini-3.5-flash-lite\`.
 - **Per-week grocery lists.** Each week owns its grocery list, so navigating between weeks never clobbers another week's shopping, and smart deduction reads the inventory at generation time.
@@ -174,7 +178,7 @@ MealKit turns the meals you already make into a full week of plans, a grocery li
 
 ## Where it stands today
 
-Live at [meal-dashboard-eta.vercel.app](https://meal-dashboard-eta.vercel.app/). The meal library, inventory, week-aware planner, smart grocery lists, fitness profile with AI calorie targets, activity logging and progress are implemented, and the source is public on GitHub. Planned next: strength and cardio session tracking, Apple Health sync, and Google Calendar sync for meal-plan slots.
+Live at [meal-dashboard-eta.vercel.app](https://meal-dashboard-eta.vercel.app/). The meal library, inventory, week-aware planner, smart grocery lists, fitness profile with AI calorie targets, photo-based meal logging, activity tracking and the community feed are implemented, and the source is public on GitHub. Planned next: strength and cardio session tracking, Apple Health sync, and Google Calendar sync for meal-plan slots.
 `,
   },
   {

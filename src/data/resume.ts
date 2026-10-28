@@ -3,11 +3,11 @@ import { ResumeData } from "@/types";
 export const resume: ResumeData = {
   name: "Nur Izfarwiza",
   preferredName: "Efa",
-  title: "Software Engineer · Full-Stack Developer",
+  title: "Full-Stack Software Engineer",
   tagline:
-    "Full-stack developer building production web applications, data-intensive interfaces and AI-powered workflows.",
+    "Full-stack engineer building production web applications, data-intensive interfaces and AI-powered workflows.",
   summary:
-    "Computer Science graduate (2:1) from the University of Sheffield with production experience as a full-stack engineer. I have worked across legacy platform modernisation, payment and identity flows, AI-powered automation and data-intensive dashboards, primarily with TypeScript, React, Next.js, Node.js, SQL and Spring Boot. I am looking for an early-career software engineering role where I can keep shipping reliable products and deepen my work in data and applied machine learning.",
+    "Full-stack software engineer with production experience across legacy Java/Spring modernisation and end-to-end TypeScript/React/Next.js products — payment and identity flows, data-intensive dashboards, and AI-powered automation. Computer Science graduate (University of Sheffield) with a Distinction in my final-year dissertation on applied machine learning. Looking for an early-career role where I can keep shipping reliable products and go deeper into building AI-powered features.",
   photo: "/img/profile.JPG",
   contacts: [
     {
@@ -37,7 +37,7 @@ export const resume: ResumeData = {
   skills: [
     {
       title: "Languages",
-      items: ["TypeScript", "JavaScript", "Python", "SQL", "Java", "Kotlin", "C/C++"],
+      items: ["TypeScript", "JavaScript", "Python", "SQL", "Java", "Kotlin"],
     },
     {
       title: "Frameworks & libraries",
@@ -49,7 +49,6 @@ export const resume: ResumeData = {
         "Prisma",
         "Tailwind CSS",
         "Express",
-        "Redux",
       ],
     },
     {
@@ -75,7 +74,6 @@ export const resume: ResumeData = {
         "NumPy",
         "scikit-learn",
         "Matplotlib",
-        "Seaborn",
         "Cartopy",
         "Geospatial data processing",
       ],
@@ -95,10 +93,10 @@ export const resume: ResumeData = {
       summary:
         "Worked across a legacy Java / Spring monolith and its satellite Spring Boot services, modernising customer-facing flows without disrupting a live production platform.",
       highlights: [
+        "Led the eMOVE interstate vehicle-transfer build across four repositories: a three-step customer portal, FPX/RHB payment integration and RabbitMQ event pipelines for LHDN e-invoicing write-backs.",
+        "Reworked the nightly payment reconciliation batch so match resolution happens before any write, removing date mismatches and deadlocks from money-critical flows.",
         "Architected backoffice, a Kotlin / Spring Boot 3.5 satellite host that extracts features from the legacy monolith one at a time, and enforced module boundaries with ArchUnit in CI.",
         "Built a single sign-on hand-off with single-use signed JWTs, JTI replay guards and an open-redirect whitelist, plus a back-channel SessionRegistry trigger that revokes other application sessions on sign-out.",
-        "Reworked the nightly payment reconciliation batch so match resolution happens before any write, removing date mismatches and deadlocks from money-critical flows.",
-        "Led the eMOVE interstate vehicle-transfer build across four repositories: a three-step customer portal, FPX/RHB payment integration and RabbitMQ event pipelines for LHDN e-invoicing write-backs.",
         "Designed dual-token driver handover with independent pickup and drop-off lifecycles, and built an S3 storage router that switches between MinIO and AWS S3 at runtime.",
       ],
       technologies: [
@@ -261,9 +259,9 @@ export const resume: ResumeData = {
     degree: "BSc (Hons) Computer Science",
     institution: "University of Sheffield",
     period: "2022 — 2025",
-    grade: "Second Class Honours, Upper Division (2:1)",
+    grade: "2:1 (Second Class Honours, Upper Division)",
     summary:
-      "Focus areas: full-stack systems, data-driven computing and machine learning. Awarded a Distinction (75) for my final-year dissertation and a YTP MARA Scholarship.",
+      "Final-year dissertation awarded a Distinction (75) on air-pollution source inference using Gaussian processes. Awarded a YTP MARA Scholarship. Focus areas: full-stack systems, data-driven computing and machine learning.",
   },
   research: {
     title:
@@ -272,12 +270,12 @@ export const resume: ResumeData = {
       "Undergraduate dissertation · University of Sheffield · Supervisor: Dr. Michael Smith",
     period: "2025",
     summary:
-      "Extended the Advection Gaussian Process framework from synthetic data to a real-world case study, inferring pollution sources during the 2019–2020 Australian bushfires.",
+      "Extended the Advection Gaussian Process framework from synthetic data to a real-world case study, inferring pollution sources during the 2019–2020 Australian bushfires — awarded a Distinction (75).",
     highlights: [
       "Processed NASA MERRA-2 reanalysis and MODIS AOD data, aligning multi-resolution satellite and meteorological records across space and time.",
       "Explored 2D versus 3D wind-field integration to account for vertical transport, and adapted the inference pipeline for limited hardware.",
       "Validated inferred source activity against satellite fire anomaly data and produced cartographic visualisations of pollution transport.",
-      "Awarded a Distinction (75); the work contributed practical insights to my supervisor's research.",
+      "Contributed practical insights to my supervisor's ongoing research.",
     ],
     technologies: [
       "Python",

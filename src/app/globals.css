@@ -110,6 +110,177 @@
       0 94%
     );
   }
+
+  /* Marker swipe. Multiply keeps the letterforms on top of the ink instead of
+     washing them out, so it reads like a highlighter on paper. */
+  .highlighter {
+    background-image: linear-gradient(
+      100deg,
+      rgba(238, 147, 188, 0) 0%,
+      rgba(238, 147, 188, 0.55) 8%,
+      rgba(238, 147, 188, 0.55) 92%,
+      rgba(238, 147, 188, 0) 100%
+    );
+    border-radius: 3px;
+    padding: 0 0.14em;
+    margin: 0 -0.1em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    mix-blend-mode: multiply;
+  }
+
+  .tape-alt {
+    background-color: rgba(238, 147, 188, 0.55);
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.7) 1.1px,
+      transparent 1.2px
+    );
+    background-size: 8px 8px;
+    box-shadow: 0 1px 2px rgba(75, 16, 41, 0.08);
+  }
+
+  /* Tear along the bottom only, shallow enough that the photo edge stays
+     straight to the eye but no longer reads as a machine cut. */
+  .deckled {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 98.2%,
+      97% 99.4%,
+      94% 98.4%,
+      90% 99.6%,
+      86% 98.5%,
+      81% 99.4%,
+      77% 98.4%,
+      72% 99.6%,
+      68% 98.6%,
+      63% 99.4%,
+      58% 98.4%,
+      53% 99.6%,
+      48% 98.5%,
+      43% 99.4%,
+      38% 98.4%,
+      33% 99.6%,
+      28% 98.6%,
+      23% 99.4%,
+      18% 98.4%,
+      13% 99.5%,
+      8% 98.6%,
+      4% 99.3%,
+      0 98.5%
+    );
+  }
+
+  .coffee-ring {
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      transparent 0 56%,
+      rgba(148, 88, 58, 0.13) 58%,
+      rgba(148, 88, 58, 0.26) 63%,
+      rgba(148, 88, 58, 0.1) 67%,
+      transparent 71%
+    );
+    mix-blend-mode: multiply;
+  }
+
+  /* drop-shadow follows the clipped photo outline, so the deckled edge keeps
+     its shadow instead of being cut off with it. */
+  .photo-shadow {
+    filter: drop-shadow(0 16px 30px rgba(75, 16, 41, 0.26));
+  }
+
+  /* Journal index tabs (mobile menu). Desktop tabs live on the home card. */
+  .journal-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem 0.55rem;
+    border: 1px solid rgba(232, 62, 145, 0.24);
+    border-bottom: 0;
+    border-radius: 2px 2px 9px 9px;
+    background-color: #fbe3e5;
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(248, 216, 232, 0.3)
+    );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 3px 8px -6px rgba(75, 16, 41, 0.4);
+    color: #7e1442;
+    line-height: 1.2;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.2s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .journal-tab {
+      transition: none;
+    }
+  }
+
+  .journal-tab:hover {
+    background-color: #f8d8e8;
+    color: #5a0e30;
+  }
+
+  .journal-tab[aria-current] {
+    background-color: #f3bcd3;
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45),
+      rgba(243, 188, 211, 0.55)
+    );
+    color: #4b1029;
+    box-shadow:
+      inset 0 2px 0 #e83e91,
+      0 5px 12px -6px rgba(75, 16, 41, 0.5);
+  }
+
+  .journal-tab:focus-visible {
+    outline: 2px solid #a81e58;
+    outline-offset: 3px;
+  }
+
+  .journal-tab--wide {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom-width: 1px;
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  /* CV bookmark: tucked over the header line, notched at the bottom. */
+  .bookmark-ribbon {
+    width: 2.125rem;
+    height: 3.5rem;
+    padding-bottom: 0.85rem;
+    background-image: linear-gradient(180deg, #e83e91, #a81e58);
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+    filter: drop-shadow(0 8px 12px rgba(75, 16, 41, 0.28));
+    transition: filter 0.2s ease;
+  }
+
+  .bookmark-ribbon:hover {
+    filter: drop-shadow(0 11px 15px rgba(75, 16, 41, 0.36));
+  }
+
+  .bookmark-ribbon[aria-current] {
+    background-image: linear-gradient(180deg, #c92c6f, #7e1442);
+  }
+
+  .bookmark-ribbon:focus-visible {
+    outline: 2px solid #a81e58;
+    outline-offset: 3px;
+  }
 }
 
 @media print {
